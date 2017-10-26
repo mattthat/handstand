@@ -1,0 +1,33 @@
+body {
+   font-family: sans-serif;
+}
+handstand-textinput > input {
+   border-color: white;
+   border-style: solid;
+   border-width: 0;
+   border-radius: 0;
+}
+handstand-textinput:focus {
+   outline: none;
+}
+handstand-maskedinput > input {
+   border-color: white;
+   border-style: solid;
+   border-width: 0;
+   border-radius: 0;
+}
+handstand-maskedinput:focus {
+   outline: none;
+}
+handstand-switch > div:first-child > label:before {
+   background: lightgreen;
+}
+handstand-switch > div:first-child > input:checked + label:before {
+   background: lightgreen;
+}
+handstand-switch > div:first-child > label:after {
+   background: white;
+}
+handstand-list > ul:first-child {
+   list-style-type: circle;
+}

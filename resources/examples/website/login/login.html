@@ -1,0 +1,24 @@
+<html>
+ <head>
+  <title>Example: Login</title>
+  <link rel="stylesheet" href="../demo-theme.css" />
+  <link rel="stylesheet" href="../app-specific-styles.css" />
+  <link rel="import" href="/handstand/html/components/handstand-login.html" async defer />
+  <script>
+     function handleLogin () {
+       HandstandEventManager.listen('#button-login', 'buttonPressed', function(e) {
+             var username = document.querySelector('#input-username').model.Get('value'),
+                 password = document.querySelector('#input-password').model.Get('value');
+             alert(username + '/' + password);
+       });
+     }
+  </script>
+ </head>
+ <body>
+   <handstand-login
+      id="login"
+      user-placeholder="email"
+      password-placeholder="password"
+      onAfter="handleLogin"></handstand-login>
+ </body>
+</html>

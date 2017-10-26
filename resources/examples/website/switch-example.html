@@ -1,0 +1,59 @@
+<html>
+ <head>
+  <link rel="stylesheet" href="/handstand/css/themes/default.css" />
+  <link rel="import" href="/handstand/html/elements/handstand-text.html" />
+  <link rel="import" href="/handstand/html/elements/handstand-switch.html" />
+ </head>
+ <body>
+  <handstand-switch
+     id='switch-example1'
+     monitor='true' twoway='true'></handstand-switch>
+
+   <br /> <br />
+
+  <handstand-switch
+     id='switch-example2'
+     monitor='true'></handstand-switch>
+
+   <br /> <br />
+
+  <handstand-text
+     id='text-field1'
+     padding-top="0.5em"
+     text=''
+     text-color='black'></handstand-text>
+
+   <br /> <br />
+
+  <handstand-text
+     id='text-field2'
+     padding-top="0.5em"
+     text=''
+     text-color='black'></handstand-text>
+
+   <script>
+     HandstandEventManager.onReady(function () {
+         var model1 = document.getElementById('switch-example1').model;
+         var model2 = document.getElementById('switch-example2').model;
+
+         document.getElementById('text-field1').changeText( model1.toJSON() );
+         document.getElementById('text-field2').changeText( model2.toJSON() );
+
+         HandstandEventManager.listen('#switch-example1', 'change', function(e) {
+            document.getElementById('text-field1').changeText( model1.toJSON() );
+         });
+
+         HandstandEventManager.listen('#switch-example2', 'change', function(e) {
+            document.getElementById('text-field2').changeText( model2.toJSON() );
+         });
+     });
+  </script>
+
+  <style>
+     #switch-example2 div:first-child > label:before {
+        background: lightblue;
+     }
+  </style>
+
+ </body>
+</html>

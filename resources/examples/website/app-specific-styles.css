@@ -1,0 +1,72 @@
+#container-login {
+   background-color: white;
+   border-color: white;
+   border-style: solid;
+   border-width: 0.05em;
+}
+#label-login {
+   text-align: center;
+}
+#label-username > div:first-child {
+   cursor: none;
+   vertical-align: middle;
+   color: silver;
+   font-size: 0.9em;
+   transition: font-size 1s ease, color 0.5s ease;
+}
+#label-username > div:first-child:hover {
+   color: dodgerblue;
+   font-size: 1.05em;
+}
+#label-password > div:first-child {
+   cursor: none;
+   vertical-align: middle;
+   color: silver;
+   font-size: 0.9em;
+   transition: font-size 1s ease, color 0.5s ease;
+}
+#label-password > div:first-child:hover {
+   color: dodgerblue;
+   font-size: 1.05em;
+}
+#button-login {
+    border-color: white
+    border-style: solid;
+    border-width: 0.2em;
+    padding: 0.1em;
+    transition: color 2s ease;
+    font-size: 2em;
+}
+#button-login:hover {
+   color: dodgerblue
+}
+#input-username input {
+   padding: 0.5em;
+   border-color: white;
+   border-width: 0;
+   border-bottom-width: 0.2em;
+   border-bottom-color: #f5f5f5;
+   font-size: 0.89em;
+   transition: border-bottom-color 1.7s ease;
+}
+#input-username input:focus {
+   border-bottom-color: dodgerblue !important;
+}
+#input-username input:hover {
+   border-bottom-color: black
+}
+#input-password input {
+   padding: 0.5em;
+   border-color: white;
+   border-width: 0;
+   border-bottom-width: 0.2em;
+   border-bottom-color: #f5f5f5;
+   font-size: 0.89em;
+   transition: border-bottom-color 1.7s ease;
+}
+#input-password input:focus {
+   border-bottom-color: dodgerblue !important;
+}
+#input-password input:hover {
+   border-bottom-color: black;
+}

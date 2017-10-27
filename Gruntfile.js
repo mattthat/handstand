@@ -1,4 +1,6 @@
 var Grunt = function(grunt) {
+    var pkg = grunt.file.readJSON('package.json'),
+    buildId = pkg.version + '-' + (new Date()).getTime();
     grunt.initConfig({
         clean: {
             build: {
@@ -6,6 +8,25 @@ var Grunt = function(grunt) {
             },
             coverage: {
                 src: ['coverage/*']
+            }
+        },
+        cssmin: {
+            options: {
+                mergeIntoShorthands: false,
+                roundingPrecision: -1
+            },
+            target: {
+                 files: {
+                     'build/snapshot/snapshot-base.min.css': [
+                         'src/css/handstand.css',
+                         'src/css/themes/default.css'
+                     ],
+                     'build/snapshot/snapshot-all.min.css': [
+                         'src/css/handstand.css', 
+                         'src/css/themes/default.css',
+                         'src/css/elements/*.css'
+                     ]
+                 }
             }
         },
         copy: {
@@ -108,11 +129,17 @@ var Grunt = function(grunt) {
                 expand: true,
                 dest: 'build/examples/website/textinputlabel'
             },
-            'snapshot-loader': {
-                src: ['resources/snapshot/snapshot-loader.html'],
+            'snapshot-base-loader': {
+                src: ['resources/snapshot/snapshot-base.html'],
                 flatten: true,
                 expand: true,
-                dest: 'build'
+                dest: 'build/snapshot'
+            },
+            'snapshot-all-loader': {
+                src: ['resources/snapshot/snapshot-all.html'],
+                flatten: true,
+                expand: true,
+                dest: 'build/snapshot'
             }
         },
         connect: {
@@ -127,7 +154,7 @@ var Grunt = function(grunt) {
         watch: {
             app: {
                 files: [
-                    'src/**','resources/examples/**'
+                    'src/**','resources/examples/**', 'resources/snapshot/**'
                 ],
                 tasks: [ 'run' ]
             }
@@ -138,11 +165,26 @@ var Grunt = function(grunt) {
             },
             'package-all': {
                 src: [ 'packaging/all.js'],
-                dest: 'build/snapshot-all.js'
+                dest: 'build/snapshot/snapshot-all.js'
             },
             'package-base': {
                 src: [ 'packaging/base.js'],
-                dest: 'build/snapshot-base.js'
+                dest: 'build/snapshot/snapshot-base.js'
+            }
+        },
+        uglify: {
+            options: {
+                mangle: false
+            },
+            'snapshot-all': {
+                files: {
+                    'build/snapshot/snapshot-all.min.js': ['build/snapshot/snapshot-all.js']
+                }
+            },
+            'snapshot-base': {
+                files: {
+                    'build/snapshot/snapshot-base.min.js': ['build/snapshot/snapshot-base.js']
+                }
             }
         },
         mochaTest: {
@@ -168,21 +210,28 @@ var Grunt = function(grunt) {
         done();
     });
 
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
 
-    grunt.registerTask('explode', [ 'clean:build','copy']);
-    grunt.registerTask('build', [ 'explode','browserify']);
-    grunt.registerTask('test', ['mochaTest']);
-    grunt.registerTask('buildview-server', [ 'build','connect','watch']);
-    grunt.registerTask('run', [ 'build','examples-server']);
-    grunt.registerTask('coveralls', ['mocha_istanbul:coveralls']);
-    grunt.registerTask('coverage', ['clean:coverage','mocha_istanbul:coverage']);
+    grunt.registerTask('version', function() {
+        grunt.file.write('build/version.js', 
+            "module.exports = " + JSON.stringify({version: buildId}, null, 2));
+    });
+
+    grunt.registerTask('explode', [ 'clean:build', 'copy' ]);
+    grunt.registerTask('build', [ 'explode', 'version', 'cssmin', 'browserify', 'uglify' ]);
+    grunt.registerTask('test', [ 'mochaTest' ]);
+    grunt.registerTask('buildview-server', [ 'build', 'connect', 'watch' ]);
+    grunt.registerTask('run', [ 'build', 'buildview-server' ]);
+    grunt.registerTask('coveralls', [ 'mocha_istanbul:coveralls' ]);
+    grunt.registerTask('coverage', [ 'clean:coverage', 'mocha_istanbul:coverage' ]);
     grunt.registerTask('audit', []);    // audit coverage and other release restrictions
     grunt.registerTask('package', []);  // put handstand together for release
     grunt.registerTask('validate', []); // ensure viability after packaging (maybe a headless chrome test bed?)

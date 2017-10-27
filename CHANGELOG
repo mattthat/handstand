@@ -1,0 +1,7 @@
+- 0.13.1:
+    * snapshot builds
+    * Handstand.version reports a value
+- 0.13.0:
+    * introduced some elements as proof of concept: button, checkbox, container, dropdown, input, label, list, maskedinput, switch, text and textinput
+    * introduced some components as a proof of concept: login and textinputlabel
+    * unit test bed

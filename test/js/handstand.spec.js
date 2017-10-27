@@ -111,7 +111,7 @@ describe('Handstand', () => {
                 expect(obrSpy.called).to.equal(true);
             });
 
-            it('should before render, have a handstand model, and enter the setUp lifecycle phase, and protect itself', () => {
+            it('should before render be default, have a handstand model, and enter the setUp lifecycle phase', () => {
                 expect(defaultsSpy.called).to.equal(true);
                 expect(handstand.model instanceof HandstandModel).to.equal(true);
                 expect(setupSpy.called).to.equal(true);

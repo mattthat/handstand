@@ -1,8 +1,10 @@
 {
   "name": "handstand",
-  "version": "0.13.0-alpha1",
+  "version": "0.13.0-alpha2",
   "main": "packaging/all.js",
   "author": "matt.that@gmail.com",
+  "url": "http://handstand.matt-that.com",
+  "homepage": "http://handstand.matt-that.com",
   "license": "Apache 2.0",
   "dependencies": {
     "slim-js": "^2.9.11"

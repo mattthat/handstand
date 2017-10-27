@@ -3,6 +3,8 @@ Web Components based on Slim.js (https://github.com/eavichay/slim.js)
 
 ## Getting Started
 
+Take a look at http://handstand.matt-that.com
+
 (more to come)
 
 ### Development

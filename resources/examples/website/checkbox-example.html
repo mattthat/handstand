@@ -1,0 +1,37 @@
+<html>
+ <head>
+  <link rel="stylesheet" href="/handstand/css/themes/default.css" />
+  <link rel="import" href="/handstand/html/elements/handstand-text.html" />
+  <link rel="import" href="/handstand/html/elements/handstand-checkbox.html" />
+ </head>
+ <body>
+
+  <handstand-checkbox
+     id="example-checkbox"
+     height="1.75em"
+     line-height="1.5em"
+     padding="0.25em"
+     monitor="true"
+     twoway="true"
+  ></handstand-checkbox>
+
+  <br /> <br />
+
+  <handstand-text
+     id='text-field'
+     padding-top="0.5em"
+     text=''
+     text-color='black'></handstand-text>
+
+ <script type="text/javascript">
+     HandstandEventManager.onReady(function () {
+         var model = document.getElementById('example-checkbox').model;
+         document.getElementById('text-field').changeText( model.toJSON() );
+         HandstandEventManager.listen('#example-checkbox', 'change', function(e) {
+            document.getElementById('text-field').changeText( model.toJSON() );
+         });
+     });
+ </script>
+
+ </body>
+</html>

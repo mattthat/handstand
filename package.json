@@ -1,16 +1,30 @@
 {
   "name": "handstand",
-  "version": "1.0.0",
-  "main": "index.html",
+  "version": "0.13.0-alpha1",
+  "main": "packaging/all.js",
   "author": "matt.that@gmail.com",
   "license": "Apache 2.0",
   "dependencies": {
+    "slim-js": "^2.9.11"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "browserify": "^14.4.0",
+    "chai": "^3.5.0",
     "grunt": "^1.0.1",
+    "grunt-browserify": "^5.2.0",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "slim-js": "^2.8.3"
+    "grunt-mocha-istanbul": "^5.0.2",
+    "grunt-mocha-test": "^0.13.3",
+    "istanbul": "^0.4.5",
+    "jsdom": "11.3.0",
+    "jsdom-global": "3.0.2",
+    "jstify": "^0.14.0",
+    "mocha": "^3.2.0",
+    "sinon": "^4.0.1"
   }
 }

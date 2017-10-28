@@ -6,19 +6,19 @@
  </head>
  <body>
   <handstand-switch
-     id='switch-example1'
+     id='example-switch1'
      monitor='true' twoway='true'></handstand-switch>
 
    <br /> <br />
 
   <handstand-switch
-     id='switch-example2'
+     id='example-switch2'
      monitor='true'></handstand-switch>
 
    <br /> <br />
 
   <handstand-text
-     id='text-field1'
+     id='text1'
      padding-top="0.5em"
      text=''
      text-color='black'></handstand-text>
@@ -26,31 +26,30 @@
    <br /> <br />
 
   <handstand-text
-     id='text-field2'
+     id='text2'
      padding-top="0.5em"
      text=''
      text-color='black'></handstand-text>
 
    <script>
-     HandstandEventManager.onReady(function () {
-         var model1 = document.getElementById('switch-example1').model;
-         var model2 = document.getElementById('switch-example2').model;
-
-         document.getElementById('text-field1').changeText( model1.toJSON() );
-         document.getElementById('text-field2').changeText( model2.toJSON() );
-
-         HandstandEventManager.listen('#switch-example1', 'change', function(e) {
-            document.getElementById('text-field1').changeText( model1.toJSON() );
-         });
-
-         HandstandEventManager.listen('#switch-example2', 'change', function(e) {
-            document.getElementById('text-field2').changeText( model2.toJSON() );
-         });
-     });
+  var text1 = document.querySelector("#text1");
+  var text2 = document.querySelector("#text2");
+  var switch1 = document.querySelector("#example-switch1");
+  var switch2 = document.querySelector("#example-switch2");
+  switch1.on('change', function() {
+      text1.text = switch1.model.toJSON();
+  });
+  switch2.on('change', function() {
+      text2.text = switch2.model.toJSON();
+  });
+  setTimeout(function() {
+      text1.text = switch1.model.toJSON();
+      text2.text = switch2.model.toJSON();
+  }, 0)
   </script>
 
   <style>
-     #switch-example2 div:first-child > label:before {
+     #example-switch2 div:first-child > label:before {
         background: lightblue;
      }
   </style>

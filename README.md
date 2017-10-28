@@ -1,5 +1,6 @@
 # handstand
-Web Components based on Slim.js (https://github.com/eavichay/slim.js)
+
+Web components
 
 ## Getting Started
 

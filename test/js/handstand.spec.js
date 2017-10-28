@@ -192,12 +192,6 @@ describe('Handstand', () => {
                 expect(handstand.monitoring).to.equal(true);
             });
 
-            it('should stop monitoring when told', () => {
-                let spy = sinon.spy(HandstandEventManager.clear);
-                handstand.stopMonitoring();
-                expect(spy.called);
-            });
-
         });
 
         describe('two-way', () => {

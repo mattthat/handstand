@@ -1,7 +1,24 @@
-- 0.13.1:
-    * snapshot builds
-    * Handstand.version reports a value
-- 0.13.0:
-    * introduced some elements as proof of concept: button, checkbox, container, dropdown, input, label, list, maskedinput, switch, text and textinput
-    * introduced some components as a proof of concept: login and textinputlabel
-    * unit test bed
+  .- v1.0.0 (YYYY-MM-DD):
+ |     * BREAKING: removed HandstandEventManager class: functionality moved/replaced
+ |     * BREAKING: added on and off methods to Handstand class: event handling is now elemental
+ |     * BREAKING: improved runtime, changing order of lifecycle operations
+ |     * BREAKING: removed HandstandLogin and HandstandTextInputLabel poc components - will 
+ |                 be re-released in the future 
+ |     * provided a package that tests handstand as a functional dependency (dep-test)
+ |     * TODO: run the coverage report / unit tests
+ |     * TODO: update README.md as needed
+ |     * TODO: update CHANGELOG
+ |     * TODO: do 1.0.0 'git commit'
+ |     * TODO: do 1.0.0 'npm publish'
+ +- v0.13.1 (2017-10-27):
+ |     * snapshot builds
+ |     * Handstand.version reports a value
+ +- v0.13.0 (2017-10-27):
+ |     * introduced some elements as proof of concept: button, checkbox, container, dropdown, input, label, list, 
+ |       maskedinput, switch, text and textinput
+ |     * introduced some components as a proof of concept: login and textinputlabel
+ |     * unit test bed
+ .
+ .
+
+ .

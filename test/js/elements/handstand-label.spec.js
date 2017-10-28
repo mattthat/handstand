@@ -14,7 +14,7 @@ describe('HandstandLabel', () => {
         });
 
         it('provides a template property', () => {
-            expect(label.template).to.equal('<div bind>[[text]]</div>');
+            expect(label.template).to.equal('<div bind>[[label]]</div>');
         });
 
         it('provides a way to do the "setUp" lifecycle phase', () => {
@@ -36,7 +36,7 @@ describe('HandstandLabel', () => {
                 let label = new HandstandLabel();
                 label.setAttribute('label', text);
                 label.setUp();
-                expect(label.text).to.equal(text);
+                expect(label.label).to.equal(text);
             });
 
             it('should buildUp', () => {

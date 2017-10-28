@@ -7,7 +7,6 @@ class HandstandSlimIntegration extends Slim {
     onBeforeCreated() {
     }
     onCreated() {
-        this.configure();
     }
     onBeforeRender() {
        this.setUp();

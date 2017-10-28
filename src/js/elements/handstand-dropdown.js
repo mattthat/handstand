@@ -1,11 +1,12 @@
 class HandstandDropdown extends Handstand {
+    constructor(attributes) {
+        super(attributes);
+        this.onSelection();
+    }
     get template() {
         var template = this.selectTag(this.innerHTML);
-        if (!this.options) this.destroyInnerHTML();
+        if (!this.options) this.innerHTML = '';
         return template;
-    }
-    setUp() {
-        this.onSelection();
     }
     buildUp() {
         this.select = this.childNodes[0];
@@ -53,7 +54,7 @@ class HandstandDropdown extends Handstand {
         var monitoring = this.getAttribute('monitor');
         if (monitoring === 'true' && this.id && !this.monitoring) {
             this.monitoring = true;
-            HandstandEventManager.listen('#' + this.id, 'input', this.onChange.bind(this));
+            this.on('input', this.onChange.bind(this));
         } else {
             this.monitoring = false;
         }
@@ -73,7 +74,7 @@ class HandstandDropdown extends Handstand {
         this.onSelection(e);
     }
     stopMonitoring() {
-        HandstandEventManager.clear('#' + this.id, 'input', this.onChange.bind(this));
+        this.off('input', this.onChange.bind(this));
         this.monitoring = false;
     }
 }

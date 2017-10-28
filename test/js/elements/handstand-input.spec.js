@@ -127,20 +127,20 @@ describe('HandstandInput', () => {
             });
 
             it('should interrogate configured html attributes and set monitoring on', () => {
-                let spy = sinon.spy(HandstandEventManager, 'listen');
+                let spy = sinon.spy(input, 'on');
                 input.setAttribute('monitor', 'true');
                 input.configureMonitoring();
                 expect(input.monitoring).to.equal(true);
                 expect(spy.called).to.equal(true);
-                HandstandEventManager.listen.restore();
+                input.on.restore();
             });
 
             it('should stop monitoring when told', () => {
-                let spy = sinon.spy(HandstandEventManager, 'clear');
+                let spy = sinon.spy(input, 'off');
                 input.stopMonitoring();
                 expect(spy.called).to.equal(true);
                 expect(input.monitoring).to.equal(false);
-                HandstandEventManager.clear.restore();
+                input.off.restore();
             });
 
         });

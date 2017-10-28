@@ -5,14 +5,14 @@ class HandstandElement extends HandstandSlimIntegration {
     set id(idValue) {
         this.setAttribute('id', idValue);
     }
-    destroyInnerHTML() {
-        this.innerHTML = '';
+    handler(method) {
+        return function (e) { method(e) }
     }
-    changeColor(color) {
-        this.style.color = color;
+    on(event, method) {
+        this.addEventListener(event, this.handler(method));
     }
-    changeText(text) {
-        this.text = text;
+    off(event, method) {
+        this.removeEventListener(event, this.handler(method));
     }
     fadeOut() {
        this.style.opacity = 1;

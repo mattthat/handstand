@@ -1,9 +1,9 @@
 class HandstandLabel extends Handstand {
     get template() {
-        return `<div bind>[[text]]</div>`;
+        return `<div bind>[[label]]</div>`;
     }
     setUp() {
-      this.text = this.getAttribute('label');
+      this.label = this.getAttribute('label');
     }
     buildUp() {
       this.div = this.childNodes[0];

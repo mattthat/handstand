@@ -1,34 +1,52 @@
 {
-  "name": "handstand",
-  "version": "0.13.1",
-  "main": "packaging/all.js",
-  "author": "matt.that@gmail.com",
-  "url": "http://handstand.matt-that.com",
-  "homepage": "http://handstand.matt-that.com",
-  "license": "Apache 2.0",
-  "dependencies": {
-    "slim-js": "^2.9.11"
-  },
-  "devDependencies": {
-    "babel-register": "^6.26.0",
-    "browserify": "^14.4.0",
-    "chai": "^3.5.0",
-    "grunt": "^1.0.1",
-    "grunt-browserify": "^5.2.0",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.1.0",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-cssmin": "^2.2.1",
-    "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
-    "grunt-contrib-watch": "^1.0.0",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "grunt-mocha-test": "^0.13.3",
-    "istanbul": "^0.4.5",
-    "jsdom": "11.3.0",
-    "jsdom-global": "3.0.2",
-    "jstify": "^0.14.0",
-    "mocha": "^3.2.0",
-    "sinon": "^4.0.1"
-  }
+    "name": "handstand",
+    "version": "1.0.0",
+    "main": "packaging/all.js",
+    "author": {
+        "email": "matt.that@gmail.com",
+        "name": "Matt That",
+        "url": "http://matt-that.com"
+    },
+    "contributors": [{
+        "email": "matt.that@gmail.com",
+        "name": "Matt That",
+        "url": "http://matt-that.com"
+    }],
+    "url": "http://handstand.matt-that.com",
+    "homepage": "http://handstand.matt-that.com",
+    "keywords": "handstand css html js javascript webcomponents",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mattthat/handstand.git"
+    },
+    "license": {
+        "type": "Apache-2.0",
+        "url": "https://spdx.org/licenses/Apache-2.0"
+    },
+    "dependencies": {
+        "slim-js": "^2.9.11"
+    },
+    "devDependencies": {
+       "babel-register": "^6.26.0",
+       "browserify": "^14.4.0",
+       "chai": "^3.5.0",
+       "grunt": "^1.0.1",
+       "grunt-browserify": "^5.2.0",
+       "grunt-cli": "^1.2.0",
+       "grunt-contrib-clean": "^1.1.0",
+       "grunt-contrib-connect": "^1.0.2",
+       "grunt-contrib-copy": "^1.0.0",
+       "grunt-contrib-cssmin": "^2.2.1",
+       "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
+       "grunt-contrib-watch": "^1.0.0",
+       "grunt-exec": "^3.0.0",
+       "grunt-mocha-istanbul": "^5.0.2",
+       "grunt-mocha-test": "^0.13.3",
+       "istanbul": "^0.4.5",
+       "jsdom": "11.3.0",
+       "jsdom-global": "3.0.2",
+       "jstify": "^0.14.0",
+       "mocha": "^3.2.0",
+       "sinon": "^4.0.1"
+    }
 }

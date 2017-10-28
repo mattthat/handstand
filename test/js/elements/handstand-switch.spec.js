@@ -100,7 +100,7 @@ describe('HandstandSwitch', () => {
             it('should setUp', () => {
                 switchEl.setUp();
                 expect(switchEl.ident.indexOf('handstandswitch')).to.equal(0);
-                expect(switchEl.model.Get('value')).to.equal(false);
+                expect(switchEl.model.Get('value')).to.equal(true);
             });
 
             it('should buildUp', () => {
@@ -131,20 +131,20 @@ describe('HandstandSwitch', () => {
              });
 
              it('should interrogate configured html attributes and set monitoring on', () => {
-                 let spy = sinon.spy(HandstandEventManager, 'listen');
+                 let spy = sinon.spy(switchEl, 'on');
                  switchEl.setAttribute('monitor', 'true');
                  switchEl.configureMonitoring();
                  expect(switchEl.monitoring).to.equal(true);
                  expect(spy.called).to.equal(true);
-                 HandstandEventManager.listen.restore();
+                 switchEl.on.restore();
              });
 
              it('should stop monitoring when told', () => {
-                 let spy = sinon.spy(HandstandEventManager, 'clear');
+                 let spy = sinon.spy(switchEl, 'off');
                  switchEl.stopMonitoring();
                  expect(spy.called).to.equal(true);
                  expect(switchEl.monitoring).to.equal(false);
-                 HandstandEventManager.clear.restore();
+                 switchEl.off.restore();
              });
 
         });

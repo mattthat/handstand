@@ -1,7 +1,7 @@
 class HandstandList extends Handstand {
     get template() {
         var template = this.ulTag(this.innerHTML);
-        if (!this.ul) this.destroyInnerHTML();
+        if (!this.ul) this.innerHTML = '';
         return template;
     }
     get items() {

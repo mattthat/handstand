@@ -18,19 +18,18 @@
   <br /> <br />
 
   <handstand-text
-     id='text-field'
+     id='text'
      padding-top="0.5em"
      text=''
      text-color='black'></handstand-text>
 
  <script type="text/javascript">
-     HandstandEventManager.onReady(function () {
-         var model = document.getElementById('example-checkbox').model;
-         document.getElementById('text-field').changeText( model.toJSON() );
-         HandstandEventManager.listen('#example-checkbox', 'change', function(e) {
-            document.getElementById('text-field').changeText( model.toJSON() );
-         });
-     });
+  var textEl = document.querySelector("#text");
+  var checkbox = document.querySelector("#example-checkbox");
+  checkbox.on('change', function() {
+      textEl.text = checkbox.model.toJSON();
+  });
+  setTimeout(function() { textEl.text = checkbox.model.toJSON() }, 0)
  </script>
 
  </body>

@@ -1,10 +1,13 @@
 class HandstandSwitch extends Handstand {
+    constructor(attributes) {
+        super(attributes);
+        this.model.Set('value', true);
+    }
     get template() {
         return `<div><input name="[[ident]]" id="[[ident]]" type="checkbox" checked><label for="[[ident]]"></label></div>`;
     }
     setUp() {
         this.ident = 'handstandswitch-' + this.id;
-        this.model.Set('value', false);
     }
     buildUp() {
         this.div = this.childNodes[0],
@@ -20,7 +23,7 @@ class HandstandSwitch extends Handstand {
         var monitoring = this.getAttribute('monitor');
         if (monitoring === 'true') {
             this.monitoring = true
-            HandstandEventManager.listen('#' + this.id, 'change', this.onChange.bind(this))
+            this.on('change', this.onChange.bind(this));
        } else {
             this.monitoring = false;
         }
@@ -35,13 +38,13 @@ class HandstandSwitch extends Handstand {
         }
     }
     onSetHandler(key, value, model) {
-        this.input.checked = model.Get('value');
+        if (this.input && model) this.input.checked = model.Get('value');
     }
     onChange(e) {
         this.model.Set('value', this.isSwitched());
     }
     stopMonitoring() {
-        HandstandEventManager.clear('#' + this.id, 'change', this.onChange.bind(this));
+        this.off('change', this.onChange.bind(this));
         this.monitoring = false;
     }
 }

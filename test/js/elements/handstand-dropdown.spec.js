@@ -100,13 +100,6 @@ describe('HandstandDropdown', () => {
                 dropdown = undefined;
             });
 
-            it('should setUp', () => {
-                let spy = sinon.spy(dropdown, 'onSelection');
-                dropdown.setUp();
-                expect(spy.called).to.equal(true);
-                dropdown.onSelection.restore();
-            });
-
             it('should buildUp', () => {
                 let node = { style: {}, options: ['a'] },
                 placeholder = 'word',
@@ -200,20 +193,20 @@ describe('HandstandDropdown', () => {
             });
 
             it('should interrogate configured html attributes and set monitoring on', () => {
-                let spy = sinon.spy(HandstandEventManager, 'listen');
+                let spy = sinon.spy(dropdown, 'on');
                 dropdown.setAttribute('monitor', 'true');
                 dropdown.configureMonitoring();
                 expect(dropdown.monitoring).to.equal(true);
                 expect(spy.called).to.equal(true);
-                HandstandEventManager.listen.restore();
+                dropdown.on.restore();
             });
 
             it('should stop monitoring when told', () => {
-                let spy = sinon.spy(HandstandEventManager, 'clear');
+                let spy = sinon.spy(dropdown, 'off');
                 dropdown.stopMonitoring();
                 expect(spy.called).to.equal(true);
                 expect(dropdown.monitoring).to.equal(false);
-                HandstandEventManager.clear.restore();
+                dropdown.off.restore();
             });
 
         });

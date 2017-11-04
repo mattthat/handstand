@@ -17,13 +17,13 @@
   <body>
    <handstand-label id="label-time" label=""></handstand-label>
    <script>
-       HandstandEventManager.onReady(function () {
-         var updateTimeLabel = function() {
-            document.querySelector("#label-time").div.innerHTML = new Date().toString();
-         }
-         updateTimeLabel();
-         setInterval(updateTimeLabel, 1000);
-       });
+   setTimeout(function() {
+       var updateTimeLabel = function() {
+           document.querySelector("#label-time").div.innerHTML = new Date().toString();
+       }
+       updateTimeLabel();
+       setInterval(updateTimeLabel, 1000);
+    }, 0);
    </script>
  </body>
 </html>

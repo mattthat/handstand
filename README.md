@@ -1,5 +1,6 @@
 # handstand
-Web Components based on Slim.js (https://github.com/eavichay/slim.js)
+
+Web components
 
 ## Getting Started
 
@@ -12,6 +13,11 @@ Take a look at http://handstand.matt-that.com
 - yarn (or npm) install
 - grunt buildview-server
 - browse to http://localhost:7000/
+
+### Unit Tests Bed
+ 
+ - use 'grunt test' to execute
+ - use 'grunt coverage' to produce coverage report
 
 ### Structure
 

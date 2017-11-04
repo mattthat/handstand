@@ -26,7 +26,7 @@ class HandstandInput extends Handstand {
         var monitoring = this.getAttribute('monitor');
         if (monitoring === 'true' && this.id && !this.monitoring) {
             this.monitoring = true;
-            HandstandEventManager.listen('#' + this.id, 'input', this.onChange.bind(this));
+            this.on('input', this.onChange.bind(this));
         } else {
             this.monitoring = false;
         }
@@ -44,7 +44,7 @@ class HandstandInput extends Handstand {
         this.input.value = model.Get('value');
     }
     stopMonitoring() {
-        HandstandEventManager.clear('#' + this.id, 'input', this.onChange.bind(this));
+        this.off('input', this.onChange.bind(this));
         this.monitoring = false;
     }
 }

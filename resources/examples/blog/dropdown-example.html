@@ -20,7 +20,7 @@
   <br /> <br />
 
   <handstand-text
-     id='text-field1'
+     id='text1'
      padding-top="0.5em"
      text=''
      text-color='black'></handstand-text>
@@ -41,29 +41,26 @@
   <br /> <br />
 
   <handstand-text
-     id='text-field2'
+     id='text2'
      padding-top="0.5em"
      text=''
      text-color='black'></handstand-text>
 
  <script type="text/javascript">
-
-     HandstandEventManager.onReady(function () {
-
-         var model1 = document.getElementById('example-dropdown1').model;
-         document.getElementById('text-field1').changeText( model1.toJSON() );
-         HandstandEventManager.listen('#example-dropdown1', 'change', function(e) {
-            document.getElementById('text-field1').changeText( model1.toJSON() );
-         });
-
-         var model2 = document.getElementById('example-dropdown2').model;
-         document.getElementById('text-field2').changeText( model2.toJSON() );
-         HandstandEventManager.listen('#example-dropdown2', 'change', function(e) {
-            document.getElementById('text-field2').changeText( model2.toJSON() );
-         });
-
-     });
-
+  var text1 = document.querySelector("#text1");
+  var text2 = document.querySelector("#text2");
+  var dropdown1 = document.querySelector("#example-dropdown1");
+  var dropdown2 = document.querySelector("#example-dropdown2");
+  dropdown1.on('change', function() {
+      text1.text = dropdown1.model.toJSON();
+  });
+  dropdown2.on('change', function() {
+      text2.text = dropdown2.model.toJSON();
+  });
+  setTimeout(function() {
+      text1.text = dropdown1.model.toJSON();
+      text2.text = dropdown2.model.toJSON();
+  }, 0)
  </script>
 
  </body>

@@ -8,7 +8,7 @@ class HandstandCheckbox extends HandstandInput {
         var monitoring = this.getAttribute('monitor');
         if (monitoring === 'true' && this.id && !this.monitoring) {
             this.monitoring = true;
-            HandstandEventManager.listen('#' + this.id, 'change', this.onChange.bind(this));
+            this.on('change', this.onChange.bind(this));
         } else {
             this.monitoring = false;
         }
@@ -34,7 +34,7 @@ class HandstandCheckbox extends HandstandInput {
         this.model.Set('value', this.isChecked());
     }
     stopMonitoring() {
-        HandstandEventManager.clear('#' + this.id, 'change', this.onChange.bind(this));
+        this.off('change', this.onChange.bind(this));
         this.monitoring = false;
     }
 }

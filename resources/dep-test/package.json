@@ -1,0 +1,10 @@
+{
+  "name": "dep-test",
+  "version": "1.0.0",
+  "description": "a package that tests the dependability of handstand",
+  "main": "index.js",
+  "author": "Matt That <matt.that@gmail.com> (http://matt-that.com)",
+  "dependencies": {
+    "handstand": "file:../../handstand-1.0.0.tgz"
+  }
+}

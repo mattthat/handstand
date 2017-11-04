@@ -2,18 +2,18 @@ body {
    font-family: sans-serif;
 }
 handstand-textinput > input {
-   border-color: white;
+   border-color: silver;
    border-style: solid;
-   border-width: 0;
+   border-width: 0.01em;
    border-radius: 0;
 }
 handstand-textinput:focus {
    outline: none;
 }
 handstand-maskedinput > input {
-   border-color: white;
+   border-color: silver;
    border-style: solid;
-   border-width: 0;
+   border-width: 0.01em;
    border-radius: 0;
 }
 handstand-maskedinput:focus {

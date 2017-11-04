@@ -111,20 +111,20 @@ describe('HandstandCheckbox', () => {
              });
 
              it('should interrogate configured html attributes and set monitoring on', () => {
-                 let spy = sinon.spy(HandstandEventManager, 'listen');
+                 let spy = sinon.spy(checkbox, 'on');
                  checkbox.setAttribute('monitor', 'true');
                  checkbox.configureMonitoring();
                  expect(checkbox.monitoring).to.equal(true);
                  expect(spy.called).to.equal(true);
-                 HandstandEventManager.listen.restore();
+                 checkbox.on.restore();
              });
 
              it('should stop monitoring when told', () => {
-                 let spy = sinon.spy(HandstandEventManager, 'clear');
+                 let spy = sinon.spy(checkbox, 'off');
                  checkbox.stopMonitoring();
                  expect(spy.called).to.equal(true);
                  expect(checkbox.monitoring).to.equal(false);
-                 HandstandEventManager.clear.restore();
+                 checkbox.off.restore();
              });
 
          });

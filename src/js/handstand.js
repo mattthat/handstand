@@ -1,4 +1,19 @@
 class Handstand extends HandstandConfigurableElement {
+    constructor(attributes) {
+        super();
+        this.model = new HandstandModel();
+        if (attributes) {
+            let keys = Object.keys(attributes);
+            for(let i = 0; i <= keys.length-1; i++) {
+                let key = keys[i];
+                this.setAttribute(key, attributes[key]);
+            }
+        }
+        this.defaults();
+        this.configure();
+        this.configureMonitoring();
+        this.configureTwoway();
+    }
     onConfiguration() {
         this.relationships();
         this.floating();
@@ -11,13 +26,9 @@ class Handstand extends HandstandConfigurableElement {
         this.texting();
     }
     onBeforeRender() {
-        this.defaults();
-        this.model = new HandstandModel();
         this.setUp();
     }
     onAfterRender() {
-        this.configureMonitoring();
-        this.configureTwoway();
         this.buildUp();
     }
     defaults() {
@@ -57,7 +68,6 @@ class Handstand extends HandstandConfigurableElement {
         this.model.Set('value', e.target.value);
     }
     stopMonitoring() {
-        HandstandEventManager.clear(this.id, this.onChange)
     }
     ripDown() {
        if (this.monitoring) this.stopMonitoring();

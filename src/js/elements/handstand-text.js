@@ -2,6 +2,9 @@ class HandstandText extends Handstand {
     get template() {
         return `<span bind>[[text]]</span>`;
     }
+    setUp() {
+        this.text = this.getAttribute('text');
+    }
     buildUp() {
         this.span = this.childNodes[0];
     }

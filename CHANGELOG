@@ -1,7 +1,22 @@
-- 0.13.1:
-    * snapshot builds
-    * Handstand.version reports a value
-- 0.13.0:
-    * introduced some elements as proof of concept: button, checkbox, container, dropdown, input, label, list, maskedinput, switch, text and textinput
-    * introduced some components as a proof of concept: login and textinputlabel
-    * unit test bed
+  .- v1.0.0 (2017-11-04):
+ |     * BREAKING: removed HandstandEventManager class: functionality moved/replaced
+ |     * BREAKING: added on and off methods to Handstand class: event handling is now elemental
+ |     * BREAKING: improved runtime, changing order of lifecycle operations
+ |     * BREAKING: removed HandstandLogin and HandstandTextInputLabel poc components - will 
+ |                 be re-released in the future 
+ |     * provided a package that tests handstand as a functional dependency (dep-test)
+ |     * provided more examples.. . 
+ |     * included the home site (developed with handstand as an additional example)
+ |     * slim-js to 2.9.15
+ +- v0.13.1 (2017-10-27):
+ |     * snapshot builds
+ |     * Handstand.version reports a value
+ +- v0.13.0 (2017-10-27):
+ |     * introduced some elements as proof of concept: button, checkbox, container, dropdown, input, label, list, 
+ |       maskedinput, switch, text and textinput
+ |     * introduced some components as a proof of concept: login and textinputlabel
+ |     * unit test bed
+ .
+ .
+
+ .

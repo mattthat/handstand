@@ -1,7 +1,13 @@
 var Grunt = function(grunt) {
-    var pkg = grunt.file.readJSON('package.json'),
-    buildId = pkg.version + '-' + (new Date()).getTime();
     grunt.initConfig({
+        exec: {
+            'dep-test': {
+                command: 'cd resources/dep-test; ./dep-test.sh',
+                stdout: true,
+                stderr: false,
+                exitCode: 0
+            }
+        },
         clean: {
             build: {
                 src: ['build/*']
@@ -105,29 +111,17 @@ var Grunt = function(grunt) {
                 expand: true,
                 dest: 'build/handstand/html/components'
             },
-            'element-examples': {
-                src: ['resources/examples/website/*.html'],
+            'examples-website-all': {
+                src: ['resources/examples/website/*'],
                 flatten: true,
                 expand: true,
                 dest: 'build/examples/website'
             },
-            'example-css': {
-                src: ['resources/examples/website/*.css'],
+            'examples-blog': {
+                src: ['resources/examples/blog/*'],
                 flatten: true,
                 expand: true,
-                dest: 'build/examples/website'
-            },
-            'example-login': {
-                src: ['resources/examples/website/login/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/website/login'
-            },
-            'example-textinputlabel': {
-                src: ['resources/examples/website/textinputlabel/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/website/textinputlabel'
+                dest: 'build/examples/blog'
             },
             'snapshot-base-loader': {
                 src: ['resources/snapshot/snapshot-base.html'],
@@ -219,23 +213,19 @@ var Grunt = function(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
-
-    grunt.registerTask('version', function() {
-        grunt.file.write('build/version.js', 
-            "module.exports = " + JSON.stringify({version: buildId}, null, 2));
-    });
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('explode', [ 'clean:build', 'copy' ]);
-    grunt.registerTask('build', [ 'explode', 'version', 'cssmin', 'browserify', 'uglify' ]);
+    grunt.registerTask('build', [ 'explode', 'cssmin', 'browserify', 'uglify' ]);
     grunt.registerTask('test', [ 'mochaTest' ]);
     grunt.registerTask('buildview-server', [ 'build', 'connect', 'watch' ]);
     grunt.registerTask('run', [ 'build', 'buildview-server' ]);
     grunt.registerTask('coveralls', [ 'mocha_istanbul:coveralls' ]);
     grunt.registerTask('coverage', [ 'clean:coverage', 'mocha_istanbul:coverage' ]);
-    grunt.registerTask('audit', []);    // audit coverage and other release restrictions
-    grunt.registerTask('package', []);  // put handstand together for release
-    grunt.registerTask('validate', []); // ensure viability after packaging (maybe a headless chrome test bed?)
-    grunt.registerTask('release', ['coverage', 'build', 'audit', 'package', 'validate'])
+    grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
+    grunt.registerTask('audit-coverage', [])
+    grunt.registerTask('audit-restrict', ['exec:dep-test']);
+    grunt.registerTask('release', ['build','coverage', 'audit']);
 
 };
 module.exports = Grunt;

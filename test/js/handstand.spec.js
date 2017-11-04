@@ -78,6 +78,18 @@ describe('Handstand', () => {
 
     describe('methods', () => {
 
+        describe('construction', () => {
+
+            it('should accept attributes', () => {
+                let id = 'something', cls = 'anything',
+                handstand = new Handstand({ id: id, class: cls });
+                expect(handstand.getAttribute('id')).to.equal(id);
+                expect(handstand.id).to.equal(id);
+                expect(handstand.getAttribute('class')).to.equal(cls);
+            });
+
+        });
+
         describe('lifecycle', () => {
 
             let handstand, obrSpy, setupSpy, oarSpy;

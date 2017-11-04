@@ -111,29 +111,17 @@ var Grunt = function(grunt) {
                 expand: true,
                 dest: 'build/handstand/html/components'
             },
-            'element-examples': {
-                src: ['resources/examples/website/*.html'],
+            'examples-website-all': {
+                src: ['resources/examples/website/*'],
                 flatten: true,
                 expand: true,
                 dest: 'build/examples/website'
             },
-            'example-css': {
-                src: ['resources/examples/website/*.css'],
+            'examples-blog': {
+                src: ['resources/examples/blog/*'],
                 flatten: true,
                 expand: true,
-                dest: 'build/examples/website'
-            },
-            'example-login': {
-                src: ['resources/examples/website/login/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/website/login'
-            },
-            'example-textinputlabel': {
-                src: ['resources/examples/website/textinputlabel/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/website/textinputlabel'
+                dest: 'build/examples/blog'
             },
             'snapshot-base-loader': {
                 src: ['resources/snapshot/snapshot-base.html'],

@@ -1,15 +1,13 @@
-  .- v1.0.0 (YYYY-MM-DD):
+  .- v1.0.0 (2017-11-04):
  |     * BREAKING: removed HandstandEventManager class: functionality moved/replaced
  |     * BREAKING: added on and off methods to Handstand class: event handling is now elemental
  |     * BREAKING: improved runtime, changing order of lifecycle operations
  |     * BREAKING: removed HandstandLogin and HandstandTextInputLabel poc components - will 
  |                 be re-released in the future 
  |     * provided a package that tests handstand as a functional dependency (dep-test)
- |     * TODO: run the coverage report / unit tests
- |     * TODO: update README.md as needed
- |     * TODO: update CHANGELOG
- |     * TODO: do 1.0.0 'git commit'
- |     * TODO: do 1.0.0 'npm publish'
+ |     * provided more examples.. . 
+ |     * included the home site (developed with handstand as an additional example)
+ |     * slim-js to 2.9.15
  +- v0.13.1 (2017-10-27):
  |     * snapshot builds
  |     * Handstand.version reports a value

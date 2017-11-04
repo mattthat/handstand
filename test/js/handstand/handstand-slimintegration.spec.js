@@ -140,4 +140,14 @@ describe('HandstandSlimIntegration', () => {
 
     });
 
+    describe('methods', () => {
+
+        let integrationObject = new HandstandSlimIntegration();
+
+        it('should configure', () => {
+            expect(integrationObject.configure()).not.to.throw;
+        });
+
+    });
+
 });

@@ -4,7 +4,7 @@ class Handstand extends HandstandConfigurableElement {
         this.model = new HandstandModel();
         if (attributes) {
             let keys = Object.keys(attributes);
-            for(let i = 0; i <= keys.length; i++) {
+            for(let i = 0; i <= keys.length-1; i++) {
                 let key = keys[i];
                 this.setAttribute(key, attributes[key]);
             }

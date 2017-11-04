@@ -14,6 +14,11 @@ Take a look at http://handstand.matt-that.com
 - grunt buildview-server
 - browse to http://localhost:7000/
 
+### Unit Tests Bed
+ 
+ - use 'grunt test' to execute
+ - use 'grunt coverage' to produce coverage report
+
 ### Structure
 
 #### src/css

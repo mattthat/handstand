@@ -30,6 +30,12 @@ describe('HandstandElement', () => {
 
         let element = new HandstandElement();
 
+        it('should handle things', () => {
+            var method = function(something) { return 'a'; };
+            var wrapper = function(anything) { method(anything); };
+            expect(element.handler(method)()).to.equal(wrapper());
+        });
+
         it('should fade out', () => {
             let clock = sinon.useFakeTimers();
             expect(element.style.opacity).not.to.equal(0);
@@ -45,6 +51,7 @@ describe('HandstandElement', () => {
             clock.tick(1000);
             expect(element.style.opacity).to.equal(1);
         });
+
     });
 
 });

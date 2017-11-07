@@ -1,19 +1,17 @@
 {
     "name": "handstand",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "packaging/all.js",
     "author": {
         "email": "matt.that@gmail.com",
         "name": "Matt That",
         "url": "http://matt-that.com"
     },
-    "contributors": [
-        {
-            "email": "matt.that@gmail.com",
-            "name": "Matt That",
-            "url": "http://matt-that.com"
-        }
-    ],
+    "contributors": [{
+        "email": "matt.that@gmail.com",
+        "name": "Matt That",
+        "url": "http://matt-that.com"
+    }],
     "url": "http://handstand.matt-that.com",
     "homepage": "http://handstand.matt-that.com",
     "keywords": "handstand css html js javascript webcomponents",

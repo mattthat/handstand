@@ -33,12 +33,9 @@ class Handstand extends HandstandConfigurableElement {
     }
     defaults() {
         let uid = () => {
-            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-            s4() + '-' + s4() + s4() + s4();
-        };
-        let s4 = () => { return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
+            if (!Handstand.unique) Handstand.unique = 0;
+            Handstand.unique++;
+            return Handstand.unique;
         };
         if (!this.id) this.id = uid();
     }

@@ -1,6 +1,7 @@
 {
     "name": "handstand",
     "version": "1.1.0",
+    "main": "packaging/depender.js",
     "author": {
         "email": "matt.that@gmail.com",
         "name": "Matt That",

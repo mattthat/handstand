@@ -7,6 +7,12 @@ var Grunt = function(grunt) {
                 stdout: true,
                 stderr: false,
                 exitCode: 0
+            },
+            'audit-units': {
+                command: 'cd resources/audit/audit-units; ./audit-units.sh',
+                stdout: true,
+                stderr: true,
+                exitCode: 0
             }
         },
         clean: {
@@ -241,7 +247,7 @@ var Grunt = function(grunt) {
     grunt.registerTask('coveralls', [ 'mocha_istanbul:coveralls' ]);
     grunt.registerTask('coverage', [ 'clean:coverage', 'mocha_istanbul:coverage' ]);
     grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
-    grunt.registerTask('audit-coverage', [])
+    grunt.registerTask('audit-coverage', ['exec:audit-units']);
     grunt.registerTask('audit-restrict', ['exec:dep-test']);
     grunt.registerTask('release', ['build','coverage', 'audit', 'release-copy']);
 

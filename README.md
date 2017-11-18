@@ -18,20 +18,13 @@ Take a look at http://handstand.matt-that.com
 
 #### Use via NPM
 
-https://handstandjs.atlassian.net/wiki/spaces/HSKNOW/pages/622609/Getting+Started+via+NPM
-
-    -snip-
-
         require('handstand');        // under 1.x this requires all objects
         require('handstand')("base") // under 1.x this requires only the base objects
-
-    -snip-
 
 ### Unit Tests Bed
  
  - use 'grunt test' to execute
  - use 'grunt coverage' to produce coverage report
-
 
 ### Structure
 

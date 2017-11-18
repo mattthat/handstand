@@ -20,10 +20,10 @@ customElements.define = function() {};
 
 // depend on handstand
 let handstand = require('handstand');
-let text = new HandstandText();
-text.model.Set('test-value', 'foobar');
+let label = new HandstandLabel();
+label.model.Set('test-value', 'foobar');
 
-if (testValue === text.model.toJSON() && version === Handstand.version) {
+if (testValue === label.model.toJSON() && version === Handstand.version) {
     console.log("pass");
     process.exit(0);
 } else {

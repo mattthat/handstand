@@ -5,6 +5,6 @@
   "main": "index.js",
   "author": "Matt That <matt.that@gmail.com> (http://matt-that.com)",
   "dependencies": {
-    "handstand": "file:../../handstand-1.1.0.tgz"
+    "handstand": "file:../../handstand-2.0.0.tgz"
   }
 }

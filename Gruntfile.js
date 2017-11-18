@@ -1,10 +1,17 @@
 var Grunt = function(grunt) {
+    var pkg = grunt.file.readJSON('package.json');
     grunt.initConfig({
         exec: {
             'dep-test': {
                 command: 'cd resources/dep-test; ./dep-test.sh',
                 stdout: true,
                 stderr: false,
+                exitCode: 0
+            },
+            'audit-units': {
+                command: 'cd resources/audit/audit-units; ./audit-units.sh',
+                stdout: true,
+                stderr: true,
                 exitCode: 0
             }
         },
@@ -134,6 +141,14 @@ var Grunt = function(grunt) {
                 flatten: true,
                 expand: true,
                 dest: 'build/snapshot'
+            },
+            'distribution-alljs': {
+                src: 'build/snapshot/snapshot-all.min.js',
+                dest: 'release/handstand-all-v' + pkg.version + '.min.js'
+            },
+            'distribution-allcss': {
+                src: 'build/snapshot/snapshot-all.min.css',
+                dest: 'release/handstand-all-v' + pkg.version + '.min.css'
             }
         },
         connect: {
@@ -215,7 +230,16 @@ var Grunt = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('explode', [ 'clean:build', 'copy' ]);
+    grunt.registerTask('build-copy', [
+        'copy:slim', 'copy:js-toplevel', 'copy:js-handstand', 'copy:js-elements', 'copy:js-components',
+        'copy:css-toplevel', 'copy:css-elements', 'copy:css-components',
+        'copy:themes', 'copy:handstand-basis', 'copy:handstand-elements', 'copy:handstand-components',
+        'copy:examples-website-all', 'copy:examples-blog', 'copy:snapshot-all-loader', 'copy:snapshot-base-loader'
+    ]);
+    grunt.registerTask('release-copy', [
+        'copy:distribution-alljs', 'copy:distribution-allcss'
+    ]);
+    grunt.registerTask('explode', [ 'clean:build', 'build-copy' ]);
     grunt.registerTask('build', [ 'explode', 'cssmin', 'browserify', 'uglify' ]);
     grunt.registerTask('test', [ 'mochaTest' ]);
     grunt.registerTask('buildview-server', [ 'build', 'connect', 'watch' ]);
@@ -223,9 +247,9 @@ var Grunt = function(grunt) {
     grunt.registerTask('coveralls', [ 'mocha_istanbul:coveralls' ]);
     grunt.registerTask('coverage', [ 'clean:coverage', 'mocha_istanbul:coverage' ]);
     grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
-    grunt.registerTask('audit-coverage', [])
+    grunt.registerTask('audit-coverage', ['exec:audit-units']);
     grunt.registerTask('audit-restrict', ['exec:dep-test']);
-    grunt.registerTask('release', ['build','coverage', 'audit']);
+    grunt.registerTask('release', ['build','coverage', 'audit', 'release-copy']);
 
 };
 module.exports = Grunt;

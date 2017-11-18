@@ -10,9 +10,16 @@ Take a look at http://handstand.matt-that.com
 
 ### Development
 
+#### Interact with Current Build
+
 - yarn (or npm) install
 - grunt buildview-server
 - browse to http://localhost:7000/
+
+#### Use via NPM
+
+        require('handstand');        // under 1.x this requires all objects
+        require('handstand')("base") // under 1.x this requires only the base objects
 
 ### Unit Tests Bed
  

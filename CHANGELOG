@@ -1,4 +1,17 @@
-  .- v1.0.1 (2017-11-07):
+  .- v1.1.0 (2017-11-18):
+ |
+ |     * [HANDSTAND-26]
+ |        building for release now produces minified, appropriately named bundles
+ |
+ |     * [HANDSTAND-28]
+ |        building for release is blocked by an audit of the unit test bed coverage 
+ |        report
+ |
+ |     * [HANDSTAND-1, HANDSTAND-2, HANDSTAND-15]
+ |        (depender) require()'ing handstand can and should be passed arguments now, 
+ |        to segment dependency and provide a way to reduce consumer bundle size
+ |
+ +-  v1.0.1 (2017-11-07):
  |
  |     * fixes a problem where default handstand element id values were invalid
  |
@@ -21,8 +34,8 @@
  |
  +-  v0.13.0 (2017-10-27):
  |
- |     * introduced some elements as proof of concept: button, checkbox, container, dropdown, input, label, list, 
- |       maskedinput, switch, text and textinput
+ |     * introduced some elements as proof of concept: button, checkbox, container, dropdown, 
+ |       input, label, list, maskedinput, switch, text and textinput
  |     * introduced some components as a proof of concept: login and textinputlabel
  |     * unit test bed
  .

@@ -1,9 +1,0 @@
-global.HandstandInput = require('../src/js/elements/handstand-input.js');
-global.HandstandButton = require('../src/js/elements/handstand-button.js');
-global.HandstandContainer = require('../src/js/elements/handstand-container.js');
-global.HandstandDropdown = require('../src/js/elements/handstand-dropdown.js');
-global.HandstandLabel = require('../src/js/elements/handstand-label.js');
-global.HandstandList = require('../src/js/elements/handstand-list.js');
-global.HandstandSwitch = require('../src/js/elements/handstand-switch.js');
-global.HandstandCheckbox = require('../src/js/elements/handstand-checkbox.js');
-global.HandstandTextInput = require('../src/js/elements/handstand-textinput.js');

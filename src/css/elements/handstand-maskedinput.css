@@ -1,8 +1,0 @@
-handstand-maskedinput {
-}
-handstand-maskedinput > input:first-child {
-    font-size: inherit;
-}
-handstand-maskedinput > input:focus {
-    outline: inherit;
-}

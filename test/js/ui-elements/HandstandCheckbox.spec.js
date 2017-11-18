@@ -1,7 +1,7 @@
 require('../../harness');
 
-let HandstandCheckbox = require(path.join(__dirname, '../../../src/js/elements',
-    'handstand-checkbox'));
+let HandstandCheckbox = require(path.join(__dirname, '../../../src/js/ui-elements',
+    'HandstandCheckbox.js'));
 
 describe('HandstandCheckbox', () => {
 

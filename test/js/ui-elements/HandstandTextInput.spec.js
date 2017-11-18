@@ -1,7 +1,7 @@
 require('../../harness');
 
-let HandstandTextInput = require(path.join(__dirname, '../../../src/js/elements',
-    'handstand-textinput'));
+let HandstandTextInput = require(path.join(__dirname, '../../../src/js/ui-elements',
+    'HandstandTextInput.js'));
 
 describe('HandstandTextInput', () => {
 

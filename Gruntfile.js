@@ -30,14 +30,11 @@ var Grunt = function(grunt) {
             },
             target: {
                  files: {
-                     'build/snapshot/snapshot-base.min.css': [
-                         'src/css/handstand.css',
-                         'src/css/themes/default.css'
-                     ],
                      'build/snapshot/snapshot-all.min.css': [
                          'src/css/handstand.css', 
-                         'src/css/themes/default.css',
-                         'src/css/elements/*.css'
+                         'src/css/elements/*.css',
+                         'src/css/components/*.css',
+                         'src/css/themes/default.css'
                      ]
                  }
             }
@@ -176,9 +173,9 @@ var Grunt = function(grunt) {
                 src: [ 'packaging/all.js'],
                 dest: 'build/snapshot/snapshot-all.js'
             },
-            'package-base': {
-                src: [ 'packaging/base.js'],
-                dest: 'build/snapshot/snapshot-base.js'
+            'package-uicore': {
+                src: [ 'packaging/ui-core.js'],
+                dest: 'build/snapshot/snapshot-uicore.js'
             }
         },
         uglify: {
@@ -190,9 +187,9 @@ var Grunt = function(grunt) {
                     'build/snapshot/snapshot-all.min.js': ['build/snapshot/snapshot-all.js']
                 }
             },
-            'snapshot-base': {
+            'snapshot-uicore': {
                 files: {
-                    'build/snapshot/snapshot-base.min.js': ['build/snapshot/snapshot-base.js']
+                    'build/snapshot/snapshot-uicore.min.js': ['build/snapshot/snapshot-uicore.js']
                 }
             }
         },

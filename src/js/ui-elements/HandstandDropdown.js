@@ -1,4 +1,4 @@
-class HandstandDropdown extends Handstand {
+class HandstandDropdown extends HandstandConfigurableElement {
     constructor(attributes) {
         super(attributes);
         this.onSelection();
@@ -78,5 +78,5 @@ class HandstandDropdown extends Handstand {
         this.monitoring = false;
     }
 }
-Handstand.tag('handstand-dropdown', HandstandDropdown);
+HandstandConfigurableElement.tag('handstand-dropdown', HandstandDropdown);
 try { module.exports = HandstandDropdown; } catch(x) {}

@@ -3,5 +3,5 @@ class HandstandTextInput extends HandstandInput {
         this.input.type = 'text';
     }
 }
-Handstand.tag('handstand-textinput', HandstandTextInput);
+HandstandConfigurableElement.tag('handstand-textinput', HandstandTextInput);
 try { module.exports = HandstandTextInput; } catch(x) {}

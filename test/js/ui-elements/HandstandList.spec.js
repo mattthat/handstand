@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandList = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandList.js'));
@@ -9,8 +9,8 @@ describe('HandstandList', () => {
 
         let list = new HandstandList();
 
-        it('extends Handstand', () => {
-            expect(list instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(list instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provides a template property without ul', () => {

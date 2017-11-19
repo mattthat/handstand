@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandInput = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandInput.js'));
@@ -9,8 +9,8 @@ describe('HandstandInput', () => {
 
         let input = new HandstandInput();
 
-        it('extends Handstand', () => {
-            expect(input instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(input instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provides a template property', () => {

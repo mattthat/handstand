@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 describe('HandstandSlimIntegration', () => {
 

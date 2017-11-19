@@ -41,5 +41,5 @@ class HandstandCheckbox extends HandstandInput {
         this.monitoring = false;
     }
 }
-Handstand.tag('handstand-checkbox', HandstandCheckbox);
+HandstandConfigurableElement.tag('handstand-checkbox', HandstandCheckbox);
 try { module.exports = HandstandCheckbox; } catch(x) {}

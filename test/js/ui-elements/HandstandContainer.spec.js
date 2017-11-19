@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandContainer = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandContainer'));
@@ -9,8 +9,8 @@ describe('HandstandContainer', () => {
 
         let container = new HandstandContainer();
 
-        it('extends Handstand', () => {
-            expect(container instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(container instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provides a way to do the "setUp" lifecycle phase', () => {

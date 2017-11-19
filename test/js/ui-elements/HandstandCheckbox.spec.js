@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandCheckbox = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandCheckbox.js'));
@@ -9,8 +9,8 @@ describe('HandstandCheckbox', () => {
 
         let checkbox = new HandstandCheckbox();
 
-        it('extends Handstand', () => {
-            expect(checkbox instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(checkbox instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provide a way to do an input-specific buildUp', () => {

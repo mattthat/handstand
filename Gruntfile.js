@@ -40,81 +40,6 @@ var Grunt = function(grunt) {
             }
         },
         copy: {
-            slim: {
-                flatten: true,
-                expand: true,
-                src: [
-                    'node_modules/slim-js/Slim.js',
-                    'node_modules/slim-js/Slim.min.js'
-                ],
-                dest: 'build/handstand/slim-js'
-            },
-            'js-toplevel': {
-                src: ['src/js/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js'
-            },
-            'js-handstand': {
-                src: ['src/js/handstand/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js/handstand'
-            },
-            'js-elements': {
-                src: ['src/js/elements/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js/elements'
-            },
-            'js-components': {
-                src: ['src/js/components/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js/components'
-            },
-            'css-toplevel': {
-                src: ['src/css/*.css'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css'
-            },
-            'css-elements': {
-                src: ['src/css/elements/*.css'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css/elements'
-            },
-            'css-components': {
-                src: ['src/css/components/*.css'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css/components'
-            },
-            themes: {
-                src: ['src/css/themes/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css/themes'
-            },
-            'handstand-basis': {
-                src: ['src/html/*.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/html'
-            },
-            'handstand-elements': {
-                src: ['src/html/elements/*.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/html/elements'
-            },
-            'handstand-components': {
-                src: ['src/html/components/*.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/html/components'
-            },
             'examples-website-all': {
                 src: ['resources/examples/website/*'],
                 flatten: true,
@@ -126,12 +51,6 @@ var Grunt = function(grunt) {
                 flatten: true,
                 expand: true,
                 dest: 'build/examples/blog'
-            },
-            'snapshot-base-loader': {
-                src: ['resources/snapshot/snapshot-base.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/snapshot'
             },
             'snapshot-all-loader': {
                 src: ['resources/snapshot/snapshot-all.html'],
@@ -228,10 +147,8 @@ var Grunt = function(grunt) {
     grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('build-copy', [
-        'copy:slim', 'copy:js-toplevel', 'copy:js-handstand', 'copy:js-elements', 'copy:js-components',
-        'copy:css-toplevel', 'copy:css-elements', 'copy:css-components',
-        'copy:themes', 'copy:handstand-basis', 'copy:handstand-elements', 'copy:handstand-components',
-        'copy:examples-website-all', 'copy:examples-blog', 'copy:snapshot-all-loader', 'copy:snapshot-base-loader'
+        'copy:examples-website-all', 'copy:examples-blog',
+        'copy:snapshot-all-loader'
     ]);
     grunt.registerTask('release-copy', [
         'copy:distribution-alljs', 'copy:distribution-allcss'

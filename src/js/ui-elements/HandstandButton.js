@@ -1,11 +1,10 @@
 class HandstandButton extends Handstand {
-    get isInteractive() { return true }
-    buttonPressed() {
-        this.dispatchEvent(new CustomEvent('buttonPressed', {
-            detail: {
-                pressed: true
-            }
-        }));
+    constructor(attributes, events) {
+        super(attributes);
+        if (events && events.onPress) {
+            this.onPress = events.onPress;
+            this.on('click', this.onPress.bind(this));
+        }
     }
 }
 Handstand.tag('handstand-button', HandstandButton);

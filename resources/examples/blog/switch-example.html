@@ -1,58 +1,50 @@
 <html>
  <head>
-  <link rel="stylesheet" href="/handstand/css/themes/default.css" />
-  <link rel="import" href="/handstand/html/elements/handstand-text.html" />
-  <link rel="import" href="/handstand/html/elements/handstand-switch.html" />
- </head>
- <body>
-  <handstand-switch
-     id='example-switch1'
-     monitor='true' twoway='true'></handstand-switch>
-
-   <br /> <br />
-
-  <handstand-switch
-     id='example-switch2'
-     monitor='true'></handstand-switch>
-
-   <br /> <br />
-
-  <handstand-text
-     id='text1'
-     padding-top="0.5em"
-     text=''
-     text-color='black'></handstand-text>
-
-   <br /> <br />
-
-  <handstand-text
-     id='text2'
-     padding-top="0.5em"
-     text=''
-     text-color='black'></handstand-text>
-
-   <script>
-  var text1 = document.querySelector("#text1");
-  var text2 = document.querySelector("#text2");
-  var switch1 = document.querySelector("#example-switch1");
-  var switch2 = document.querySelector("#example-switch2");
-  switch1.on('change', function() {
-      text1.text = switch1.model.toJSON();
-  });
-  switch2.on('change', function() {
-      text2.text = switch2.model.toJSON();
-  });
-  setTimeout(function() {
-      text1.text = switch1.model.toJSON();
-      text2.text = switch2.model.toJSON();
-  }, 0)
-  </script>
-
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" href="/snapshot/snapshot-all.min.css" />
+  <script src="/snapshot/snapshot-all.min.js"></script>
   <style>
-     #example-switch2 div:first-child > label:before {
-        background: lightblue;
-     }
+   body { font-family: 'Permanent Marker' }
+   #label1, #label2 {
+       display: block;
+       padding: 1em; 
+   }
+   #switch2 div:first-child > label:before {
+       background: dodgerblue;
+   }
   </style>
-
+  </head>
+  <body>
+   <script>
+      class SwitchExample {
+          handleSwitchChange() {
+              this.label.label = this.model.toJSON();
+          }
+          generateExample(switchId, labelId) {
+              let switchEl = new HandstandSwitch({
+                  id: switchId,
+                  monitor: 'true',
+                  twoway: 'true'
+              }),
+              label = new HandstandLabel({
+                  id: labelId,
+                  label: switchEl.model.toJSON()
+              });
+              switchEl.on('change', this.handleSwitchChange.bind({
+                  label: label,
+                  model: switchEl.model
+              }));
+              document.querySelector('body').append(switchEl);
+              document.querySelector('body').append(label);            
+          }
+          provide() {
+              this.generateExample('switch1', 'label1');
+              this.generateExample('switch2', 'label2');
+          }
+      }
+      document.addEventListener("DOMContentLoaded", function() {
+          (new SwitchExample()).provide();
+      });
+   </script>
  </body>
 </html>

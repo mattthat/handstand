@@ -13,24 +13,18 @@ describe('HandstandButton', () => {
             expect(button instanceof Handstand).to.equal(true);
         });
 
-        it('provides a isInteractive property', () => {
-            expect(button.isInteractive).to.equal(true);
-        });
-
-        it('provides a way to handle a CustomEvent called buttonPressed', () => {
-            expect(typeof button.buttonPressed).to.equal('function');
-        });
-
     });
 
     describe('methods', () => {
 
         it('should handle button being pressed', () => {
-            let button = new HandstandButton();
-            let spy = sinon.spy(button, 'dispatchEvent');
-            button.buttonPressed();
-            expect(spy.called).to.equal(true);
-            button.dispatchEvent.restore();
+            let x = 0, button = new HandstandButton({ id: 'button-test' }, {
+                onPress: () => {
+                    x = 20;
+                }
+            });
+            button.onPress();
+            expect(x).to.equal(20);
         });
         
     });

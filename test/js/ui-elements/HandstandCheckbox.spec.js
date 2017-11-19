@@ -86,11 +86,6 @@ describe('HandstandCheckbox', () => {
                  };
              });
 
-             afterEach(() => {
-                 checkbox = null;
-                 checkbox = undefined;
-             });
-
              it('should inputBuildUp', () => {
                   checkbox.inputBuildUp();
                   expect(checkbox.input.type).to.equal('checkbox');

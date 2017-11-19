@@ -1,3 +1,4 @@
+
 // setup test values
 let testValue = JSON.stringify({
   "test-value": "foobar"
@@ -19,11 +20,13 @@ global.customElements = function() {};
 customElements.define = function() {};
 
 // depend on handstand
-let handstand = require('handstand');
+require('handstand')('ui-element:HandstandLabel');
+
 let label = new HandstandLabel();
 label.model.Set('test-value', 'foobar');
 
-if (testValue === label.model.toJSON() && version === Handstand.version) {
+if (testValue === label.model.toJSON() &&
+	version === Handstand.version) {
     console.log("pass");
     process.exit(0);
 } else {

@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../core_harness');
 
 let HandstandModel = require(path.join(__dirname, '../../../src/js/core',
     'HandstandModel.js'));

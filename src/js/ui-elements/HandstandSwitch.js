@@ -1,4 +1,4 @@
-class HandstandSwitch extends Handstand {
+class HandstandSwitch extends HandstandConfigurableElement {
     constructor(attributes) {
         super(attributes);
         this.model.Set('value', true);
@@ -48,5 +48,5 @@ class HandstandSwitch extends Handstand {
         this.monitoring = false;
     }
 }
-Handstand.tag('handstand-switch', HandstandSwitch);
+HandstandConfigurableElement.tag('handstand-switch', HandstandSwitch);
 try { module.exports = HandstandSwitch; } catch(x) {}

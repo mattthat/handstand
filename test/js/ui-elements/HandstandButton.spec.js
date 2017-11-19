@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandButton = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandButton.js'));
@@ -9,8 +9,8 @@ describe('HandstandButton', () => {
 
         let button = new HandstandButton();
 
-        it('extends Handstand', () => {
-            expect(button instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(button instanceof HandstandConfigurableElement).to.equal(true);
         });
 
     });

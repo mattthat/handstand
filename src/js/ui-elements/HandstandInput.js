@@ -1,4 +1,4 @@
-class HandstandInput extends Handstand {
+class HandstandInput extends HandstandConfigurableElement {
     get template() {
         return `<input bind></input>`;
     }

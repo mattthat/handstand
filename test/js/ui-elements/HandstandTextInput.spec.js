@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandTextInput = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandTextInput.js'));
@@ -9,8 +9,8 @@ describe('HandstandTextInput', () => {
         
         let textinput = new HandstandTextInput();
 
-        it('extends Handstand', () => {
-            expect(textinput instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(textinput instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provides a way to do the "inputBuildUp" lifecycle phase', () => {

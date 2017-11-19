@@ -1,4 +1,4 @@
-class HandstandList extends Handstand {
+class HandstandList extends HandstandConfigurableElement {
     get template() {
         var template = this.ulTag(this.innerHTML);
         if (!this.ul) this.innerHTML = '';
@@ -58,5 +58,5 @@ class HandstandList extends Handstand {
         }
     }
 }
-Handstand.tag('handstand-list', HandstandList);
+HandstandConfigurableElement.tag('handstand-list', HandstandList);
 try { module.exports = HandstandList; } catch(x) {}

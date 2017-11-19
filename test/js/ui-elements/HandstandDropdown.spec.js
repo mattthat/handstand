@@ -1,4 +1,4 @@
-require('../../harness');
+require('../../ui-core_harness');
 
 let HandstandDropdown = require(path.join(__dirname, '../../../src/js/ui-elements',
     'HandstandDropdown.js'));
@@ -9,8 +9,8 @@ describe('HandstandDropdown', () => {
 
         let dropdown = new HandstandDropdown();
 
-        it('extends Handstand', () => {
-            expect(dropdown instanceof Handstand).to.equal(true);
+        it('extends HandstandConfigurableElement', () => {
+            expect(dropdown instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provides a template property with options', () => {

@@ -5,11 +5,20 @@ let depender = (segment) => {
         }
     },
     packages = {
-        base: () => {
-            require('./base.js');
+        core: () => {
+            require('./core.js');
         },
-        elements: () => {
-            require('./elements.js');
+        'ui-core': () => {
+            require('./ui-core.js')
+        },
+        'ui-elements': () => {
+            require('./ui-elements.js');
+        },
+        'ui-components': () => {
+            require('./ui-components.js');
+        },
+        'worker': () => {
+            require('./worker.js');
         }
     },
     segments = {

@@ -1,7 +1,7 @@
 require('../../harness');
 
-let HandstandList = require(path.join(__dirname, '../../../src/js/elements',
-    'handstand-list'));
+let HandstandList = require(path.join(__dirname, '../../../src/js/ui-elements',
+    'HandstandList.js'));
 
 describe('HandstandList', () => {
     

@@ -1,0 +1,1 @@
+global.HandstandModel = require('../src/js/core/HandstandModel.js');

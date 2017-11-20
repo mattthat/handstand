@@ -1,0 +1,71 @@
+<html>
+ <head>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" href="/snapshot/snapshot-all.min.css" />
+  <script src="/snapshot/snapshot-all.min.js"></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   #decoded { font-size: 2em; }
+   #myip { display: block; color: silver; font-size: 3em; padding: 20px; }
+   #encoded {
+    color: silver;
+    font-size: 2em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+   }
+  </style>
+  </head>
+  <body>
+   <script>
+      class WorkerExample {
+          constructor() {
+              let example = this;
+              example.worker = new HandstandWorker(
+                '/examples/blog/worker-example.js', {
+                    'onEncode': example.onEncode.bind(example),
+                    'onGetIP': example.onGetIP.bind(example)
+              });
+              example.label = new HandstandLabel({
+                  id: 'encoded',
+                  label: 'encoded = '
+              });
+              example.button = new HandstandButton({ id: 'myip' }, {
+                    onPress: () => {
+                        example.worker.work('onGetIP', {});
+                    }
+              });
+              example.button.append(new HandstandLabel({
+                  id: 'myip-button-label',
+                  label: 'My IP'
+              }));
+              example.input = new HandstandTextInput({
+                  id: 'decoded',
+                  monitor: 'true',
+                  twoway: 'true',
+                  placeholder: 'decoded'
+              });
+              example.input.on('input', () => {
+                  this.worker.work('onEncode', {
+                    value: example.input.model.Get('value')
+                  });
+              });
+          }
+          onEncode(e) {
+              this.label.label = 'encoded = ' + e.data.payload.encodedValue;
+          }
+          onGetIP(e) {
+              alert(e.data.payload.ip);
+          }
+          provide() {
+              document.querySelector('body').append(this.button);
+              document.querySelector('body').append(this.input);
+              document.querySelector('body').append(this.label);
+          }
+      }
+      Handstand.loaded( () => {
+          (new WorkerExample()).provide();
+      });
+   </script>
+ </body>
+</html>

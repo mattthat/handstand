@@ -19,6 +19,9 @@ var Grunt = function(grunt) {
             build: {
                 src: ['build/*']
             },
+            release: {
+                src: ['release/*']
+            },
             coverage: {
                 src: ['coverage/*']
             }
@@ -172,7 +175,7 @@ var Grunt = function(grunt) {
     grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
     grunt.registerTask('audit-coverage', ['exec:audit-units']);
     grunt.registerTask('audit-restrict', ['exec:dep-test']);
-    grunt.registerTask('release', ['build','coverage', 'audit', 'release-copy']);
+    grunt.registerTask('release', ['clean', 'build','coverage', 'audit', 'release-copy']);
 
 };
 module.exports = Grunt;

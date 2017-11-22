@@ -1,4 +1,6 @@
-require('jsdom-global')();
+global.jsdom = require('jsdom-global')('',{
+	url: 'http://localhost/'
+});
 global.path  = require('path');
 global.chai = require('chai');
 global.sinon = require('sinon');

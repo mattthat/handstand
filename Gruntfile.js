@@ -89,12 +89,16 @@ var Grunt = function(grunt) {
                 transform: ['jstify'],
             },
             'package-all': {
-                src: [ 'packaging/all.js'],
+                src: [ 'packaging/aliases/all.js'],
                 dest: 'build/snapshot/snapshot-all.js'
             },
             'package-uicore': {
-                src: [ 'packaging/ui-core.js'],
+                src: [ 'packaging/packages/ui-core.js'],
                 dest: 'build/snapshot/snapshot-uicore.js'
+            },
+            'package-worker': {
+                src: [ 'packaging/packages/worker.js'],
+                dest: 'build/snapshot/snapshot-worker.js'
             }
         },
         uglify: {
@@ -109,6 +113,11 @@ var Grunt = function(grunt) {
             'snapshot-uicore': {
                 files: {
                     'build/snapshot/snapshot-uicore.min.js': ['build/snapshot/snapshot-uicore.js']
+                }
+            },
+            'snapshot-worker': {
+                files: {
+                    'build/snapshot/snapshot-worker.min.js': ['build/snapshot/snapshot-worker.js']
                 }
             }
         },

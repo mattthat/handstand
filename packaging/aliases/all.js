@@ -1,5 +1,5 @@
-require('./core.js');
-require('./ui-core.js');
-require('./ui-elements.js');
-require('./ui-components.js');
-require('./worker.js');
+require('../packages/core.js');
+require('../packages/ui-core.js');
+require('../packages/ui-elements.js');
+require('../packages/ui-components.js');
+require('../packages/worker.js');

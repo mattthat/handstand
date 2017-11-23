@@ -7,11 +7,13 @@
         "name": "Matt That",
         "url": "http://matt-that.com"
     },
-    "contributors": [{
-        "email": "matt.that@gmail.com",
-        "name": "Matt That",
-        "url": "http://matt-that.com"
-    }],
+    "contributors": [
+        {
+            "email": "matt.that@gmail.com",
+            "name": "Matt That",
+            "url": "http://matt-that.com"
+        }
+    ],
     "url": "http://handstand.matt-that.com",
     "homepage": "http://handstand.matt-that.com",
     "keywords": "handstand css html js javascript webcomponents",
@@ -24,7 +26,7 @@
         "url": "https://spdx.org/licenses/Apache-2.0"
     },
     "dependencies": {
-        "slim-js": "^2.9.15"
+        "slim-js": "^3.1.0"
     },
     "devDependencies": {
         "babel-register": "^6.26.0",

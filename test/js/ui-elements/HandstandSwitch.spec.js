@@ -15,7 +15,7 @@ describe('HandstandSwitch', () => {
 
         it('provides a template property', () => {
             expect(switchEl.template).to.equal(
-                '<div><input name="[[ident]]" id="[[ident]]" type="checkbox" checked><label for="[[ident]]"></label></div>');
+                '<div><input name="{{ident}}" id="{{ident}}" type="checkbox" checked><label for="{{ident}}"></label></div>');
         });
         
         it('provides a way to do the "setUp" lifecycle phase', () => {

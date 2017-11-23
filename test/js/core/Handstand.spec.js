@@ -24,7 +24,7 @@ describe('Handstand', () => {
             it('should execute GET type ajax requests and rely on status 0 callback', () => {
                 let x = 0, clock = sinon.useFakeTimers();
                 Handstand.ajax({
-                    url: '/',
+                    url: 'http://date.jsontest.com/?service=ip',
                     type: 'GET',
                     mime: 'application/json',
                     timeout: 1,
@@ -37,7 +37,7 @@ describe('Handstand', () => {
             it('should execute GET type ajax requests and rely on the any callback', () => {
                 let x = 0, clock = sinon.useFakeTimers();
                 Handstand.ajax({
-                    url: '/',
+                    url: 'http://date.jsontest.com/?service=ip',
                     type: 'GET',
                     mime: 'application/json',
                     timeout: 1,
@@ -50,7 +50,7 @@ describe('Handstand', () => {
             it('should execute GET type ajax requests with miniml arguments supplied', () => {
                 let spy = sinon.spy(XMLHttpRequest.prototype, 'open');
                 Handstand.ajax({
-                    url: '/',
+                    url: 'http://date.jsontest.com/?service=ip',
                     type: 'POST',
                     data: 'yeh!'
                 });

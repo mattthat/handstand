@@ -4,7 +4,7 @@ class HandstandSwitch extends HandstandConfigurableElement {
         this.model.Set('value', true);
     }
     get template() {
-        return `<div><input name="[[ident]]" id="[[ident]]" type="checkbox" checked><label for="[[ident]]"></label></div>`;
+        return `<div><input name="{{ident}}" id="{{ident}}" type="checkbox" checked><label for="{{ident}}"></label></div>`;
     }
     setUp() {
         this.ident = 'handstandswitch-' + this.id;

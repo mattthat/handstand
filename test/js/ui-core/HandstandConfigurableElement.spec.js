@@ -15,12 +15,8 @@ describe('HandstandConfigurableElement', () => {
             expect(typeof element.onConfiguration).to.equal('function');
         });
 
-        it('overrides the onBeforeRender event', () => {
-            expect(typeof element.onBeforeRender).to.equal('function');
-        });
-
-        it('overrides the onAfterRender event', () => {
-            expect(typeof element.onAfterRender).to.equal('function');
+        it('overrides the onRender event', () => {
+            expect(typeof element.onRender).to.equal('function');
         });
 
         it('overrides the way to do the "setUp" lifecycle phase', () => {
@@ -185,25 +181,19 @@ describe('HandstandConfigurableElement', () => {
 
         describe('lifecycle', () => {
 
-            let element, obrSpy, setupSpy, oarSpy;
+            let element, renderSpy, setupSpy;
 
             beforeEach(() => {
-                obrSpy = sinon.spy(HandstandConfigurableElement.prototype, 'onBeforeRender');
-                oarSpy = sinon.spy(HandstandConfigurableElement.prototype,'onAfterRender');
+                renderSpy = sinon.spy(HandstandConfigurableElement.prototype, 'onRender');
                 setupSpy = sinon.spy(HandstandConfigurableElement.prototype, 'setUp');
                 defaultsSpy = sinon.spy(HandstandConfigurableElement.prototype, 'defaults');
                 element = new HandstandConfigurableElement();
             });
 
             afterEach(() => {
-                HandstandConfigurableElement.prototype.onBeforeRender.restore();
-                HandstandConfigurableElement.prototype.onAfterRender.restore();
+                HandstandConfigurableElement.prototype.onRender.restore();
                 HandstandConfigurableElement.prototype.setUp.restore();
                 HandstandConfigurableElement.prototype.defaults.restore();
-            });
-
-            it('should instantiate, firing overriding onBeforeRender handler', () => {
-                expect(obrSpy.called).to.equal(true);
             });
 
             it('should before render be default, have a handstand model, and enter the setUp lifecycle phase', () => {
@@ -242,10 +232,11 @@ describe('HandstandConfigurableElement', () => {
                 element.coloring.restore();
                 element.texting.restore();
             });
+            
 
-            it('should render, firing overriding onAfterRender handler', () => {
+            it('should render, firing overriding onRender handler', () => {
                 element.render();
-                expect(oarSpy.called).to.equal(true);
+                expect(renderSpy.called).to.equal(true);
             });
 
             it('should after render, configure monitoring, configure twoway, and enter the buildUp lifecycle phase', () => {

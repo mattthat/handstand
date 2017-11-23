@@ -1,6 +1,6 @@
 class HandstandLabel extends HandstandConfigurableElement {
     get template() {
-        return `<div bind>[[label]]</div>`;
+        return `<div bind>{{label}}</div>`;
     }
     setUp() {
       this.label = this.getAttribute('label');

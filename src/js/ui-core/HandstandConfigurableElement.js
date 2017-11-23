@@ -25,10 +25,8 @@ class HandstandConfigurableElement extends HandstandElement {
         this.coloring();
         this.texting();
     }
-    onBeforeRender() {
+    onRender() {
         this.setUp();
-    }
-    onAfterRender() {
         this.buildUp();
     }
     defaults() {

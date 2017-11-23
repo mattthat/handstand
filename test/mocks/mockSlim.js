@@ -7,7 +7,7 @@ let mockSlim = function() {
     this.setAttribute = function(key, v) { this._attributes[key] = v; };
     this.getAttribute = function(key) { return this._attributes[key]; };
     this.tag = function() { };
-    this.render = function() { this.onAfterRender(); };
+    this.render = function() { this.onRender(); };
     this.addEventListener = function(name, method) { this._events[name] = method; };
     this.removeEventListener = function(name, method) { delete this._events[name]; };
     this.trigger = function(name) {

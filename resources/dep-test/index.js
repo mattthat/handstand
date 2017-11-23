@@ -10,10 +10,21 @@ global.HTMLElement = function() {
     this.getAttribute = function() {};
     this.setAttribute = function() {};
     this.style = {};
+    this.childNodes = [];
+    this.innerHTML = '';
+    this.querySelectorAll = function() { return {} };
 };
 
 // mock window object
 global.window = {};
+
+// mock document object
+global.document = {
+	innerHTML: '', 
+	createElement: function(o) {
+	    return new HTMLElement(o); 
+	}
+};
 
 // mock customElements object
 global.customElements = function() {};

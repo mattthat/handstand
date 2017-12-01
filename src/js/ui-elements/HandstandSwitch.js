@@ -2,12 +2,13 @@ class HandstandSwitch extends HandstandConfigurableElement {
     constructor(attributes) {
         super(attributes);
         this.model.Set('value', true);
+        HandstandSwitch.unique++;
     }
     get template() {
-        return `<div><input name="{{ident}}" id="{{ident}}" type="checkbox" checked><label for="{{ident}}"></label></div>`;
-    }
-    setUp() {
-        this.ident = 'handstandswitch-' + this.id;
+        return '<div><input name="' + 
+        HandstandSwitch.unique + '" id="' + HandstandSwitch.unique + 
+        '" type="checkbox" checked><label for="' +
+        HandstandSwitch.unique + '"></label></div>';
     }
     buildUp() {
         this.div = this.childNodes[0],
@@ -48,5 +49,6 @@ class HandstandSwitch extends HandstandConfigurableElement {
         this.monitoring = false;
     }
 }
+HandstandSwitch.unique = 1;
 HandstandConfigurableElement.tag('handstand-switch', HandstandSwitch);
 try { module.exports = HandstandSwitch; } catch(x) {}

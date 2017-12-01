@@ -14,8 +14,11 @@ describe('HandstandSwitch', () => {
         });
 
         it('provides a template property', () => {
-            expect(switchEl.template).to.equal(
-                '<div><input name="{{ident}}" id="{{ident}}" type="checkbox" checked><label for="{{ident}}"></label></div>');
+            let ident = HandstandSwitch.unique,
+            template = '<div><input name="' + ident 
+            + '" id="' + ident + 
+            '" type="checkbox" checked><label for="' + ident + '"></label></div>';
+            expect(switchEl.template).to.equal(template);
         });
         
         it('provides a way to do the "setUp" lifecycle phase', () => {
@@ -90,17 +93,6 @@ describe('HandstandSwitch', () => {
 
             beforeEach(() => {
                 switchEl = new HandstandSwitch();
-            });
-
-            afterEach(() => {
-                switchEl = null;
-                switchEl = undefined;
-            });
-
-            it('should setUp', () => {
-                switchEl.setUp();
-                expect(switchEl.ident.indexOf('handstandswitch')).to.equal(0);
-                expect(switchEl.model.Get('value')).to.equal(true);
             });
 
             it('should buildUp', () => {

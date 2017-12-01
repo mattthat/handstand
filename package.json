@@ -26,9 +26,11 @@
         "url": "https://spdx.org/licenses/Apache-2.0"
     },
     "dependencies": {
-        "slim-js": "^3.1.0"
+        "slim-js": "^3.1.2"
     },
     "devDependencies": {
+        "babel-plugin-transform-custom-element-classes": "^0.1.0",
+        "babel-preset-env": "^1.6.1",
         "babel-register": "^6.26.0",
         "browserify": "^14.4.0",
         "chai": "^3.5.0",

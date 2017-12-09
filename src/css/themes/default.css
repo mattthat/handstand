@@ -10,9 +10,6 @@ handstand-container {
 handstand-container {
    transition: 1s ease;
 }
-handstand-container > * {
-   transition: 1s ease;
-}
 handstand-container[state='opened'] {
    background-color: none;
 }

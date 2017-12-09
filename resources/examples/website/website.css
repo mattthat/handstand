@@ -1,9 +1,12 @@
-  body {
+body {
     font-family: 'Indie Flower', cursive;
     overflow: hidden;
     background: rgb(254, 255, 252);
-  }
-  .vert-text {
+}
+handstand-container {
+    border: none;
+}
+.vert-text {
     transform: rotate(-90deg);
     transform-origin: left top 0;
     float: left;
@@ -12,22 +15,14 @@
     position: absolute;
     transition: all .5s ease-in-out;
     padding-left: 0.25em;
-  }
-  .vert-text:hover {
-    top: 85%;
-  }
-  .vert-text span {
+}
+.vert-text div {
     display: block;
     cursor: pointer;
     transition: all .5s ease-in-out;
     transform: scale(1);
-  }
-  .vert-text span:hover {
-    display: block;
-    transition: all .5s ease-in-out;
-    transform: scale(1.5);
-  }
-  #grass {
+}
+#grass {
     z-index: 9000;
     width: 100%;
     background: green;
@@ -38,29 +33,27 @@
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     bottom: 0px;
-  }
-  #webmonkey {
+}
+#webmonkey {
     transform: rotate(4deg);
     position: absolute;
     bottom: 0px;
     left: 100px;
-  }
-  #links {
+}
+#links {
     position: absolute;
     font-size: 2em;
     bottom: 200px;;
     left: 640px;
-  }
-  #links handstand-text {
+}
+#links a {
+    padding: 0.5em;
     display: block;
     color: royalblue;
     font-size: xx-large;
     text-decoration: none;
-    transition: all .5s ease-in-out;
     transform: scale(1);
-  }
-  #links handstand-text:hover {
-    font-weight: 900;
-    transform: scale(1.5);
-    color: darkblue;
-  }
+}
+#links a:hover {
+    transform: scale(1.25);
+}

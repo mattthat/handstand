@@ -13,23 +13,72 @@ describe('HandstandContainer', () => {
             expect(container instanceof HandstandConfigurableElement).to.equal(true);
         });
 
-        it('provides a way to do the "setUp" lifecycle phase', () => {
-            expect(typeof container.setUp).to.equal('function');
+        it('provides a state property', () => {
+            expect(container.state).to.equal('opened');
         });
 
     });
 
     describe('methods', () => {
-    
-        describe('lifecycle', () => {
-    
-            it('should setUp', () => {
-                let display = 'none';
-                let container = new HandstandContainer();
-                container.setAttribute('display', display);
-                container.setUp();
-                expect(container.style.display).to.equal(display);
+
+        it('should provide its contents', () => {
+            let parent = new HandstandContainer({ id: 'contents-test-parent' });
+            expect(parent.contents().length).to.equal(0);
+
+            let child = new HandstandContainer({ id: 'contents-test-child' });
+            parent.children.push( 'junk' ); // should not be counted
+            parent.children.push( child );
+            expect(parent.contents().length).to.equal(1);
+        });
+
+        it('should open with onOpen defined', () => {
+            let x = 0, container = new HandstandContainer({
+                id: 'open-test'
+            }, {
+                onOpen: () => { x = 1 }
             });
+            container.open();
+            expect(container.state).to.equal('opened');
+            expect(x).to.equal(1);
+        });
+
+        it('should open without onOpen defined', () => {
+            let container = new HandstandContainer({
+                id: 'open-test'
+            });
+            container.open();
+            expect(container.state).to.equal('opened');
+        });
+
+        it('should close with onClose defined', () => {
+            let x = 0, container = new HandstandContainer({
+                id: 'close-test'
+            }, {
+                onClose: () => { x = 1 }
+            });
+            container.close();
+            expect(container.state).to.equal('closed');
+            expect(x).to.equal(1);
+        });
+
+        it('should close without onClose defined', () => {
+            let container = new HandstandContainer({
+                id: 'close-test'
+            });
+            container.close();
+            expect(container.state).to.equal('closed');
+        });
+
+        it('should open, then close, then open again', () => {
+            let container = new HandstandContainer({
+                id: 'many-test'
+            });
+            container.open();
+            expect(container.state).to.equal('opened');
+            container.close();
+            expect(container.state).to.equal('closed');
+            container.open();
+            expect(container.state).to.equal('opened');
         });
 
     });

@@ -1,6 +1,30 @@
 body {
    font-family: sans-serif;
 }
+handstand-container {
+   border-color: silver;
+   border-style: solid;
+   border-width: 0.01em;
+   border-radius: 0;
+}
+handstand-container {
+   transition: 1s ease;
+}
+handstand-container > * {
+   transition: 1s ease;
+}
+handstand-container[state='opened'] {
+   background-color: none;
+}
+handstand-container[state='opened'] > * {
+   opacity: 1;
+}
+handstand-container[state='closed'] {
+   background-color: #f5f5f5;
+}
+handstand-container[state='closed'] > * {
+   opacity: 0;
+}
 handstand-textinput > input {
    border-color: silver;
    border-style: solid;

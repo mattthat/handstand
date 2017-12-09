@@ -1,0 +1,68 @@
+<html>
+ <head>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" href="/snapshot/snapshot-all.min.css" />
+  <script src="/snapshot/snapshot-all.min.js"></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   #master-container { padding-bottom: 0.5em; margin-bottom: 1em; }
+   .switcher { padding: 0.6em; }
+  </style>
+  </head>
+  <body>
+   <script>
+      class ContainerExample {
+          switch(id) {
+              return new HandstandSwitch({
+                  id: id,
+                  monitor: 'true',
+                  twoway: 'true',
+                  css: 'switcher'
+              });
+          }
+          provide() {
+              let masterContainer = new HandstandContainer({
+                  id: 'master-container',
+              });
+
+              let switchContainer = new HandstandContainer({
+                  id: 'switch-container',
+              });
+
+              let masterSwitch = this.switch('switch-master');
+              let containerSwitch = this.switch('container-switch');
+
+              let switchOne = this.switch('switch-1');
+              let switchTwo = this.switch('switch-2');
+              let switchThree = this.switch('switch-3');
+
+              masterContainer.append(containerSwitch);
+              masterContainer.append(masterSwitch);
+              switchContainer.append(switchOne);
+              switchContainer.append(switchTwo);
+              switchContainer.append(switchThree);
+
+              masterSwitch.on('change', () => {
+                  switchContainer.contents().map( (el) => {
+                      el.model.Set('value', masterSwitch.model.Get('value') );
+                  });
+              });
+
+              containerSwitch.on('change', () => {
+                  if (containerSwitch.model.Get('value') === false) {
+                      switchContainer.close();
+                  } else {
+                      switchContainer.open();
+                  }
+              });
+
+              document.querySelector('body').append(masterContainer);
+              document.querySelector('body').append(switchContainer);
+          }
+      }
+      Handstand.loaded(() => {
+          ( new ContainerExample() ).provide();
+      });
+   </script>
+ </body>
+</html>

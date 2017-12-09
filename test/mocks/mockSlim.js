@@ -4,6 +4,7 @@ let mockSlim = function() {
     this._events = [];
     this.style = {};
     this.childNodes = [];
+    this.children = [];
     this.setAttribute = function(key, v) { this._attributes[key] = v; };
     this.getAttribute = function(key) { return this._attributes[key]; };
     this.tag = function() { };
@@ -20,6 +21,7 @@ mockSlim.prototype._events = [];
 mockSlim.prototype._attributes = [];
 mockSlim.prototype.style = {};
 mockSlim.prototype.childNodes = [];
+mockSlim.prototype.children = [];
 mockSlim.prototype.setAttribute = function(key, v) { this._attributes[key] = v; };
 mockSlim.prototype.getAttribute = function(key) { return this._attributes[key]; }
 mockSlim.prototype.tag = function() {};

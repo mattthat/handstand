@@ -1,5 +1,6 @@
 handstand-switch {
     display: block;
+    padding: 0.3em;
 }
 handstand-switch > div:first-child {
    opacity: inherit;
@@ -7,7 +8,7 @@ handstand-switch > div:first-child {
 handstand-switch > div:first-child > input {
     max-height: 0;
     max-width: 0;
-    opacity: 0;
+    display: none;
 }
 handstand-switch > div:first-child > label {
     border-radius: 2em;
@@ -16,6 +17,8 @@ handstand-switch > div:first-child > label {
     position: relative;
     width: 2.4em;
     height: 1em;
+    padding: 0.05em;
+    padding-top: 0;
 }
 handstand-switch > div:first-child > label:before {
     border-radius: inherit;

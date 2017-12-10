@@ -4,8 +4,8 @@ body {
 handstand-container {
    border-color: silver;
    border-style: solid;
-   border-width: 0.01em;
-   border-radius: 0;
+   border-width: 0.05em;
+   border-radius: 0.1em;
 }
 handstand-container {
    transition: 1s ease;

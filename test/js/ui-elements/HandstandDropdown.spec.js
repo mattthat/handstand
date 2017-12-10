@@ -47,16 +47,8 @@ describe('HandstandDropdown', () => {
             expect(typeof dropdown.configureMonitoring).to.equal('function');
         });
 
-        it('overrides the way to configure two-way', () => {
-            expect(typeof dropdown.configureTwoway).to.equal('function');
-        });
-
         it('provides a handler to delegate model property changes', () => {
             expect(typeof dropdown.onSetHandler).to.equal('function');
-        });
-
-        it('provides an event for when the "value" model property changes', () => {
-            expect(typeof dropdown.onChange).to.equal('function');
         });
 
         it('provides a way to dismantle monitoring', () => {
@@ -74,12 +66,6 @@ describe('HandstandDropdown', () => {
         describe('events', () => {
 
             let dropdown = new HandstandDropdown();
-
-            it('should handle onChange events by setting "value" model property', () => {
-                let spy = sinon.spy(dropdown,'onSelection');
-                dropdown.onChange();
-                expect(spy.called).to.equal(true);
-            });
 
             it('should have a stub to handle onSet events', () => {
                 expect(dropdown.onSetHandler()).not.to.throw;
@@ -207,27 +193,6 @@ describe('HandstandDropdown', () => {
                 expect(spy.called).to.equal(true);
                 expect(dropdown.monitoring).to.equal(false);
                 dropdown.off.restore();
-            });
-
-        });
-
-        describe('two-way', () => {
-
-            let dropdown = new HandstandDropdown();
-            dropdown.setAttribute('id', 'dropdown-twoway-tests');
-
-            it('should interrogate configured html attributes and set twoway off', () => {
-                dropdown.configureTwoway();
-                expect(dropdown.twoway).to.equal(false);
-            });
-
-            it('should interrogate configured html attributes and set twoway on', () => {
-                let spy = sinon.spy(dropdown.model, 'onSet');
-                dropdown.setAttribute('twoway', 'true');
-                dropdown.configureTwoway();
-                expect(dropdown.twoway).to.equal(true);
-                expect(spy.called).to.equal(true);
-                dropdown.model.onSet.restore();
             });
 
         });

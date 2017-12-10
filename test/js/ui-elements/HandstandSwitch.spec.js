@@ -33,24 +33,12 @@ describe('HandstandSwitch', () => {
             expect(typeof switchEl.isSwitched).to.equal('function');
         });
 
-        it('overrides the way to configure monitoring', () => {
-            expect(typeof switchEl.configureMonitoring).to.equal('function');
-        });
-
-        it('overrides the way to configure two-way', () => {
-            expect(typeof switchEl.configureTwoway).to.equal('function');
-        });
-
         it('provides a handler to delegate model property changes', () => {
             expect(typeof switchEl.onSetHandler).to.equal('function');
         });
 
         it('provides an event for when the "value" model property changes', () => {
             expect(typeof switchEl.onChange).to.equal('function');
-        });
-
-        it('provides a way to dismantle monitoring', () => {
-            expect(typeof switchEl.stopMonitoring).to.equal('function');
         });
 
         it('provides a way to do the "ripDown" lifecycle phase', () => {
@@ -109,56 +97,6 @@ describe('HandstandSwitch', () => {
                 expect(switchEl.input).to.equal(mockInput);
                 expect(switchEl.label).to.equal(mockLabel);
             });
-
-        });
-
-        describe('monitoring', () => {
-
-             let switchEl = new HandstandSwitch();
-             switchEl.setAttribute('id', 'switch-monitoring-tests');
-
-             it('should interrogate configured html attributes and set monitoring off', () => {
-                 switchEl.configureMonitoring();
-                 expect(switchEl.monitoring).to.equal(false);
-             });
-
-             it('should interrogate configured html attributes and set monitoring on', () => {
-                 let spy = sinon.spy(switchEl, 'on');
-                 switchEl.setAttribute('monitor', 'true');
-                 switchEl.configureMonitoring();
-                 expect(switchEl.monitoring).to.equal(true);
-                 expect(spy.called).to.equal(true);
-                 switchEl.on.restore();
-             });
-
-             it('should stop monitoring when told', () => {
-                 let spy = sinon.spy(switchEl, 'off');
-                 switchEl.stopMonitoring();
-                 expect(spy.called).to.equal(true);
-                 expect(switchEl.monitoring).to.equal(false);
-                 switchEl.off.restore();
-             });
-
-        });
-
-        describe('two-way', () => {
-
-             let switchEl = new HandstandSwitch();
-             switchEl.setAttribute('id', 'switch-twoway-tests');
-
-             it('should interrogate configured html attributes and set twoway off', () => {
-                 switchEl.configureTwoway();
-                 expect(switchEl.twoway).to.equal(false);
-             });
-
-             it('should interrogate configured html attributes and set twoway on', () => {
-                 let spy = sinon.spy(switchEl.model, 'onSet');
-                 switchEl.setAttribute('twoway', 'true');
-                 switchEl.configureTwoway();
-                 expect(switchEl.twoway).to.equal(true);
-                 expect(spy.called).to.equal(true);
-                 switchEl.model.onSet.restore();
-             });
 
         });
 

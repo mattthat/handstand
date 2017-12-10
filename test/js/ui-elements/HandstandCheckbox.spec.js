@@ -17,14 +17,6 @@ describe('HandstandCheckbox', () => {
             expect(typeof checkbox.inputBuildUp).to.equal('function');
         });
 
-        it('overrides the way to configure monitoring', () => {
-            expect(typeof checkbox.configureMonitoring).to.equal('function');
-        });
-
-        it('overrides the way to configure two-way', () => {
-            expect(typeof checkbox.configureTwoway).to.equal('function');
-        });
-
         it('provides a way to determine if the checkbox is checked', () => {
             expect(typeof checkbox.isChecked).to.equal('function');
         });
@@ -35,10 +27,6 @@ describe('HandstandCheckbox', () => {
 
         it('provides an event for when the "value" model property changes', () => {
             expect(typeof checkbox.onChange).to.equal('function');
-        });
-
-        it('provides a way to dismantle monitoring', () => {
-            expect(typeof checkbox.stopMonitoring).to.equal('function');
         });
 
         it('provides a way to do the "ripDown" lifecycle phase', () => {
@@ -93,56 +81,6 @@ describe('HandstandCheckbox', () => {
                   expect(checkbox.model.Get('value')).to.equal(false);
              });
          
-         });
-
-         describe('monitoring', () => {
-
-             let checkbox = new HandstandCheckbox();
-             checkbox.setAttribute('id', 'checkbox-monitoring-tests');
-
-             it('should interrogate configured html attributes and set monitoring off', () => {
-                 checkbox.configureMonitoring();
-                 expect(checkbox.monitoring).to.equal(false);
-             });
-
-             it('should interrogate configured html attributes and set monitoring on', () => {
-                 let spy = sinon.spy(checkbox, 'on');
-                 checkbox.setAttribute('monitor', 'true');
-                 checkbox.configureMonitoring();
-                 expect(checkbox.monitoring).to.equal(true);
-                 expect(spy.called).to.equal(true);
-                 checkbox.on.restore();
-             });
-
-             it('should stop monitoring when told', () => {
-                 let spy = sinon.spy(checkbox, 'off');
-                 checkbox.stopMonitoring();
-                 expect(spy.called).to.equal(true);
-                 expect(checkbox.monitoring).to.equal(false);
-                 checkbox.off.restore();
-             });
-
-         });
-
-         describe('two-way', () => {
-
-             let checkbox = new HandstandCheckbox();
-             checkbox.setAttribute('id', 'checkbox-twoway-tests');
-
-             it('should interrogate configured html attributes and set twoway off', () => {
-                 checkbox.configureTwoway();
-                 expect(checkbox.twoway).to.equal(false);
-             });
-
-             it('should interrogate configured html attributes and set twoway on', () => {
-                 let spy = sinon.spy(checkbox.model, 'onSet');
-                 checkbox.setAttribute('twoway', 'true');
-                 checkbox.configureTwoway();
-                 expect(checkbox.twoway).to.equal(true);
-                 expect(spy.called).to.equal(true);
-                 checkbox.model.onSet.restore();
-             });
-
          });
 
     });

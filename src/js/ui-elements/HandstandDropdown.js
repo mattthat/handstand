@@ -54,27 +54,13 @@ class HandstandDropdown extends HandstandConfigurableElement {
         var monitoring = this.getAttribute('monitor');
         if (monitoring === 'true' && this.id && !this.monitoring) {
             this.monitoring = true;
-            this.on('input', this.onChange.bind(this));
+            this.on('input', this.onSelection.bind(this));
         } else {
             this.monitoring = false;
         }
     }
-    configureTwoway() {
-         var twoway = this.getAttribute('twoway');
-         if (twoway === 'true' && !this.twoway) {
-             this.twoway = true;
-             this.model.onSet(this.onSetHandler.bind(this));
-         } else {
-             this.twoway = false;
-         }
-    }
-    onSetHandler(key, value, model) {
-    }
-    onChange(e) {
-        this.onSelection(e);
-    }
     stopMonitoring() {
-        this.off('input', this.onChange.bind(this));
+        this.off('input', this.onSelection.bind(this));
         this.monitoring = false;
     }
 }

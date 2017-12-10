@@ -265,20 +265,37 @@ describe('HandstandConfigurableElement', () => {
 
         describe('monitoring', () => {
 
+            let element = new HandstandConfigurableElement();
+            element.setAttribute('id', 'element-monitoring-tests');
+
             it('should interrogate configured html attributes and set monitoring off', () => {
                 element.configureMonitoring();
                 expect(element.monitoring).to.equal(false);
             });
 
             it('should interrogate configured html attributes and set monitoring on', () => {
+                let spy = sinon.spy(element, 'on');
                 element.setAttribute('monitor', 'true');
                 element.configureMonitoring();
                 expect(element.monitoring).to.equal(true);
+                expect(spy.called).to.equal(true);
+                element.on.restore();
+            });
+
+            it('should stop monitoring when told', () => {
+                let spy = sinon.spy(element, 'off');
+                element.stopMonitoring();
+                expect(spy.called).to.equal(true);
+                expect(element.monitoring).to.equal(false);
+                element.off.restore();
             });
 
         });
 
         describe('two-way', () => {
+
+            let element = new HandstandConfigurableElement();
+            element.setAttribute('id', 'checkbox-twoway-tests');
 
             it('should interrogate configured html attributes and set twoway off', () => {
                 element.configureTwoway();
@@ -286,9 +303,12 @@ describe('HandstandConfigurableElement', () => {
             });
 
             it('should interrogate configured html attributes and set twoway on', () => {
+                let spy = sinon.spy(element.model, 'onSet');
                 element.setAttribute('twoway', 'true');
                 element.configureTwoway();
                 expect(element.twoway).to.equal(true);
+                expect(spy.called).to.equal(true);
+                element.model.onSet.restore();
             });
 
         });

@@ -22,30 +22,8 @@ class HandstandInput extends HandstandConfigurableElement {
     }
     inputBuildUp() {
     }
-    configureMonitoring() {
-        var monitoring = this.getAttribute('monitor');
-        if (monitoring === 'true' && this.id && !this.monitoring) {
-            this.monitoring = true;
-            this.on('input', this.onChange.bind(this));
-        } else {
-            this.monitoring = false;
-        }
-    }
-    configureTwoway() {
-         var twoway = this.getAttribute('twoway');
-         if (twoway === 'true' && !this.twoway) {
-             this.twoway = true;
-             this.model.onSet(this.onSetHandler.bind(this));
-         } else {
-             this.twoway = false;
-         }
-    }
     onSetHandler(key, value, model) {
         this.input.value = model.Get('value');
-    }
-    stopMonitoring() {
-        this.off('input', this.onChange.bind(this));
-        this.monitoring = false;
     }
 }
 try { module.exports = HandstandInput; } catch(x) {}

@@ -33,14 +33,6 @@ describe('HandstandInput', () => {
             expect(typeof input.inputBuildUp).to.equal('function');
         });
 
-        it('overrides the way to configure monitoring', () => {
-            expect(typeof input.configureMonitoring).to.equal('function');
-        });
-
-        it('overrides the way to configure two-way', () => {
-            expect(typeof input.configureTwoway).to.equal('function');
-        });
-
         it('provides a handler to delegate model property changes', () => {
             expect(typeof input.onSetHandler).to.equal('function');
         });
@@ -112,56 +104,6 @@ describe('HandstandInput', () => {
                 input.buildUp();
                 expect(input.input.placeholder).to.equal(undefined);
                 expect(input.input.style.fontSize).to.equal(undefined);
-            });
-
-        });
-
-        describe('monitoring', () => {
-
-            let input = new HandstandInput();
-            input.setAttribute('id', 'input-monitoring-tests');
-
-            it('should interrogate configured html attributes and set monitoring off', () => {
-                input.configureMonitoring();
-                expect(input.monitoring).to.equal(false);
-            });
-
-            it('should interrogate configured html attributes and set monitoring on', () => {
-                let spy = sinon.spy(input, 'on');
-                input.setAttribute('monitor', 'true');
-                input.configureMonitoring();
-                expect(input.monitoring).to.equal(true);
-                expect(spy.called).to.equal(true);
-                input.on.restore();
-            });
-
-            it('should stop monitoring when told', () => {
-                let spy = sinon.spy(input, 'off');
-                input.stopMonitoring();
-                expect(spy.called).to.equal(true);
-                expect(input.monitoring).to.equal(false);
-                input.off.restore();
-            });
-
-        });
-
-        describe('two-way', () => {
-
-            let input = new HandstandInput();
-            input.setAttribute('id', 'input-twoway-tests');
-
-            it('should interrogate configured html attributes and set twoway off', () => {
-                input.configureTwoway();
-                expect(input.twoway).to.equal(false);
-            });
-
-            it('should interrogate configured html attributes and set twoway on', () => {
-                let spy = sinon.spy(input.model, 'onSet');
-                input.setAttribute('twoway', 'true');
-                input.configureTwoway();
-                expect(input.twoway).to.equal(true);
-                expect(spy.called).to.equal(true);
-                input.model.onSet.restore();
             });
 
         });

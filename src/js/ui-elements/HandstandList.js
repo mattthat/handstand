@@ -1,61 +1,81 @@
 class HandstandList extends HandstandConfigurableElement {
     get template() {
-        var template = this.ulTag(this.innerHTML);
-        if (!this.ul) this.innerHTML = '';
-        return template;
+        return `<ul></ul>`;
     }
-    get items() {
-        return this.model.Get('items') || [];
-    }
-    buildUp() {
-        this.ul = this.childNodes[0]
-        this.domToModelItems();
-    }
-    ulTag(html) {
-        var t = '';
-        t += '<ul>';
-        if (html) t += html
-        t += '</ul>';
-        return t;
-    }
-    domToModelItems() {
-        var modelItems = [], innerList = this.ul.children;
-        for(var i = 0; i <= innerList.length-1; i++) {
-           var listItem = innerList[i], modelItem = {};
-           if (listItem) {
-              if (listItem.attributes && listItem.attributes['value'])
-                 modelItem.value = listItem.attributes['value'].value;
-              if (listItem.innerHTML) modelItem.content = listItem.innerHTML;
-              if (modelItem.value || modelItem.content) modelItems.push(modelItem)
-           }
-        }
-        this.model.Set('items', modelItems);
-    }
-    modelItemsToDom() {
-        var modelItems = this.model.Get('items');
-        while( this.ul.firstChild ) {
-            this.ul.removeChild( this.ul.firstChild );
-        }
-        for(var i = 0; i <= modelItems.length; i++) {
-            var modelItem = modelItems[i], li;
-            if (modelItem) {
-                li = document.createElement("li");
-                if (modelItem.content) li.innerHTML = modelItem.content;
-                if (modelItem.value) li.attributes['value'] = {
-                    value: modelItem.value
-                };
-                this.ul.appendChild(li);
+    constructor(attributes, options) {
+        super(attributes);
+        if (options) {
+            if (options.events) {
+                if (typeof options.events.onItemAdded === 'function')
+                    this.onItemAdded = options.events.onItemAdded;
+                if (typeof options.events.onItemRemoved === 'function')
+                    this.onItemRemoved = options.events.onItemRemoved;
+                if (typeof options.events.onListChanged === 'function')
+                    this.onListChanged = options.events.onListChanged;
+            }
+            if (options.items) {
+                this._items = options.items;
             }
         }
     }
-    syncItems(order) {
-        if (order) {
-            this.modelItemsToDom();
-            this.domToModelItems();
-        } else {
-            this.domToModelItems();
-            this.modelItemsToDom();
+    configureMonitoring() {
+        return null;
+    }
+    configureTwoway() {
+        return null;
+    }
+    onRender() {
+        this.items = [];
+        for(let item in this._items) {
+            this.addItem(this._items[item]);
         }
+        delete this._items;
+    }
+    addItem(term) {
+        let item;
+        if (typeof term === 'string') {
+            item = {
+                template: term
+            };
+        } else if (typeof term === 'object' && term.template) {
+            item = term;
+        }
+        if (item && item.template && this.items) {
+            let li = document.createElement('li');
+            li.innerHTML = item.template;
+            if (item.id) li.setAttribute('id', item.id);
+            if (item.css) li.setAttribute('class', item.css);
+            if (this.childNodes[0]) this.childNodes[0].append(li);
+            this.items.push(item);
+            if (this.onItemAdded) this.onItemAdded.call(this);
+            if (this.onListChanged) this.onListChanged.call(this);
+        }
+    }
+    removeItem(term) {
+        if (typeof term === 'string' && this.items) {
+            this.items.filter((item) => {
+                if (item.template === term) {
+                    this.children.item(0)
+                        .children.item(this.items.indexOf(item))
+                        .remove();
+                    this.items.splice(this.items.indexOf(item), 1);
+                }
+            });
+        } else if (typeof term === 'object') {
+            this.children.item(0)
+                .children.item(this.items.indexOf(term))
+                .remove();
+            this.items.splice(this.items.indexOf(term), 1);
+        }
+        if (this.onItemRemoved) this.onItemRemoved.call(this);
+        if (this.onListChanged) this.onListChanged.call(this);
+    }
+    clearItems() {
+        this.items = [];
+        Array.from(this.children.item(0).children).map((el) => { 
+            el.remove();
+        });
+        if (this.onListChanged) this.onListChanged.call(this);
     }
 }
 HandstandConfigurableElement.tag('handstand-list', HandstandList);

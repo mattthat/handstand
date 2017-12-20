@@ -61,6 +61,12 @@ var Grunt = function(grunt) {
                 expand: true,
                 dest: 'build/examples/blog/container'
             },
+            'examples-blog-list': {
+                src: ['resources/examples/blog/list/*'],
+                flatten: true,
+                expand: true,
+                dest: 'build/examples/blog/list'
+            },
             'snapshot-all-loader': {
                 src: ['resources/snapshot/snapshot-all.html'],
                 flatten: true,
@@ -167,6 +173,7 @@ var Grunt = function(grunt) {
     grunt.registerTask('build-copy', [
         'copy:examples-website-all', 'copy:examples-blog', 
         'copy:examples-blog-container',
+        'copy:examples-blog-list',
         'copy:snapshot-all-loader'
     ]);
     grunt.registerTask('release-copy', [

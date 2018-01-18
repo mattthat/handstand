@@ -1,0 +1,28 @@
+<html>
+ <head>
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
+  <link rel='stylesheet" href="/snapshot/snapshot-all.min.css' />
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   handstand-label { color: dodgerblue; }
+  </style>
+  </head>
+  <body>
+   <script>
+       Handstand.loaded(() => {
+          
+          let list = new HandstandList({ id: 'list-example' }, {
+              items: [
+                  { template: 'one' },
+                  { template: 'two' },
+                  { template: 'three' }
+              ]
+          });
+
+          document.querySelector('body').append(list);
+       
+       });
+   </script>
+ </body>
+</html>

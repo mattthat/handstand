@@ -1,0 +1,88 @@
+<html>
+ <head>
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" href="/snapshot/snapshot-all.min.css" />
+  <script src="/snapshot/snapshot-all.min.js"></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   #switch { position: relative; top: -1em; }
+   #button { position: relative; top: -1em; }
+  </style>
+  </head>
+  <body>
+   <script>
+      class ListExample {
+          provide() {
+              this.label = new HandstandLabel({
+                 id: 'label-status',
+                 label: '*'
+              }),
+              this.check = new HandstandCheckbox({
+                  id: 'check-one',
+                  monitor: 'true',
+                  twoway: 'true'
+              });
+              this.switch = new HandstandSwitch({
+                  id: 'switch-one',
+                  monitor: 'true',
+                  twoway: 'true'
+              });
+              this.button = new HandstandButton({
+                  id: 'button-one'
+              }, {
+                  events: {
+                      onPress: () => {
+                         this.switch.model.Set('value', true);
+                         this.check.model.Set('value', true);
+                         this.label.label = 'true';
+                      }
+                  }
+              });
+              this.button.append('truth button');
+              this.list = new HandstandList({
+                  id: 'list-example'
+              },{
+                  items: [{
+                      id: 'label-item',
+                      css: 'various-list-item-example',
+                      detail: this.label,
+                      template: `<div id='label'></div>`
+                  },{
+                      id: 'check-item',
+                      css: 'various-list-item-example',
+                      detail: this.check,
+                      template: `<div id='check'></div>`
+                  },{
+                      id: 'switch-item',
+                      css: 'various-list-item-example',
+                      detail: this.switch,
+                      template: `<div id='switch'></div>`
+                  },{
+                      id: 'button-item',
+                      css: 'various-list-item-example plus-more',
+                      detail: this.button,
+                      template: `<div id='button'></div>`
+                  }]
+              });
+              document.querySelector('body').append(this.list);
+              return this;
+          }
+      }
+      
+      Handstand.loaded( () => { 
+          let example = new ListExample().provide();
+          setTimeout( () => {
+              example.check.on('change', () => {
+                  example.switch.model.Set('value',
+                    example.check.model.Get('value'));
+                  example.label.label = example.check.model.Get('value').toString()
+              });
+              document.querySelector('#label').append(example.label);
+              document.querySelector('#check').append(example.check);
+              document.querySelector('#switch').append(example.switch);
+              document.querySelector('#button').append(example.button);
+          });
+      });
+   </script>
+ </body>
+</html>

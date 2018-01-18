@@ -14,28 +14,5 @@ class HandstandElement extends HandstandSlimIntegration {
     off(event, method) {
         this.removeEventListener(event, this.handler(method));
     }
-    fadeOut() {
-       this.style.opacity = 1;
-       var that = this;
-       for(var i = 1; i <= 100; i++) {
-          setTimeout(function() {
-             if (that.style.opacity > 0.00) that.style.opacity = that.style.opacity - 0.01;
-             if (that.style.opacity < 0.00) that.style.opacity = 0.00;
-          }, 5*i)
-       }
-    }
-    fadeIn() {
-       this.style.opacity = 0;
-       var that = this, opacity = 0;
-       for(var i = 1; i <= 100; i++) {
-          setTimeout(function() {
-             if (that.style.opacity < 1) { 
-                 opacity += 0.01;
-                 that.style.opacity = opacity;
-             }
-             if (that.style.opacity > 1) that.style.opacity = 1;
-          }, 5*i)
-       }
-    }
 }
 try { module.exports = HandstandElement; } catch(x) {}

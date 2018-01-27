@@ -9,7 +9,7 @@ class HandstandInput extends HandstandConfigurableElement {
     inputSetUp() {
     }
     buildUp() {
-        var placeholder = this.getAttribute('placeholder'),
+        let placeholder = this.getAttribute('placeholder'),
         fontSize = this.getAttribute('font-size');
         this.input = this.childNodes[0];
         if (placeholder) {

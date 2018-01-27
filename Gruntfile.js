@@ -67,6 +67,12 @@ var Grunt = function(grunt) {
                 expand: true,
                 dest: 'build/examples/blog/list'
             },
+            'examples-blog-selector': {
+                src: ['resources/examples/blog/selector/*'],
+                flatten: true,
+                expand: true,
+                dest: 'build/examples/blog/selector'
+            },
             'snapshot-all-loader': {
                 src: ['resources/snapshot/snapshot-all.html'],
                 flatten: true,
@@ -174,6 +180,7 @@ var Grunt = function(grunt) {
         'copy:examples-website-all', 'copy:examples-blog', 
         'copy:examples-blog-container',
         'copy:examples-blog-list',
+        'copy:examples-blog-selector',
         'copy:snapshot-all-loader'
     ]);
     grunt.registerTask('release-copy', [

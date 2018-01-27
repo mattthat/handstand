@@ -35,10 +35,6 @@ let depender = (segment) => {
             packages['ui-core']();
             global.HandstandContainer = require('../src/js/ui-elements/HandstandContainer.js');
         },
-        'ui-element:HandstandDropdown': () => {
-            packages['ui-core']();
-            global.HandstandDropdown = require('../src/js/ui-elements/HandstandDropdown.js');
-        },
         'ui-element:HandstandLabel': () => {
             packages['ui-core']();
             global.HandstandLabel = require('../src/js/ui-elements/HandstandLabel.js');
@@ -58,6 +54,10 @@ let depender = (segment) => {
         'ui-element:HandstandTextInput': () => {
             packages['ui-core']();
             global.HandstandTextInput = require('../src/js/ui-elements/HandstandTextInput.js');
+        },
+        'ui-element:HandstandSelector': () => {
+            packages['ui-core']();
+            global.HandstandSelector = require('../src/js/ui-elements/HandstandSelector.js');
         }
     };
     if (segment && segment.length > 0) {

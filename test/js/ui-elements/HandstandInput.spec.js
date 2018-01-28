@@ -74,27 +74,21 @@ describe('HandstandInput', () => {
             });
 
             it('should setUp', () => {
-                let test = 'test-value';
-                input.setAttribute('line-height', test);
                 let spy = sinon.spy(input, 'inputSetUp');
                 input.setUp();
                 expect(spy.called).to.equal(true);
-                expect(input.style.lineHeight).to.equal(test);
                 input.inputSetUp.restore();
             });
 
             it('should buildUp with attributes', () => {
-                let node = { style: {} }, placeholder = 'word',
-                fontSize = '1px',
+                let node = { style: {} }, placeholder = 'word';
                 spy = sinon.spy(input, 'inputBuildUp');
                 input.childNodes[0] = node;
                 input.setAttribute('placeholder', placeholder);
-                input.setAttribute('font-size', fontSize);
                 input.buildUp();
                 expect(spy.called).to.equal(true);
                 expect(input.input).to.equal(node);
                 expect(input.input.placeholder).to.equal(placeholder);
-                expect(input.input.style.fontSize).to.equal(fontSize);
                 input.inputBuildUp.restore();
             });
 

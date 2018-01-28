@@ -19,8 +19,10 @@ describe('HandstandButton', () => {
 
         it('should handle button being pressed', () => {
             let x = 0, button = new HandstandButton({ id: 'button-test' }, {
-                onPress: () => {
-                    x = 20;
+                events: {
+                    onPress: () => {
+                        x = 20;
+                    }
                 }
             });
             button.onPress();

@@ -50,8 +50,10 @@
 
            // my-ip: a button that when pressed will work onGetIP
            let button = new HandstandButton({ id: 'myip' }, {
-               onPress: () => {
-                   worker.work('onGetIP', {});
+               events: {
+                   onPress: () => {
+                       worker.work('onGetIP', {});
+                   }
                }
            });
            //

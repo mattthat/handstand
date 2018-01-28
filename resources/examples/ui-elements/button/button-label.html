@@ -14,8 +14,10 @@
        Handstand.loaded(() => {
 
            let button = new HandstandButton({ id: 'button-example' }, {
-               onPress: () => {
-                   alert('Thanks!');
+               events: {
+                   onPress: () => {
+                       alert('Thanks!');
+                   }
                }
            });
            

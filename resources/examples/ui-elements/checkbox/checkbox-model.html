@@ -1,0 +1,38 @@
+<html>
+ <head>
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   handstand-label { display: block; padding: 1em; }
+  </style>
+  </head>
+  <body>
+   <script>
+       // a checkbox example, including a label which shows model JSON
+       Handstand.loaded(() => {
+        
+           let checkbox = new HandstandCheckbox({
+               id: 'checkbox-example',
+               monitor: 'true',
+               twoway: 'true'
+           });
+
+           let label = new HandstandLabel({
+               id: 'label',
+               label: checkbox.model.toJSON()
+           });
+           
+           checkbox.on('change', () => {
+               label.label = checkbox.model.toJSON();
+           });
+           
+           document.querySelector('body').append(checkbox);
+           
+           document.querySelector('body').append(label);
+
+      });
+   </script>
+ </body>
+</html>

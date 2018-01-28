@@ -10,8 +10,9 @@
   </head>
   <body>
    <script>
+       // a selector example that provides the JSON model of the selected choice when chosen
        Handstand.loaded(() => {
-          
+
           let selector = new HandstandSelector({ id: 'selector-example' }, {
               choices: [
                   { template: '', value: '0', selected: true },
@@ -21,7 +22,7 @@
               ],
               events: {
                   onChoiceSelected: (choice) => {
-                      console.log('selected: ', choice);
+                      alert(JSON.stringify(choice, null, 2));
                   }
               }
           });

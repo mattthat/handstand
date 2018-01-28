@@ -1,5 +1,7 @@
-var Grunt = function(grunt) {
-    var pkg = grunt.file.readJSON('package.json');
+let Grunt = (grunt) => {
+    
+    let PackageJson = grunt.file.readJSON('package.json');
+
     grunt.initConfig({
         exec: {
             'dep-test': {
@@ -43,49 +45,31 @@ var Grunt = function(grunt) {
             }
         },
         copy: {
-            'examples-website-all': {
-                src: ['resources/examples/website/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/website'
+            'examples-website': {
+                cwd: 'resources/examples/website',
+                src: '**',
+                dest: 'build/examples/website',
+                expand: true
             },
-            'examples-blog': {
-                src: ['resources/examples/blog/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/blog'
-            },
-            'examples-blog-container': {
-                src: ['resources/examples/blog/container/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/blog/container'
-            },
-            'examples-blog-list': {
-                src: ['resources/examples/blog/list/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/blog/list'
-            },
-            'examples-blog-selector': {
-                src: ['resources/examples/blog/selector/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/blog/selector'
+            'examples-ui-elements': {
+                cwd: 'resources/examples/ui-elements',
+                src: '**',
+                dest: 'build/examples/ui-elements',
+                expand: true
             },
             'snapshot-all-loader': {
                 src: ['resources/snapshot/snapshot-all.html'],
+                dest: 'build/snapshot',
                 flatten: true,
-                expand: true,
-                dest: 'build/snapshot'
+                expand: true
             },
             'distribution-alljs': {
                 src: 'build/snapshot/snapshot-all.min.js',
-                dest: 'release/handstand-all-v' + pkg.version + '.min.js'
+                dest: 'release/handstand-all-v' + PackageJson.version + '.min.js'
             },
             'distribution-allcss': {
                 src: 'build/snapshot/snapshot-all.min.css',
-                dest: 'release/handstand-all-v' + pkg.version + '.min.css'
+                dest: 'release/handstand-all-v' + PackageJson.version + '.min.css'
             }
         },
         connect: {
@@ -161,7 +145,7 @@ var Grunt = function(grunt) {
         }
     });
 
-    grunt.event.on('coverage', function(lcovFileContents, done) {
+    grunt.event.on('coverage', (lcovFileContents, done) => {
         done();
     });
 
@@ -176,27 +160,18 @@ var Grunt = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('build-copy', [
-        'copy:examples-website-all', 'copy:examples-blog', 
-        'copy:examples-blog-container',
-        'copy:examples-blog-list',
-        'copy:examples-blog-selector',
-        'copy:snapshot-all-loader'
-    ]);
-    grunt.registerTask('release-copy', [
-        'copy:distribution-alljs', 'copy:distribution-allcss'
-    ]);
-    grunt.registerTask('explode', [ 'clean:build', 'build-copy' ]);
+    grunt.registerTask('buildcopy', [ 'copy:examples-website', 'copy:examples-ui-elements', 'copy:snapshot-all-loader' ]);
+    grunt.registerTask('releasecopy', [ 'copy:distribution-alljs', 'copy:distribution-allcss' ]);
+    grunt.registerTask('explode', [ 'clean:build', 'buildcopy' ]);
     grunt.registerTask('build', [ 'explode', 'cssmin', 'browserify', 'uglify' ]);
     grunt.registerTask('test', [ 'mochaTest' ]);
-    grunt.registerTask('buildview-server', [ 'build', 'connect', 'watch' ]);
-    grunt.registerTask('run', [ 'build', 'buildview-server' ]);
+    grunt.registerTask('buildviewserver', [ 'build', 'connect', 'watch' ]);
+    grunt.registerTask('run', [ 'buildviewserver' ]);
     grunt.registerTask('coveralls', [ 'mocha_istanbul:coveralls' ]);
     grunt.registerTask('coverage', [ 'clean:coverage', 'mocha_istanbul:coverage' ]);
     grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
     grunt.registerTask('audit-coverage', ['exec:audit-units']);
     grunt.registerTask('audit-restrict', ['exec:dep-test']);
-    grunt.registerTask('release', ['clean', 'build','coverage', 'audit', 'release-copy']);
-
+    grunt.registerTask('release', ['clean', 'build','coverage', 'audit', 'releasecopy']);
 };
 module.exports = Grunt;

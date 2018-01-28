@@ -1,0 +1,72 @@
+<html>
+ <head>
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   #control-panel { padding-bottom: 0.5em; margin-bottom: 1em; }
+   .switcher { padding: 0.6em; }
+   handstand-container > * { transition: 1s ease; }
+  </style>
+  </head>
+  <body>
+   <script>
+       // a container example, showing cooperating containers, using switches
+       Handstand.loaded(() => {
+        
+           // generateSwitch(): a method to easily make many switches
+           let generateSwitch = (id) => {
+               return new HandstandSwitch({
+                   id: id,
+                   monitor: 'true',
+                   twoway: 'true',
+                   css: 'switcher'
+               });
+           };
+           // 
+
+           // switch-panel: a container for a non-specific collection of switches
+           let switches = new HandstandContainer({
+             id: 'switch-panel' });
+           
+           // some non-specific switches for the switch panel
+           switches.append(generateSwitch('switch-1'));
+           switches.append(generateSwitch('switch-2'));
+           switches.append(generateSwitch('switch-3'));
+           //
+
+           // control-panel: a container for access and power controls
+           let controls = new HandstandContainer({
+             id: 'control-panel' });
+           //
+
+           // access: a control which shows or hides the switch panel
+           let access = generateSwitch('access');
+           access.on('change', () => {
+               if (access.model.Get('value') === false) {
+                   switches.close();
+               } else {
+                   switches.open();
+               }
+           });
+           controls.append(access);
+           //
+
+           // power: a control which enables or disables the switches on the switch panel
+           let power = generateSwitch('power');
+           power.on('change', () => {
+               switches.contents().map( (el) => {
+                   el.model.Set('value', power.model.Get('value') );
+               });
+           });
+           controls.append(power);
+           //
+
+           document.querySelector('body').append(controls);
+           document.querySelector('body').append(switches);
+       
+       });
+   </script>
+ </body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+ <head>
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   #decoded { font-size: 2em; }
+   #myip { display: block; color: silver; font-size: 3em; padding: 20px; }
+   #encoded {
+    color: silver;
+    font-size: 2em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    display: block;
+   }
+  </style>
+  </head>
+  <body>
+   <script>
+       // a worker example, using a button, input and label to show client ip address and interactive, string encoding
+       Handstand.loaded(() => {
+
+           // encoded: a label showing the encoded rendition of the input value
+           let label = new HandstandLabel({
+               id: 'encoded',
+               label: 'encoded = '
+           });
+           //
+
+           // onEncode(event data): a method to handle the worker encoding something
+           let onEncode = (e) => {
+               label.label = 'encoded = ' +
+                   e.data.payload.encodedValue;
+           };
+           //
+
+           // onGetIP(event data): a method to handle the worker providing a client ip address
+           let onGetIP = (e) => {
+               alert(e.data.payload.ip);
+           };
+           //
+
+           // a worker, loading worker-example.js, that handles two kinds of work (encoding and getting ip address) 
+           let worker = new HandstandWorker('/examples/blog/worker/worker-example.js', {
+               'onEncode': onEncode,
+               'onGetIP': onGetIP
+           });
+           //
+
+           // my-ip: a button that when pressed will work onGetIP
+           let button = new HandstandButton({ id: 'myip' }, {
+               onPress: () => {
+                   worker.work('onGetIP', {});
+               }
+           });
+           //
+
+           // myip-button-label: a label for the button
+           button.append(new HandstandLabel({
+               id: 'myip-button-label',
+               label: 'My IP'
+           }));
+           //
+
+           // decoded: an input to provide the decoded rendition of something
+           let input = new HandstandTextInput({
+               id: 'decoded',
+               monitor: 'true',
+               twoway: 'true',
+               placeholder: 'decoded'
+           });
+           //
+
+           // whenever something is provided to the input work onEncoding
+           input.on('input', () => {
+               worker.work('onEncode', {
+                   value: input.model.Get('value')
+               });
+           });
+           //
+
+           document.querySelector('body').append(button);
+
+           document.querySelector('body').append(input);
+
+           document.querySelector('body').append(label);
+
+       });
+   </script>
+ </body>
+</html>

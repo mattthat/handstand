@@ -36,9 +36,7 @@ let Grunt = (grunt) => {
             target: {
                  files: {
                      'build/snapshot/snapshot-all.min.css': [
-                         'src/css/handstand.css', 
-                         'src/css/elements/*.css',
-                         'src/css/components/*.css',
+                         'src/css/ui-elements/*.css',
                          'src/css/themes/default.css'
                      ]
                  }

@@ -52,10 +52,12 @@
            
            // button-one: a button which sets the status of the list to true
            let button = new HandstandButton({ id: 'button-one' }, {
-               onPress: () => {
-                   switchEl.model.Set('value', true);
-                   check.model.Set('value', true);
-                   label.label = 'true';
+               events: {
+                   onPress: () => {
+                       switchEl.model.Set('value', true);
+                       check.model.Set('value', true);
+                       label.label = 'true';
+                   }
                }
            });
            button.append('truth button');

@@ -1,7 +1,7 @@
 <html>
  <head>
   <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
-  <link rel='stylesheet" href="/snapshot/snapshot-all.min.css' />
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
   <script src='/snapshot/snapshot-all.min.js'></script>
   <style>
    body { font-family: 'Permanent Marker' }
@@ -10,8 +10,9 @@
   </head>
   <body>
    <script>
+       // a list example with 3 "simple" items
        Handstand.loaded(() => {
-          
+
           let list = new HandstandList({ id: 'list-example' }, {
               items: [
                   { template: 'one' },

@@ -17,13 +17,6 @@ describe('HandstandLabel', () => {
             expect(label.template).to.equal('<div bind>{{label}}</div>');
         });
 
-        it('provides a way to do the "setUp" lifecycle phase', () => {
-            expect(typeof label.setUp).to.equal('function');
-        });
-
-        it('provides a way to do the "buildUp" lifecycle phase', () => {
-            expect(typeof label.buildUp).to.equal('function');
-        });
 
     });
 
@@ -31,19 +24,11 @@ describe('HandstandLabel', () => {
 
         describe('lifecycle', () => {
         
-            it('should setUp', () => {
+            it('should render', () => {
                 let text = 'test 123';
-                let label = new HandstandLabel();
-                label.setAttribute('label', text);
-                label.setUp();
-                expect(label.label).to.equal(text);
-            });
-
-            it('should buildUp', () => {
-                let label = new HandstandLabel();
-                label.childNodes[0] = label.template;
+                let label = new HandstandLabel({ label: text });
                 label.render();
-                expect(label.div).to.equal(label.template);
+                expect(label.label).to.equal(text);
             });
             
         });

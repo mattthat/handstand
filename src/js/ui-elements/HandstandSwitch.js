@@ -10,7 +10,7 @@ class HandstandSwitch extends HandstandConfigurableElement {
         '" type="checkbox" checked><label for="' +
         HandstandSwitch.unique + '"></label></div>';
     }
-    buildUp() {
+    onRender() {
         this.div = this.childNodes[0],
         this.input = this.div.childNodes[0],
         this.label = this.div.childNodes[1];

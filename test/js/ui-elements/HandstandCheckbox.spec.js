@@ -13,10 +13,6 @@ describe('HandstandCheckbox', () => {
             expect(checkbox instanceof HandstandConfigurableElement).to.equal(true);
         });
 
-        it('provide a way to do an input-specific buildUp', () => {
-            expect(typeof checkbox.inputBuildUp).to.equal('function');
-        });
-
         it('provides a way to determine if the checkbox is checked', () => {
             expect(typeof checkbox.isChecked).to.equal('function');
         });
@@ -27,10 +23,6 @@ describe('HandstandCheckbox', () => {
 
         it('provides an event for when the "value" model property changes', () => {
             expect(typeof checkbox.onChange).to.equal('function');
-        });
-
-        it('provides a way to do the "ripDown" lifecycle phase', () => {
-            expect(typeof checkbox.ripDown).to.equal('function');
         });
 
     });
@@ -74,11 +66,12 @@ describe('HandstandCheckbox', () => {
                  };
              });
 
-             it('should inputBuildUp', () => {
-                  checkbox.inputBuildUp();
-                  expect(checkbox.input.type).to.equal('checkbox');
-                  expect(checkbox.input.checked).to.equal(false);
-                  expect(checkbox.model.Get('value')).to.equal(false);
+             it('should render', () => {
+                 checkbox.childNodes[0] = { type: 'checkbox', checked: false };
+                 checkbox.render();
+                 expect(checkbox.input.type).to.equal('checkbox');
+                 expect(checkbox.input.checked).to.equal(false);
+                 expect(checkbox.model.Get('value')).to.equal(false);
              });
          
          });

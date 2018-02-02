@@ -20,14 +20,6 @@ describe('HandstandSwitch', () => {
             '" type="checkbox" checked><label for="' + ident + '"></label></div>';
             expect(switchEl.template).to.equal(template);
         });
-        
-        it('provides a way to do the "setUp" lifecycle phase', () => {
-            expect(typeof switchEl.setUp).to.equal('function');
-        });
-
-        it('provides a way to do the "buildUp" lifecycle phase', () => {
-            expect(typeof switchEl.buildUp).to.equal('function');
-        });
 
         it('provides a way to determine if the checkbox is checked', () => {
             expect(typeof switchEl.isSwitched).to.equal('function');
@@ -39,10 +31,6 @@ describe('HandstandSwitch', () => {
 
         it('provides an event for when the "value" model property changes', () => {
             expect(typeof switchEl.onChange).to.equal('function');
-        });
-
-        it('provides a way to do the "ripDown" lifecycle phase', () => {
-            expect(typeof switchEl.ripDown).to.equal('function');
         });
 
     });
@@ -83,7 +71,7 @@ describe('HandstandSwitch', () => {
                 switchEl = new HandstandSwitch();
             });
 
-            it('should buildUp', () => {
+            it('should render', () => {
                 let mockLabel = {},
                 mockInput = {},
                 mockDiv = {
@@ -92,7 +80,7 @@ describe('HandstandSwitch', () => {
                 mockDiv.childNodes.push(mockInput);
                 mockDiv.childNodes.push(mockLabel);
                 switchEl.childNodes[0] = mockDiv;
-                switchEl.buildUp();
+                switchEl.render();
                 expect(switchEl.div).to.equal(mockDiv);
                 expect(switchEl.input).to.equal(mockInput);
                 expect(switchEl.label).to.equal(mockLabel);

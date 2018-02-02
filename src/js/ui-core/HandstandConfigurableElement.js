@@ -20,8 +20,7 @@ class HandstandConfigurableElement extends HandstandElement {
         this.configureTwoway();
     }
     onRender() {
-        this.setUp();
-        this.buildUp();
+        super.onRender.call(this);
     }
     defaults() {
         let uid = () => {
@@ -31,26 +30,24 @@ class HandstandConfigurableElement extends HandstandElement {
         };
         if (!this.id) this.id = uid();
     }
-    setUp() {
-    }
-    buildUp() {
-    }
     configureMonitoring() {
-        var monitoring = this.getAttribute('monitor');
-        if (monitoring === 'true' && this.id && !this.monitoring) {
-            this.monitoring = true;
-            this.on('change', this.onChange.bind(this));
-        } else {
+        let monitoring = this.getAttribute('monitor');
+        if (monitoring === 'false') {
             this.monitoring = false;
+        } else {
+            if (!this.monitoring && this.id) {
+               this.monitoring = true;
+               this.on('change', this.onChange.bind(this));
+            }
         }
     }
     configureTwoway() {
-        var twoway = this.getAttribute('twoway');
-        if (twoway === 'true' && !this.twoway) {
+        let twoway = this.getAttribute('twoway'); 
+        if (twoway === 'false') {
+            this.twoway = false;
+        } else {
             this.twoway = true;
             this.model.onSet(this.onSetHandler.bind(this));
-        } else {
-            this.twoway = false;
         }
     }
     onSetHandler(key, value, model) {
@@ -61,9 +58,6 @@ class HandstandConfigurableElement extends HandstandElement {
     stopMonitoring() {
         this.off('change', this.onChange.bind(this));
         this.monitoring = false;
-    }
-    ripDown() {
-       if (this.monitoring) this.stopMonitoring();
     }
 }
 try { module.exports = HandstandConfigurableElement; } catch(x) {}

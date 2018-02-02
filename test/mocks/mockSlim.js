@@ -1,5 +1,4 @@
 let mockSlim = function() {
-    this.onBeforeRender();
     this._attributes = [];
     this._events = [];
     this.style = {};
@@ -26,5 +25,6 @@ mockSlim.prototype.setAttribute = function(key, v) { this._attributes[key] = v; 
 mockSlim.prototype.getAttribute = function(key) { return this._attributes[key]; }
 mockSlim.prototype.tag = function() {};
 mockSlim.tag = function() {};
+mockSlim.render = function() { this.onRender() }
 
 module.exports = mockSlim;

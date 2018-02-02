@@ -1,25 +1,32 @@
 # handstand
 
-Web components
+[![Join the chat at https://gitter.im/handstandjs/Lobby](https://badges.gitter.im/handstandjs/Lobby.svg)](https://gitter.im/handstandjs/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Getting Started
-
-Take a look at http://handstand.matt-that.com
-
-(more to come)
+web development kit
 
 ### Development
 
+#### Use
+
+require('handstand');
+
+let label = new HandstandLabel({ label: 'foo' });
+
+document.querySelector('body').append(label);
+
+#### Extend
+
+require('handstand');
+
+class myAppLabel extends HandstandLabel {
+}
+
 #### Interact with Current Build
 
+- clone
 - yarn (or npm) install
 - grunt buildview-server
 - browse to http://localhost:7000/
-
-#### Use via NPM
-
-        require('handstand');        // under 1.x this requires all objects
-        require('handstand')("base") // under 1.x this requires only the base objects
 
 ### Unit Tests Bed
  
@@ -31,11 +38,6 @@ Take a look at http://handstand.matt-that.com
 #### src/css
 
 Contains element and component styles as well as themes
-
-#### src/html
-
-- elements: individual custom web elements
-- components: multiple custom web elements, working together, to provide a specific behavior
 
 #### src/js
 

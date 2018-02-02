@@ -1,62 +1,51 @@
 class HandstandWebsite {
-    body() {
-        return document.querySelector('body');
+    container(options) {
+        return new HandstandContainer(options);
     }
-    containers() {
-        this.layout = new HandstandContainer({ id: 'layout' });
-        this.grass = new HandstandContainer({ id: 'grass' });
-        this.links = new HandstandContainer({ id: 'links' });        
+    a(options) {
+        let a = document.createElement('a');
+        a.setAttribute('href', options.url);
+        a.text = options.title;
+        return a;     
     }
-    hstext() {
-        return new HandstandText({ id: 'hs', class: 'vert-text', text: 'Handstand' });
+    img(options) {
+        let img = document.createElement('img');
+        img.setAttribute('id', options.id);
+        img.setAttribute('src', options.src);
+        return img;
     }
-    webmonkey() {
-        let monkey = document.createElement('img');
-        monkey.setAttribute('id', 'webmonkey');
-        monkey.setAttribute('src', 'monkey.gif');
-        return monkey;
+    render() {
+        this.layout = this.container({ id: 'layout' }),
+        this.grass = this.container({ id: 'grass' }),
+        this.links = this.container({ id: 'links' }),
+        this.name = new HandstandLabel({
+            id: 'hs',
+            class: 'vert-text',
+            label: 'Handstand'
+        }),
+        this.monkey = this.img({ id: 'webmonkey', src: 'monkey.gif' });
     }
-    blog() {
-        let blog = new HandstandButton({ id: 'blog' });
-        blog.append(new HandstandText({
-            id: 'blog-text', text: 'blog' }));
-        blog.on('click', () => { document.location.href = '/blog' });
-        return blog;
-    }
-    github() {
-        let github = new HandstandButton({ id: 'github' });
-        github.append(new HandstandText({
-            id: 'github-text', text: 'github' }));
-        github.on('click', () => {
-            document.location.href = 'http://github.com/mattthat/handstand' });
-        return github;
-    }
-    npm() {
-        let npm = new HandstandButton({ id: 'npm' });
-        npm.append(new HandstandText({
-            id: 'npm-text', text: 'npm' }));
-        npm.on('click', () => {
-            document.location.href = 'https://www.npmjs.com/package/handstand' });
-        return npm;
-    }
-    download() {
-        let download = new HandstandButton({ id: 'download' });
-        download.append(new HandstandText({
-            id: 'download-text', text: 'download' }));
-        download.on('click', () => {
-            document.location.href = '/releases' });
-        return download;
-    }
-    toUserExperience() {
-        this.containers();
-        this.links.append(this.blog());
-        this.links.append(this.github());
-        this.links.append(this.npm());
-        this.links.append(this.download());
+    attach() {
         this.layout.append(this.grass);
-        this.layout.append(this.webmonkey());
-        this.layout.append(this.hstext());
+        this.layout.append(this.monkey);
+        this.layout.append(this.name);
+        this.links.append(this.a({
+            url: '/blog',
+            title: 'blog',
+        }));
+        this.links.append(this.a({
+            url: 'http://github.com/mattthat/handstand',
+            title: 'github'
+        }));
+        this.links.append(this.a({
+            url: 'https://www.npmjs.com/package/handstand',
+            title: 'npm'
+        }));
         this.layout.append(this.links);
-        this.body().append(this.layout);
+        document.querySelector('body').append(this.layout);
+    }
+    draw() {
+        this.render();
+        this.attach();
     }
 };

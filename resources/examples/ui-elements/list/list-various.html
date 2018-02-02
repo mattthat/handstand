@@ -1,0 +1,106 @@
+<html>
+ <head>
+  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+   body { font-family: 'Permanent Marker' }
+   #switch { position: relative; top: -1em; }
+   #button { position: relative; top: -1em; }
+  </style>
+  </head>
+  <body>
+   <script>
+       // a list example, using a label, checkbox, switch and a button to provide multple ways to manage 
+       // true/false state
+       Handstand.loaded(() => {
+
+           // label-status: a label showing the status of either true or false
+           let label = new HandstandLabel({
+               id: 'label-status',
+               label: '*'
+           });
+           //
+                      
+           // switch-one: a switch which can have its own status
+           let switchEl = new HandstandSwitch({
+               id: 'switch-one',
+               monitor: 'true',
+               twoway: 'true'
+           });
+           switchEl.on('change', () => {
+               if (switchEl.model.Get('value') !== check.model.Get('value')) {
+                  label.label = '*'
+               } else {
+                  label.label = check.model.Get('value').toString();
+               }
+           });
+           //
+
+           // checkbox-one: a checkbox which controls the list status
+           let check = new HandstandCheckbox({
+               id: 'check-one',
+               monitor: 'true',
+               twoway: 'true'
+           });
+           check.on('change', () => {
+               switchEl.model.Set('value',
+                   check.model.Get('value'));
+               label.label = check.model.Get('value').toString()
+           });
+           //
+           
+           // button-one: a button which sets the status of the list to true
+           let button = new HandstandButton({ id: 'button-one' }, {
+               events: {
+                   onPress: () => {
+                       switchEl.model.Set('value', true);
+                       check.model.Set('value', true);
+                       label.label = 'true';
+                   }
+               }
+           });
+           button.append('truth button');
+           //
+
+           // list-example: a list example, containing various elements
+           let list = new HandstandList({ id: 'list-example' }, {
+               items: [{
+                   id: 'label-item',
+                   css: 'various-list-item-example',
+                   detail: label,
+                   template: `<div id='label'></div>`
+               }, {
+                   id: 'check-item',
+                   css: 'various-list-item-example',
+                   detail: check,
+                   template: `<div id='check'></div>`
+               }, {
+                   id: 'switch-item',
+                   css: 'various-list-item-example',
+                   detail: switchEl,
+                   template: `<div id='switch'></div>`
+               }, {
+                   id: 'button-item',
+                   css: 'various-list-item-example plus-more',
+                   detail: button,
+                   template: `<div id='button'></div>`
+               }]
+          });
+          //
+          
+          document.querySelector('body').append(list);
+          
+          // wait for reflow to ensure the list elements are rendered
+          setTimeout( () => {
+              document.querySelector('#label').append(label);
+              document.querySelector('#check').append(check);
+              document.querySelector('#switch').append(switchEl);
+              document.querySelector('#button').append(button);
+          });
+          //
+       
+       });
+   </script>
+ </body>
+</html>

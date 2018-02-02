@@ -1,5 +1,7 @@
-var Grunt = function(grunt) {
-    var pkg = grunt.file.readJSON('package.json');
+let Grunt = (grunt) => {
+    
+    let PackageJson = grunt.file.readJSON('package.json');
+
     grunt.initConfig({
         exec: {
             'dep-test': {
@@ -19,6 +21,9 @@ var Grunt = function(grunt) {
             build: {
                 src: ['build/*']
             },
+            release: {
+                src: ['release/*']
+            },
             coverage: {
                 src: ['coverage/*']
             }
@@ -30,125 +35,39 @@ var Grunt = function(grunt) {
             },
             target: {
                  files: {
-                     'build/snapshot/snapshot-base.min.css': [
-                         'src/css/handstand.css',
-                         'src/css/themes/default.css'
-                     ],
                      'build/snapshot/snapshot-all.min.css': [
-                         'src/css/handstand.css', 
-                         'src/css/themes/default.css',
-                         'src/css/elements/*.css'
+                         'src/css/ui-elements/*.css',
+                         'src/css/themes/default.css'
                      ]
                  }
             }
         },
         copy: {
-            slim: {
-                flatten: true,
-                expand: true,
-                src: [
-                    'node_modules/slim-js/Slim.js',
-                    'node_modules/slim-js/Slim.min.js'
-                ],
-                dest: 'build/handstand/slim-js'
+            'examples-website': {
+                cwd: 'resources/examples/website',
+                src: '**',
+                dest: 'build/examples/website',
+                expand: true
             },
-            'js-toplevel': {
-                src: ['src/js/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js'
-            },
-            'js-handstand': {
-                src: ['src/js/handstand/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js/handstand'
-            },
-            'js-elements': {
-                src: ['src/js/elements/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js/elements'
-            },
-            'js-components': {
-                src: ['src/js/components/*.js'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/js/components'
-            },
-            'css-toplevel': {
-                src: ['src/css/*.css'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css'
-            },
-            'css-elements': {
-                src: ['src/css/elements/*.css'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css/elements'
-            },
-            'css-components': {
-                src: ['src/css/components/*.css'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css/components'
-            },
-            themes: {
-                src: ['src/css/themes/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/css/themes'
-            },
-            'handstand-basis': {
-                src: ['src/html/*.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/html'
-            },
-            'handstand-elements': {
-                src: ['src/html/elements/*.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/html/elements'
-            },
-            'handstand-components': {
-                src: ['src/html/components/*.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/handstand/html/components'
-            },
-            'examples-website-all': {
-                src: ['resources/examples/website/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/website'
-            },
-            'examples-blog': {
-                src: ['resources/examples/blog/*'],
-                flatten: true,
-                expand: true,
-                dest: 'build/examples/blog'
-            },
-            'snapshot-base-loader': {
-                src: ['resources/snapshot/snapshot-base.html'],
-                flatten: true,
-                expand: true,
-                dest: 'build/snapshot'
+            'examples-ui-elements': {
+                cwd: 'resources/examples/ui-elements',
+                src: '**',
+                dest: 'build/examples/ui-elements',
+                expand: true
             },
             'snapshot-all-loader': {
                 src: ['resources/snapshot/snapshot-all.html'],
+                dest: 'build/snapshot',
                 flatten: true,
-                expand: true,
-                dest: 'build/snapshot'
+                expand: true
             },
             'distribution-alljs': {
                 src: 'build/snapshot/snapshot-all.min.js',
-                dest: 'release/handstand-all-v' + pkg.version + '.min.js'
+                dest: 'release/handstand-all-v' + PackageJson.version + '.min.js'
             },
             'distribution-allcss': {
                 src: 'build/snapshot/snapshot-all.min.css',
-                dest: 'release/handstand-all-v' + pkg.version + '.min.css'
+                dest: 'release/handstand-all-v' + PackageJson.version + '.min.css'
             }
         },
         connect: {
@@ -173,12 +92,16 @@ var Grunt = function(grunt) {
                 transform: ['jstify'],
             },
             'package-all': {
-                src: [ 'packaging/all.js'],
+                src: [ 'packaging/aliases/all.js'],
                 dest: 'build/snapshot/snapshot-all.js'
             },
-            'package-base': {
-                src: [ 'packaging/base.js'],
-                dest: 'build/snapshot/snapshot-base.js'
+            'package-uicore': {
+                src: [ 'packaging/packages/ui-core.js'],
+                dest: 'build/snapshot/snapshot-uicore.js'
+            },
+            'package-worker': {
+                src: [ 'packaging/packages/worker.js'],
+                dest: 'build/snapshot/snapshot-worker.js'
             }
         },
         uglify: {
@@ -190,9 +113,14 @@ var Grunt = function(grunt) {
                     'build/snapshot/snapshot-all.min.js': ['build/snapshot/snapshot-all.js']
                 }
             },
-            'snapshot-base': {
+            'snapshot-uicore': {
                 files: {
-                    'build/snapshot/snapshot-base.min.js': ['build/snapshot/snapshot-base.js']
+                    'build/snapshot/snapshot-uicore.min.js': ['build/snapshot/snapshot-uicore.js']
+                }
+            },
+            'snapshot-worker': {
+                files: {
+                    'build/snapshot/snapshot-worker.min.js': ['build/snapshot/snapshot-worker.js']
                 }
             }
         },
@@ -215,7 +143,7 @@ var Grunt = function(grunt) {
         }
     });
 
-    grunt.event.on('coverage', function(lcovFileContents, done) {
+    grunt.event.on('coverage', (lcovFileContents, done) => {
         done();
     });
 
@@ -224,32 +152,24 @@ var Grunt = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('build-copy', [
-        'copy:slim', 'copy:js-toplevel', 'copy:js-handstand', 'copy:js-elements', 'copy:js-components',
-        'copy:css-toplevel', 'copy:css-elements', 'copy:css-components',
-        'copy:themes', 'copy:handstand-basis', 'copy:handstand-elements', 'copy:handstand-components',
-        'copy:examples-website-all', 'copy:examples-blog', 'copy:snapshot-all-loader', 'copy:snapshot-base-loader'
-    ]);
-    grunt.registerTask('release-copy', [
-        'copy:distribution-alljs', 'copy:distribution-allcss'
-    ]);
-    grunt.registerTask('explode', [ 'clean:build', 'build-copy' ]);
+    grunt.registerTask('buildcopy', [ 'copy:examples-website', 'copy:examples-ui-elements', 'copy:snapshot-all-loader' ]);
+    grunt.registerTask('releasecopy', [ 'copy:distribution-alljs', 'copy:distribution-allcss' ]);
+    grunt.registerTask('explode', [ 'clean:build', 'buildcopy' ]);
     grunt.registerTask('build', [ 'explode', 'cssmin', 'browserify', 'uglify' ]);
     grunt.registerTask('test', [ 'mochaTest' ]);
-    grunt.registerTask('buildview-server', [ 'build', 'connect', 'watch' ]);
-    grunt.registerTask('run', [ 'build', 'buildview-server' ]);
+    grunt.registerTask('buildviewserver', [ 'build', 'connect', 'watch' ]);
+    grunt.registerTask('run', [ 'buildviewserver' ]);
     grunt.registerTask('coveralls', [ 'mocha_istanbul:coveralls' ]);
     grunt.registerTask('coverage', [ 'clean:coverage', 'mocha_istanbul:coverage' ]);
     grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
     grunt.registerTask('audit-coverage', ['exec:audit-units']);
     grunt.registerTask('audit-restrict', ['exec:dep-test']);
-    grunt.registerTask('release', ['build','coverage', 'audit', 'release-copy']);
-
+    grunt.registerTask('release', ['clean', 'build','coverage', 'audit', 'releasecopy']);
 };
 module.exports = Grunt;

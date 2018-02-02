@@ -1,19 +1,64 @@
 let depender = (segment) => {
     let aliases = {
         all: () => {
-            require('./all.js');
+            require('./aliases/all.js');
         }
     },
     packages = {
-        base: () => {
-            require('./base.js');
+        core: () => {
+            require('./packages/core.js');
         },
-        elements: () => {
-            require('./elements.js');
+        'ui-core': () => {
+            require('./packages/ui-core.js')
+        },
+        'ui-elements': () => {
+            require('./packages/ui-elements.js');
+        },
+        'ui-components': () => {
+            require('./packages/ui-components.js');
+        },
+        worker: () => {
+            require('./packages/worker.js');
         }
     },
     segments = {
-        default: () => { aliases.all(); }
+        default: () => { packages.core(); },
+        'ui-element:HandstandInput': () => {
+            packages['ui-core']();
+            global.HandstandInput = require('../src/js/ui-elements/HandstandInput.js');
+        },
+        'ui-element:HandstandButton': () => {
+            packages['ui-core']();
+            global.HandstandButton = require('../src/js/ui-elements/HandstandButton.js');
+        },
+        'ui-element:HandstandContainer': () => {
+            packages['ui-core']();
+            global.HandstandContainer = require('../src/js/ui-elements/HandstandContainer.js');
+        },
+        'ui-element:HandstandLabel': () => {
+            packages['ui-core']();
+            global.HandstandLabel = require('../src/js/ui-elements/HandstandLabel.js');
+        },
+        'ui-element:HandstandList': () => {
+            packages['ui-core']();
+            global.HandstandList = require('../src/js/ui-elements/HandstandList.js');
+        },
+        'ui-element:HandstandSwitch': () => {
+            packages['ui-core']();
+            global.HandstandSwitch = require('../src/js/ui-elements/HandstandSwitch.js');
+        },
+        'ui-element:HandstandCheckbox': () => {
+            packages['ui-core']();
+            global.HandstandCheckbox = require('../src/js/ui-elements/HandstandCheckboxjs');
+        },
+        'ui-element:HandstandTextInput': () => {
+            packages['ui-core']();
+            global.HandstandTextInput = require('../src/js/ui-elements/HandstandTextInput.js');
+        },
+        'ui-element:HandstandSelector': () => {
+            packages['ui-core']();
+            global.HandstandSelector = require('../src/js/ui-elements/HandstandSelector.js');
+        }
     };
     if (segment && segment.length > 0) {
         if (typeof segments[segment] === "function") {
@@ -27,7 +72,5 @@ let depender = (segment) => {
         segments.default();
     }
 };
-
-depender();
 
 module.exports = depender;

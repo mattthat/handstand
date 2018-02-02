@@ -1,17 +1,19 @@
 {
     "name": "handstand",
-    "version": "1.1.0",
+    "version": "2.0.0",
     "main": "packaging/depender.js",
     "author": {
         "email": "matt.that@gmail.com",
         "name": "Matt That",
         "url": "http://matt-that.com"
     },
-    "contributors": [{
-        "email": "matt.that@gmail.com",
-        "name": "Matt That",
-        "url": "http://matt-that.com"
-    }],
+    "contributors": [
+        {
+            "email": "matt.that@gmail.com",
+            "name": "Matt That",
+            "url": "http://matt-that.com"
+        }
+    ],
     "url": "http://handstand.matt-that.com",
     "homepage": "http://handstand.matt-that.com",
     "keywords": "handstand css html js javascript webcomponents",
@@ -24,7 +26,11 @@
         "url": "https://spdx.org/licenses/Apache-2.0"
     },
     "dependencies": {
-        "slim-js": "^2.9.15"
+        "babel-plugin-transform-custom-element-classes": "^0.1.0",
+        "babel-preset-env": "^1.6.1",
+        "grunt-contrib-uglify-es": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
+        "slim-js": "^3.1.2",
+        "uglify-es": "^3.1.5"
     },
     "devDependencies": {
         "babel-register": "^6.26.0",

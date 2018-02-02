@@ -1,3 +1,4 @@
+
 // setup test values
 let testValue = JSON.stringify({
   "test-value": "foobar"
@@ -9,21 +10,34 @@ global.HTMLElement = function() {
     this.getAttribute = function() {};
     this.setAttribute = function() {};
     this.style = {};
+    this.childNodes = [];
+    this.innerHTML = '';
+    this.querySelectorAll = function() { return {} };
 };
 
 // mock window object
 global.window = {};
+
+// mock document object
+global.document = {
+	innerHTML: '', 
+	createElement: function(o) {
+	    return new HTMLElement(o); 
+	}
+};
 
 // mock customElements object
 global.customElements = function() {};
 customElements.define = function() {};
 
 // depend on handstand
-let handstand = require('handstand');
-let text = new HandstandText();
-text.model.Set('test-value', 'foobar');
+require('handstand')('ui-element:HandstandLabel');
 
-if (testValue === text.model.toJSON() && version === Handstand.version) {
+let label = new HandstandLabel();
+label.model.Set('test-value', 'foobar');
+
+if (testValue === label.model.toJSON() &&
+	version === Handstand.version) {
     console.log("pass");
     process.exit(0);
 } else {

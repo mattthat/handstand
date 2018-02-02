@@ -3,12 +3,13 @@ class HandstandCheckbox extends HandstandInput {
         super(attributes);
         this.model.Set('value', false);
     }
-    inputBuildUp() {
+    onRender() {
+        super.onRender.call(this);
         this.input.type = 'checkbox';
         this.input.checked = false;
     }
     isChecked() {
-        var checked = false;
+        let checked = false;
         if (this.input) checked = this.input.checked;
         return checked;
     }

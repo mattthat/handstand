@@ -15,24 +15,8 @@ describe('HandstandConfigurableElement', () => {
             expect(typeof element.onConfiguration).to.equal('function');
         });
 
-        it('overrides the onRender event', () => {
-            expect(typeof element.onRender).to.equal('function');
-        });
-
-        it('overrides the way to do the "setUp" lifecycle phase', () => {
-            expect(typeof element.setUp).to.equal('function');
-        });
-
         it('provides defaults', () => {
             expect(typeof element.defaults).to.equal('function');
-        });
-
-        it('overrides the way to do the "buildUp" lifecycle phase', () => {
-            expect(typeof element.buildUp).to.equal('function');
-        });
-
-        it('overrides the way to do the "ripDown" lifecycle phase', () => {
-            expect(typeof element.ripDown).to.equal('function');
         });
 
         it('provides a way to configure monitoring', () => {
@@ -100,50 +84,25 @@ describe('HandstandConfigurableElement', () => {
             let element, renderSpy, setupSpy;
 
             beforeEach(() => {
-                renderSpy = sinon.spy(HandstandConfigurableElement.prototype, 'onRender');
-                setupSpy = sinon.spy(HandstandConfigurableElement.prototype, 'setUp');
                 defaultsSpy = sinon.spy(HandstandConfigurableElement.prototype, 'defaults');
                 element = new HandstandConfigurableElement();
             });
 
             afterEach(() => {
-                HandstandConfigurableElement.prototype.onRender.restore();
-                HandstandConfigurableElement.prototype.setUp.restore();
                 HandstandConfigurableElement.prototype.defaults.restore();
             });
 
             it('should before render be default, have a handstand model, and enter the setUp lifecycle phase', () => {
                 expect(defaultsSpy.called).to.equal(true);
                 expect(element.model instanceof HandstandModel).to.equal(true);
-                expect(setupSpy.called).to.equal(true);
-            });
-            
-
-            it('should render, firing overriding onRender handler', () => {
-                element.render();
-                expect(renderSpy.called).to.equal(true);
             });
 
             it('should after render, configure monitoring, configure twoway, and enter the buildUp lifecycle phase', () => {
                 let monitoringSpy = sinon.spy(element.configureMonitoring);
                 let twowaySpy = sinon.spy(element.configureTwoway);
-                let buildSpy = sinon.spy(element.buildUp);
                 element.render();
                 expect(monitoringSpy.called);
                 expect(twowaySpy.called);
-                expect(buildSpy.called);
-            });
-
-            it('should provide a way to handle being removed from DOM, firing ripDown', () => {
-                expect(element.ripDown()).not.to.throw;
-            });
-
-            it('should ripDown with monitoring', () => {
-                let spy = sinon.spy(element, 'stopMonitoring');
-                element.monitoring = true;
-                element.ripDown();
-                expect(spy.called).to.equal(true);
-                element.stopMonitoring.restore();
             });
 
         });
@@ -154,6 +113,7 @@ describe('HandstandConfigurableElement', () => {
             element.setAttribute('id', 'element-monitoring-tests');
 
             it('should interrogate configured html attributes and set monitoring off', () => {
+                element.setAttribute('monitor', 'false');
                 element.configureMonitoring();
                 expect(element.monitoring).to.equal(false);
             });
@@ -183,6 +143,7 @@ describe('HandstandConfigurableElement', () => {
             element.setAttribute('id', 'checkbox-twoway-tests');
 
             it('should interrogate configured html attributes and set twoway off', () => {
+                element.setAttribute('twoway', 'false');
                 element.configureTwoway();
                 expect(element.twoway).to.equal(false);
             });

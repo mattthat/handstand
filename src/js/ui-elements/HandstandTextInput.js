@@ -1,5 +1,6 @@
 class HandstandTextInput extends HandstandInput {
-    inputBuildUp() {
+    onRender() {
+        super.onRender.call(this);
         this.input.type = 'text';
     }
     configureMonitoring() {

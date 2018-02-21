@@ -21,6 +21,18 @@ describe('HandstandSwitch', () => {
             expect(switchEl.template).to.equal(template);
         });
 
+        it('provides a div property', () => {
+            expect(switchEl.div).not.to.equal(undefined);
+        });
+
+        it('provides an input property', () => {
+            expect(switchEl.input).not.to.equal(undefined);
+        });
+
+        it('provides a label property', () => {
+            expect(switchEl.label).not.to.equal(undefined);
+        });
+
         it('provides a way to determine if the checkbox is checked', () => {
             expect(typeof switchEl.isSwitched).to.equal('function');
         });
@@ -39,7 +51,7 @@ describe('HandstandSwitch', () => {
 
 
         it('should be able to determine switch state', () => {
-            let switchEl = new HandstandSwitch();
+            let switchEl = new HandstandSwitch({}, { value: false });
             expect(switchEl.isSwitched()).to.equal(false);
             switchEl.input = { checked: true };
             expect(switchEl.isSwitched()).to.equal(true);

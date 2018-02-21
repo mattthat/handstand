@@ -19,13 +19,12 @@
                twoway: 'true'
            });
 
-           let label = new HandstandLabel({
-               id: 'label',
-               label: checkbox.model.toJSON()
+           let label = new HandstandLabel({ id: 'label' }, {
+               value: checkbox.model.toJSON()
            });
            
            checkbox.on('change', () => {
-               label.label = checkbox.model.toJSON();
+               label.value = checkbox.model.toJSON();
            });
            
            document.querySelector('body').append(checkbox);

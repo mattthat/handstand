@@ -6,7 +6,7 @@ class HandstandCheckbox extends HandstandInput {
     onRender() {
         super.onRender.call(this);
         this.input.type = 'checkbox';
-        this.input.checked = false;
+        this.input.checked = this.model.Get('value');
     }
     isChecked() {
         let checked = false;

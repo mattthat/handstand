@@ -23,14 +23,15 @@
 
            // encoded: a label showing the encoded rendition of the input value
            let label = new HandstandLabel({
-               id: 'encoded',
-               label: 'encoded = '
+               id: 'encoded'
+           }, {
+               value: 'encoded = '
            });
            //
 
            // onEncode(event data): a method to handle the worker encoding something
            let onEncode = (e) => {
-               label.label = 'encoded = ' +
+               label.value = 'encoded = ' +
                    e.data.payload.encodedValue;
            };
            //
@@ -60,8 +61,9 @@
 
            // myip-button-label: a label for the button
            button.append(new HandstandLabel({
-               id: 'myip-button-label',
-               label: 'My IP'
+               id: 'myip-button-label'
+           }, {
+               value: 'My IP'
            }));
            //
 

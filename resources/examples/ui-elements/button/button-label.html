@@ -21,10 +21,9 @@
                }
            });
            
-           button.append(new HandstandLabel({
-               id: 'button-text', 
-               label: 'Click me!'
-           }))
+           button.append(new HandstandLabel({ id: 'button-text' }, {
+               value: 'Click Me!'
+           }));
            
            document.querySelector('body').append(button);
 

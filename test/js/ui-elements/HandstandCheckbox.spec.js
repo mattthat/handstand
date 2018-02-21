@@ -13,6 +13,10 @@ describe('HandstandCheckbox', () => {
             expect(checkbox instanceof HandstandConfigurableElement).to.equal(true);
         });
 
+        it('extends HandstandInput', () => {
+            expect(checkbox instanceof HandstandInput).to.equal(true);
+        });
+
         it('provides a way to determine if the checkbox is checked', () => {
             expect(typeof checkbox.isChecked).to.equal('function');
         });

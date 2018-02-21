@@ -1,0 +1,32 @@
+<html>
+ <head>
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+   handstand-textarea > textarea { font-size: 1em; width: 2em; height: 1em ;}
+   handstand-label { font-size: 1em; width: 2em; }
+  </style>
+  </head>
+  <body>
+   <script>
+       // a button example, using a label and providing a message when pressed
+       Handstand.loaded(() => {
+
+           let label1 = new MutableLabel({id: 'mutablelabel-example1' }, {
+               value: 'some'
+           });
+
+           let label2 = new MutableLabel({id: 'mutablelabel-example2' }, {
+               value: 'mutable'
+           });
+
+           let label3 = new MutableLabel({id: 'mutablelabel-example3' }, {
+               value: 'text'
+           });
+           document.querySelector('body').append(label1);
+           document.querySelector('body').append(label2);
+           document.querySelector('body').append(label3);
+       });
+   </script>
+ </body>
+</html>

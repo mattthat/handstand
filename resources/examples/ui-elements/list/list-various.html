@@ -16,10 +16,7 @@
        Handstand.loaded(() => {
 
            // label-status: a label showing the status of either true or false
-           let label = new HandstandLabel({
-               id: 'label-status',
-               label: '*'
-           });
+           let label = new HandstandLabel({ id: 'label-status' }, { value: '*' } );
            //
                       
            // switch-one: a switch which can have its own status
@@ -30,9 +27,9 @@
            });
            switchEl.on('change', () => {
                if (switchEl.model.Get('value') !== check.model.Get('value')) {
-                  label.label = '*'
+                  label.value = '*'
                } else {
-                  label.label = check.model.Get('value').toString();
+                  label.value = check.model.Get('value').toString();
                }
            });
            //
@@ -46,7 +43,7 @@
            check.on('change', () => {
                switchEl.model.Set('value',
                    check.model.Get('value'));
-               label.label = check.model.Get('value').toString()
+               label.value = check.model.Get('value').toString()
            });
            //
            
@@ -56,7 +53,7 @@
                    onPress: () => {
                        switchEl.model.Set('value', true);
                        check.model.Set('value', true);
-                       label.label = 'true';
+                       label.value = 'true';
                    }
                }
            });

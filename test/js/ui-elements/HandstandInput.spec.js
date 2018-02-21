@@ -7,22 +7,26 @@ describe('HandstandInput', () => {
     
     describe('provisions', () => {
 
-        let input = new HandstandInput();
+        let element = new HandstandInput();
 
         it('extends HandstandConfigurableElement', () => {
-            expect(input instanceof HandstandConfigurableElement).to.equal(true);
+            expect(element instanceof HandstandConfigurableElement).to.equal(true);
         });
 
         it('provides a template property', () => {
-            expect(input.template).to.equal('<input></input>');
+            expect(element.template).to.equal('<input></input>');
         });
 
+        it('provides an input property', () => {
+            expect(element.input).not.to.equal(undefined);
+        })
+
         it('provides a handler to delegate model property changes', () => {
-            expect(typeof input.onSetHandler).to.equal('function');
+            expect(typeof element.onSetHandler).to.equal('function');
         });
 
         it('provides a way to dismantle monitoring', () => {
-            expect(typeof input.stopMonitoring).to.equal('function');
+            expect(typeof element.stopMonitoring).to.equal('function');
         });
 
     });
@@ -31,41 +35,46 @@ describe('HandstandInput', () => {
 
         describe('events', () => {
 
-            let input = new HandstandInput();
+            let element = new HandstandInput();
 
             it('should have a way to handle onSet events', () => {
-                input.input = {};
-                expect(input.onSetHandler('anything','something', input.model)).not.to.throw;
+                expect(element.onSetHandler('anything','something', element.model)).not.to.throw;
             });
 
         });
 
         describe('lifecycle', () => {
            
-            let input;
+            let element, expectations = 'test123';
 
             beforeEach(() => {
-                input = new HandstandInput();
+                element = new HandstandInput({}, { value: expectations });
+                element.childNodes[0] = {};
             });
 
             afterEach(() => {
-                input = null;
-                input = undefined;
+                element = null;
+                element = undefined;
+            });
+
+            it('should render', () => {
+                element.render();
+                expect(element.model.Get('value')).to.equal(expectations);
             });
 
             it('should render with attributes', () => {
                 let node = { style: {} }, placeholder = 'word';
-                input.childNodes[0] = node;
-                input.setAttribute('placeholder', placeholder);
-                input.render();
-                expect(input.input).to.equal(node);
-                expect(input.input.placeholder).to.equal(placeholder);
+                element.childNodes[0] = node;
+                element.setAttribute('placeholder', placeholder);
+                element.render();
+                expect(element.input).to.equal(node);
+                expect(element.input.placeholder).to.equal(placeholder);
             });
 
             it('should render without attributes', () => {
                 let node = { style: {} };
-                input.childNodes[0] = node;
-                expect(input.render()).not.to.throw;
+                element.childNodes[0] = node;
+                expect(element.render()).not.to.throw;
             });
 
         });

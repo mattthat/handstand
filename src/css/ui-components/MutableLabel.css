@@ -1,0 +1,13 @@
+mutable-label > handstand-label {
+    width: inherit;
+}
+mutable-label > handstand-textarea {
+    width: inherit;
+}
+mutable-label > handstand-textarea > textarea {
+    border: 0;
+    width: initial;
+}
+mutable-label > handstand-textarea > textarea:focus {
+   outline: inherit;
+}

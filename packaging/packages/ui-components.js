@@ -1,0 +1,1 @@
+global.MutableLabel = require('../../src/js/ui-components/MutableLabel.js');

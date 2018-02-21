@@ -52,3 +52,23 @@ handstand-switch > div:first-child > label:after {
 handstand-list > ul:first-child {
    list-style-type: circle;
 }
+mutable-label {
+   display: inline-block;
+   padding: 1em;
+   margin: 1em;
+   border-color: darkgray;
+   border-style: solid;
+   border-width: 0.05em;
+   border-radius: 0.3em;
+}
+mutable-label > handstand-label {
+}
+mutable-label > handstand-textarea {
+}
+mutable-label > handstand-textarea > textarea {
+    height: 1em;
+    border-color: silver;
+    border-style: solid;
+    border-width: 0.01em;
+    line-height: 0.8em;
+}

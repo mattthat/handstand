@@ -5,14 +5,14 @@ class HandstandContainer extends HandstandConfigurableElement {
     set state(state) {
         this.setAttribute('state', state);
     }
-    constructor(attributes, events) {
+    constructor(attributes, options) {
         super(attributes);
-        if (events) {
-            if (typeof events.onOpen === 'function') {
-                this.onOpen = events.onOpen;
+        if (options && options.events) {
+            if (typeof options.events.onOpen === 'function') {
+                this.onOpen = options.events.onOpen;
             }
-            if (typeof events.onClose === 'function') {
-                this.onClose = events.onClose;
+            if (typeof options.events.onClose === 'function') {
+                this.onClose = options.events.onClose;
             }
         }
         this.state = 'opened'

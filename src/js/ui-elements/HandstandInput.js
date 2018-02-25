@@ -1,4 +1,4 @@
-class HandstandInput extends HandstandConfigurableElement {
+export class HandstandInput extends HandstandConfigurableElement {
     get template() {
         return `<input></input>`;
     }
@@ -21,4 +21,4 @@ class HandstandInput extends HandstandConfigurableElement {
         if (this.input) this.input.value = model.Get('value');
     }
 }
-try { module.exports = HandstandInput; } catch(x) {}
+module.exports = HandstandInput;

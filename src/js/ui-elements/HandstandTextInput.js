@@ -1,4 +1,4 @@
-class HandstandTextInput extends HandstandInput {
+export class HandstandTextInput extends HandstandInput {
     constructor(attributes, options) {
         super(attributes, options);
     }
@@ -21,4 +21,4 @@ class HandstandTextInput extends HandstandInput {
     }
 }
 HandstandConfigurableElement.tag('handstand-textinput', HandstandTextInput);
-try { module.exports = HandstandTextInput; } catch(x) {}
+module.exports = HandstandTextInput;

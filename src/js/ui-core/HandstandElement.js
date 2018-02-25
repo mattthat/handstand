@@ -1,4 +1,4 @@
-class HandstandElement extends HandstandSlimIntegration {
+export class HandstandElement extends HandstandSlimIntegration {
     get id() {
         return this.getAttribute('id');
     }
@@ -29,4 +29,4 @@ class HandstandElement extends HandstandSlimIntegration {
     onChildListMutation(mutation) {
     }
 }
-try { module.exports = HandstandElement; } catch(x) {}
+module.exports = HandstandElement;

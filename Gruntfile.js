@@ -15,7 +15,13 @@ let Grunt = (grunt) => {
                 stdout: true,
                 stderr: true,
                 exitCode: 0
-            }
+            },
+            'esdoc': {
+                 command: './node_modules/.bin/esdoc -c esdoc.json',
+                 stdout: true,
+                 stderr: true,
+                 exitCode: 0
+             }
         },
         clean: {
             build: {
@@ -26,6 +32,9 @@ let Grunt = (grunt) => {
             },
             coverage: {
                 src: ['coverage/*']
+            },
+            d0x: {
+                src: ['esd0x/*']
             }
         },
         cssmin: {
@@ -96,7 +105,10 @@ let Grunt = (grunt) => {
         },
         browserify: {
             options: {
-                transform: ['jstify'],
+                transform: [[
+                    'babelify',
+                    { "presets": ["es2015"] }
+                ]]
             },
             'package-all': {
                 src: [ 'packaging/aliases/all.js'],
@@ -144,6 +156,7 @@ let Grunt = (grunt) => {
             coverage: {
                 src: 'test',
                 options: {
+                    require: ['babel-register'],
                     mask: '**/*.spec.js'
                 }
             }
@@ -164,7 +177,6 @@ let Grunt = (grunt) => {
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-exec');
-
     grunt.registerTask('buildcopy', [ 'copy:examples-website', 
         'copy:examples-ui-elements', 'copy:examples-ui-components', 'copy:snapshot-all-loader' ]);
     grunt.registerTask('releasecopy', [ 'copy:distribution-alljs', 'copy:distribution-allcss' ]);
@@ -178,6 +190,8 @@ let Grunt = (grunt) => {
     grunt.registerTask('audit', ['audit-coverage', 'audit-restrict']);
     grunt.registerTask('audit-coverage', ['exec:audit-units']);
     grunt.registerTask('audit-restrict', ['exec:dep-test']);
+    grunt.registerTask('d0x', ['exec:esdoc']);
+    
     //HANDSTAND-62: Auditing the unit test bed is not a feature, it is an internal safeguard. Changing it
     //              in anyway should not be seen as a breaking action. 
     // 
@@ -193,6 +207,6 @@ let Grunt = (grunt) => {
     //              through the HTML reporter, it still provides humans with a seemingly viable 
     //              way to quickly see coverage and in the hopes it can be repaired
     //
-    grunt.registerTask('release', ['clean', 'build', 'coverage', 'releasecopy']);
+    grunt.registerTask('release', ['clean', 'build', 'coverage', 'd0x', 'releasecopy']);
 };
 module.exports = Grunt;

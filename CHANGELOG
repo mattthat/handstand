@@ -1,4 +1,8 @@
-  .- v2.0.0 (2018-02-01):
+  .- v2.1.0 (2018-02-24):
+ | 
+ |   * [HANDSTAND-11]: Mutable Label Component
+ |
+ |- v2.0.0 (2018-02-01):
  |
  |    * BREAKING: Lifecycle integration refactored (HANDSTAND-44)
  |    * BREAKING: Consolidated to generic form of monitoring and two-way (HANDSTAND-41)

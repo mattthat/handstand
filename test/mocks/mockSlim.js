@@ -4,6 +4,7 @@ let mockSlim = function() {
     this.style = {};
     this.childNodes = [];
     this.children = [];
+    this.innerText = "";
     this.setAttribute = function(key, v) { this._attributes[key] = v; };
     this.getAttribute = function(key) { return this._attributes[key]; };
     this.tag = function() { };
@@ -15,16 +16,19 @@ let mockSlim = function() {
             this._events[name]();
     };
     this.dispatchEvent = function() { };
+    this.append = function() { };
 };
 mockSlim.prototype._events = [];
 mockSlim.prototype._attributes = [];
 mockSlim.prototype.style = {};
 mockSlim.prototype.childNodes = [];
 mockSlim.prototype.children = [];
+mockSlim.prototype.innerText = "";
 mockSlim.prototype.setAttribute = function(key, v) { this._attributes[key] = v; };
 mockSlim.prototype.getAttribute = function(key) { return this._attributes[key]; }
-mockSlim.prototype.tag = function() {};
-mockSlim.tag = function() {};
+mockSlim.prototype.tag = function() { };
+mockSlim.prototype.append = function() { };
+mockSlim.tag = function() { };
 mockSlim.render = function() { this.onRender() }
 
 module.exports = mockSlim;

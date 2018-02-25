@@ -1,4 +1,7 @@
 class HandstandTextInput extends HandstandInput {
+    constructor(attributes, options) {
+        super(attributes, options);
+    }
     onRender() {
         super.onRender.call(this);
         this.input.type = 'text';

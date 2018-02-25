@@ -18,18 +18,13 @@
                   .toLocaleString(navigator.language);
            };
 
-           let label = new HandstandLabel({ 
-               label: now() 
+           let label = new HandstandLabel({}, { 
+               value: now() 
            });
-
-           let update = () => {
-              if (label.div)
-                  label.div.innerHTML = now();
-           };
 
            document.querySelector('body').append(label);
 
-           setInterval(update, 1000);
+           setInterval(() => { label.value = now() }, 1000);
 
        });
    </script>

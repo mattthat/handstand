@@ -37,6 +37,7 @@ let Grunt = (grunt) => {
                  files: {
                      'build/snapshot/snapshot-all.min.css': [
                          'src/css/ui-elements/*.css',
+                         'src/css/ui-components/*.css',
                          'src/css/themes/default.css'
                      ]
                  }
@@ -53,6 +54,12 @@ let Grunt = (grunt) => {
                 cwd: 'resources/examples/ui-elements',
                 src: '**',
                 dest: 'build/examples/ui-elements',
+                expand: true
+            },
+            'examples-ui-components': {
+                cwd: 'resources/examples/ui-components',
+                src: '**',
+                dest: 'build/examples/ui-components',
                 expand: true
             },
             'snapshot-all-loader': {
@@ -158,7 +165,8 @@ let Grunt = (grunt) => {
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('buildcopy', [ 'copy:examples-website', 'copy:examples-ui-elements', 'copy:snapshot-all-loader' ]);
+    grunt.registerTask('buildcopy', [ 'copy:examples-website', 
+        'copy:examples-ui-elements', 'copy:examples-ui-components', 'copy:snapshot-all-loader' ]);
     grunt.registerTask('releasecopy', [ 'copy:distribution-alljs', 'copy:distribution-allcss' ]);
     grunt.registerTask('explode', [ 'clean:build', 'buildcopy' ]);
     grunt.registerTask('build', [ 'explode', 'cssmin', 'browserify', 'uglify' ]);

@@ -35,7 +35,9 @@ describe('HandstandContainer', () => {
             let x = 0, container = new HandstandContainer({
                 id: 'open-test'
             }, {
-                onOpen: () => { x = 1 }
+                events: {
+                    onOpen: () => { x = 1 }
+                }
             });
             container.open();
             expect(container.state).to.equal('opened');
@@ -54,7 +56,9 @@ describe('HandstandContainer', () => {
             let x = 0, container = new HandstandContainer({
                 id: 'close-test'
             }, {
-                onClose: () => { x = 1 }
+                events: {
+                    onClose: () => { x = 1 }
+                }
             });
             container.close();
             expect(container.state).to.equal('closed');

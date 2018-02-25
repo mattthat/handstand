@@ -1,8 +1,15 @@
 class HandstandSwitch extends HandstandConfigurableElement {
-    constructor(attributes) {
+    constructor(attributes, options) {
         super(attributes);
-        this.model.Set('value', true);
         HandstandSwitch.unique++;
+        if (options) {
+            this.model.Set('value', options.value);
+        } else {
+            this.model.Set('value', true);
+        }
+        this.div = {};
+        this.input = { checked: this.model.Get('value') };
+        this.label = {};
     }
     get template() {
         return '<div><input name="' + 
@@ -14,6 +21,7 @@ class HandstandSwitch extends HandstandConfigurableElement {
         this.div = this.childNodes[0],
         this.input = this.div.childNodes[0],
         this.label = this.div.childNodes[1];
+        this.input.checked = this.model.Get('value');
     }
     isSwitched() {
         var checked = false;

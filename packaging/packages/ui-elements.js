@@ -8,3 +8,4 @@ global.HandstandList = require('../../src/js/ui-elements/HandstandList.js');
 global.HandstandSwitch = require('../../src/js/ui-elements/HandstandSwitch.js');
 global.HandstandCheckbox = require('../../src/js/ui-elements/HandstandCheckbox.js');
 global.HandstandTextInput = require('../../src/js/ui-elements/HandstandTextInput.js');
+global.HandstandTextarea = require('../../src/js/ui-elements/HandstandTextarea.js');

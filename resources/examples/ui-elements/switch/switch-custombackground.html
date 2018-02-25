@@ -15,21 +15,28 @@
        Handstand.loaded(() => {
 
           // generateExample(): a method to easily make many examples
-          let generateExample = (switchId, labelId) => {
+          let generateExample = (switchId, labelId, value) => {
+
+              if (value === undefined || value === null || value === false) {
+                  value = false;
+              } else {
+                  value = true;
+              }
 
               let switchEl = new HandstandSwitch({
                   id: switchId,
                   monitor: 'true',
                   twoway: 'true'
+              }, {
+                  value: value
               });
               
-              let label = new HandstandLabel({
-                  id: labelId,
-                  label: switchEl.model.toJSON()
+              let label = new HandstandLabel({ id: labelId }, {
+                value: switchEl.model.toJSON()
               });
               
               switchEl.on('change', () => {
-                  label.label = switchEl.model.toJSON();
+                  label.value = switchEl.model.toJSON();
               });
 
               document.querySelector('body').append(switchEl);
@@ -40,7 +47,7 @@
           //
 
           // 1: a switch example using the default theme
-          generateExample('switch1', 'label1');
+          generateExample('switch1', 'label1', true);
           //
 
           // 2: a switch example with custom switch background color

@@ -81,7 +81,7 @@ describe('HandstandConfigurableElement', () => {
 
         describe('lifecycle', () => {
 
-            let element, renderSpy, setupSpy;
+            let element, renderSpy, setupSpy, defaultsSpy;
 
             beforeEach(() => {
                 defaultsSpy = sinon.spy(HandstandConfigurableElement.prototype, 'defaults');

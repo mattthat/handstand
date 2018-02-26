@@ -1,4 +1,4 @@
-class HandstandMutationObserver {
+export class HandstandMutationObserver {
     constructor(node, events) {
         this.observer = new MutationObserver( (mutationsList) => {
             for(var mutation of mutationsList) {
@@ -11,4 +11,4 @@ class HandstandMutationObserver {
         this.observer.observe(node, {attributes: true, childList: true});
     }
 }
-try { module.exports = HandstandMutationObserver; } catch(x) {}
+module.exports = HandstandMutationObserver;

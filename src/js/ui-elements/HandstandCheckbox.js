@@ -1,4 +1,4 @@
-class HandstandCheckbox extends HandstandInput {
+export class HandstandCheckbox extends HandstandInput {
     constructor(attributes) {
         super(attributes);
         this.model.Set('value', false);
@@ -21,4 +21,4 @@ class HandstandCheckbox extends HandstandInput {
     }
 }
 HandstandConfigurableElement.tag('handstand-checkbox', HandstandCheckbox);
-try { module.exports = HandstandCheckbox; } catch(x) {}
+module.exports = HandstandCheckbox;

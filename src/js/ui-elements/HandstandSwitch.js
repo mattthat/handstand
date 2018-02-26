@@ -1,4 +1,4 @@
-class HandstandSwitch extends HandstandConfigurableElement {
+export class HandstandSwitch extends HandstandConfigurableElement {
     constructor(attributes, options) {
         super(attributes);
         HandstandSwitch.unique++;
@@ -37,4 +37,4 @@ class HandstandSwitch extends HandstandConfigurableElement {
 }
 HandstandSwitch.unique = 1;
 HandstandConfigurableElement.tag('handstand-switch', HandstandSwitch);
-try { module.exports = HandstandSwitch; } catch(x) {}
+module.exports = HandstandSwitch;

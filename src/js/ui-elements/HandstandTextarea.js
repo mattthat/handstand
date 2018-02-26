@@ -1,4 +1,4 @@
-class HandstandTextarea extends HandstandConfigurableElement {
+export class HandstandTextarea extends HandstandConfigurableElement {
     get template() {
         return `<textarea></textarea>`;
     }
@@ -28,4 +28,4 @@ class HandstandTextarea extends HandstandConfigurableElement {
     }
 }
 HandstandConfigurableElement.tag('handstand-textarea', HandstandTextarea);
-try { module.exports = HandstandTextarea; } catch(x) {}
+module.exports = HandstandTextarea;

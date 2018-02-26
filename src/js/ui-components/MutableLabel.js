@@ -1,4 +1,4 @@
-class MutableLabel extends HandstandConfigurableElement {
+export class MutableLabel extends HandstandConfigurableElement {
     get state() {
         return this.getAttribute('state');
     }
@@ -70,4 +70,4 @@ class MutableLabel extends HandstandConfigurableElement {
     }
 }
 HandstandConfigurableElement.tag('mutable-label', MutableLabel);
-try { module.exports = MutableLabel; } catch(x) {}
+module.exports = MutableLabel;

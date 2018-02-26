@@ -51,14 +51,14 @@ describe('MutableLabel', () => {
             });
             
             it('should become mutable', () => {
-                spy = sinon.spy(component, 'beMutable');
+                let spy = sinon.spy(component, 'beMutable');
                 component.state = 'mutable';
                 expect(spy.called).to.equal(true);
                 component.beMutable.restore();
             });
 
             it('should otherwise become modeled', () => {
-                spy = sinon.spy(component, 'beModeled');
+                let spy = sinon.spy(component, 'beModeled');
                 component.state = 'modeled';
                 expect(spy.called).to.equal(true);
                 component.beModeled.restore();

@@ -4,6 +4,14 @@
 
 web development kit
 
+### Links
+
+- Home: http://handstand.matt-that.com
+- Blog: http://handstand.matt-that.com/blog
+- Docs: http://handstand.matt-that.com/docs
+- GitHub: http://github.com/mattthat/handstand
+- NPM: https://www.npmjs.com/package/handstand
+
 ### Development
 
 #### Use
@@ -19,30 +27,19 @@ document.querySelector('body').append(label);
 require('handstand');
 
 class myAppLabel extends HandstandLabel {
+    onRender() {
+       // do something new
+    }
 }
 
 #### Interact with Current Build
 
 - clone
 - yarn (or npm) install
-- grunt buildview-server
+- grunt run
 - browse to http://localhost:7000/
 
 ### Unit Tests Bed
  
  - use 'grunt test' to execute
  - use 'grunt coverage' to produce coverage report
-
-### Structure
-
-#### src/css
-
-Contains element and component styles as well as themes
-
-#### src/js
-
-Contains an element event manager and extendable Handstand objects
-
-#### test
-
-Contains a mocha/chai test bed

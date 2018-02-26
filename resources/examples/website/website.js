@@ -21,7 +21,8 @@ class HandstandWebsite {
         this.name = new HandstandLabel({
             id: 'hs',
             class: 'vert-text',
-            label: 'Handstand'
+        }, {
+            value: 'Handstand'
         }),
         this.monkey = this.img({ id: 'webmonkey', src: 'monkey.gif' });
     }
@@ -32,6 +33,10 @@ class HandstandWebsite {
         this.links.append(this.a({
             url: '/blog',
             title: 'blog',
+        }));
+        this.links.append(this.a({
+            url: '/docs',
+            title: 'docs',
         }));
         this.links.append(this.a({
             url: 'http://github.com/mattthat/handstand',

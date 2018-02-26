@@ -1,5 +1,5 @@
 
-  .- v2.1.1 (2018-02-25):
+  .- v2.1.1 (2018-02-26):
  |   
  |     * CONCERN: [HANDSTAND-62]: Disable unit test bed auditing
  |     * [HANDSTAND-63]: Cleanup package.json dependencies

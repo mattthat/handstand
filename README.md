@@ -4,9 +4,13 @@
 
 web development kit
 
-### Documentation
+### Links
 
-http://handstand.matt-that.com/d0x/relases
+- Home: http://handstand.matt-that.com
+- Blog: http://handstand.matt-that.com/blog
+- Docs: http://handstand.matt-that.com/docs
+- GitHub: http://github.com/mattthat/handstand
+- NPM: https://www.npmjs.com/package/handstand
 
 ### Development
 

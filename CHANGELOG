@@ -1,29 +1,33 @@
-  .- v2.1.0 (2018-02-24):
+
+  .- v2.1.1 (2018-02-26):
+ |   
+ |     * CONCERN: [HANDSTAND-62]: Disable unit test bed auditing
+ |     * [HANDSTAND-63]: Cleanup package.json dependencies
+ |     * [HANDSTAND-65]: Introduce ESDoc
+ |
+ +- v2.1.0 (2018-02-24):
  | 
- |   * [HANDSTAND-11]: Mutable Label Component
+ |     * FEATURE: [HANDSTAND-11]: Mutable Label Component
  |
- |- v2.0.0 (2018-02-01):
+ +- v2.0.0 (2018-02-01):
  |
- |    * BREAKING: Lifecycle integration refactored (HANDSTAND-44)
- |    * BREAKING: Consolidated to generic form of monitoring and two-way (HANDSTAND-41)
- |    * BREAKING: Monitoring and two-way are now on by default (HANDSTAND-44)
- |    * BREAKING: Modifications to HandstandButton and HandstandCheckbox (HANDSTAND-9)
- |    * BREAKING: HandstandList refactored (HANDSTAND-7)
- |    * BREAKING: Removed HandstandDropdown, introduced HandstandSelector (HANDSTAND-8)
- |    * BREAKING: Removed exploded HTML renditions (HANDSTAND-25)
- |    * BREAKING: Upgraded to Slim 3.1.2 (HANDSTAND-27)
- |
- |    * INITIAL: HandstandWorker (HANDSTAND-37)
- |    * INITIAL: HandstandMutationObserver (HANDSTAND-55)
- |    ... plus bug fixes and new examples
+ |     * BREAKING: Lifecycle integration refactored (HANDSTAND-44)
+ |     * BREAKING: Consolidated to generic form of monitoring and two-way (HANDSTAND-41)
+ |     * BREAKING: Monitoring and two-way are now on by default (HANDSTAND-44)
+ |     * BREAKING: Modifications to HandstandButton and HandstandCheckbox (HANDSTAND-9)
+ |     * BREAKING: HandstandList refactored (HANDSTAND-7)
+ |     * BREAKING: Removed HandstandDropdown, introduced HandstandSelector (HANDSTAND-8)
+ |     * BREAKING: Removed exploded HTML renditions (HANDSTAND-25)
+ |     * BREAKING: Upgraded to Slim 3.1.2 (HANDSTAND-27)
+ |     * INITIAL: HandstandWorker (HANDSTAND-37)
+ |     * INITIAL: HandstandMutationObserver (HANDSTAND-55)
+ |     ... plus bug fixes and new examples
  |
  +- v1.1.0 (2017-11-18):
  |
- |     * [HANDSTAND-26]
- |        building for release now produces minified, appropriately named bundles
+ |     * [HANDSTAND-26]: Building for release now produces minified, appropriately named bundles
  |
- |     * [HANDSTAND-28]
- |        building for release is blocked by an audit of the unit test bed coverage 
+ |     * [HANDSTAND-28]: Building for release is blocked by an audit of the unit test bed coverage 
  |        report
  |
  |     * [HANDSTAND-1, HANDSTAND-2, HANDSTAND-15]

@@ -1,4 +1,4 @@
-class HandstandSelector extends HandstandConfigurableElement {
+export class HandstandSelector extends HandstandConfigurableElement {
     get template() {
         return `<select></select>`;
     }
@@ -115,4 +115,4 @@ class HandstandSelector extends HandstandConfigurableElement {
     }
 }
 HandstandConfigurableElement.tag('handstand-selector', HandstandSelector);
-try { module.exports = HandstandSelector; } catch(x) {}
+module.exports = HandstandSelector;

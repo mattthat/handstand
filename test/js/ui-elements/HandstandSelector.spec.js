@@ -342,7 +342,7 @@ describe('HandstandSelector', () => {
             });
 
             it('should handle object arguments', () => {
-                choiceRemoved = false, testChoice = {
+                let choiceRemoved = false, testChoice = {
                     id: 'test-choice',
                     value: 'test-value',
                     template: 'test content'

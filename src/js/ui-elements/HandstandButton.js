@@ -1,4 +1,4 @@
-class HandstandButton extends HandstandConfigurableElement {
+export class HandstandButton extends HandstandConfigurableElement {
     constructor(attributes, options) {
         super(attributes);
         if (options && options.events && 
@@ -9,4 +9,4 @@ class HandstandButton extends HandstandConfigurableElement {
     }
 }
 HandstandConfigurableElement.tag('handstand-button', HandstandButton);
-try { module.exports = HandstandButton; } catch(x) {}
+module.exports = HandstandButton;

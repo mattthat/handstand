@@ -1,4 +1,4 @@
-class HandstandSlimIntegration extends Slim {
+export class HandstandSlimIntegration extends Slim {
     get template() {
         return '';
     }
@@ -13,4 +13,4 @@ class HandstandSlimIntegration extends Slim {
     onRemoved() {
     }
 }
-try { module.exports = HandstandSlimIntegration; } catch(x) {}
+module.exports = HandstandSlimIntegration;

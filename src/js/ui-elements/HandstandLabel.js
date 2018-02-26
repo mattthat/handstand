@@ -1,4 +1,4 @@
-class HandstandLabel extends HandstandConfigurableElement {
+export class HandstandLabel extends HandstandConfigurableElement {
     get template() {
         return `<div></div>`;
     }
@@ -22,4 +22,4 @@ class HandstandLabel extends HandstandConfigurableElement {
     }
 }
 HandstandConfigurableElement.tag('handstand-label', HandstandLabel);
-try { module.exports = HandstandLabel; } catch(x) {}
+module.exports = HandstandLabel;

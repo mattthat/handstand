@@ -1,4 +1,4 @@
-class HandstandConfigurableElement extends HandstandElement {
+export class HandstandConfigurableElement extends HandstandElement {
     constructor(attributes) {
         super();
         this.model = new HandstandModel();
@@ -60,4 +60,4 @@ class HandstandConfigurableElement extends HandstandElement {
         this.monitoring = false;
     }
 }
-try { module.exports = HandstandConfigurableElement; } catch(x) {}
+module.exports = HandstandConfigurableElement;

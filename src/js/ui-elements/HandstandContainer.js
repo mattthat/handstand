@@ -1,4 +1,4 @@
-class HandstandContainer extends HandstandConfigurableElement {
+export class HandstandContainer extends HandstandConfigurableElement {
     get state() {
         return this.getAttribute('state');
     }
@@ -33,4 +33,4 @@ class HandstandContainer extends HandstandConfigurableElement {
     }
 }
 HandstandConfigurableElement.tag('handstand-container', HandstandContainer);
-try { module.exports = HandstandContainer; } catch(x) {}
+module.exports = HandstandContainer;

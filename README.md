@@ -18,7 +18,7 @@ web development kit
 
 require('handstand');
 
-let label = new HandstandLabel({ label: 'foo' });
+let label = new HandstandLabel({ value: 'foo' });
 
 document.querySelector('body').append(label);
 

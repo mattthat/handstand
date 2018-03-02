@@ -125,6 +125,29 @@ describe('HandstandList', () => {
                 expect(list instanceof HandstandList).to.equal(true);
             });
 
+
+            it('should construct with just an onAfterRender event handler being a function', () => {
+                let list = new HandstandList({
+                    id: 'contruct-tests'
+                }, {
+                    events: {
+                        onAfterRender: () => { }
+                    }
+                });
+                expect(list instanceof HandstandList).to.equal(true);
+            });
+
+            it('should construct with just an onAfterRender event handler being a non-function (not assigning the handler)', () => {
+                let list = new HandstandList({
+                    id: 'contruct-tests'
+                }, {
+                    events: {
+                        onAfterRender: ''
+                    }
+                });
+                expect(list instanceof HandstandList).to.equal(true);
+            });
+
             it('should construct with items that are strings', () => {
                 let list = new HandstandList({
                     id: 'contruct-tests'
@@ -184,6 +207,23 @@ describe('HandstandList', () => {
                 expect(list._items).to.equal(undefined);
             });
 
+            it('should when configured, call onAfterRender', () => {
+                let afterRender = false, items = [{ 
+                    template: 'zero' }, { template: 'one'}, { template: 'two' }], 
+                list = new HandstandList({
+                    id: 'render-tests'
+                }, {
+                    items: items,
+                    events: {
+                        onAfterRender: () => {
+                            afterRender = true;
+                        }
+                    }
+                });
+                list.onRender();
+                expect(afterRender).to.equal(true);
+            });
+
         });
 
         describe('addItem', () => {
@@ -196,7 +236,7 @@ describe('HandstandList', () => {
                 }, {
                     items: items
                 });
-                list.addItem(testContent);
+                expect(list.addItem(testContent)).to.equal(list);
                 list.onRender();
                 expect(list.items[3]).to.equal(undefined);
             });
@@ -210,11 +250,10 @@ describe('HandstandList', () => {
                     items: items
                 });
                 list.onRender();
-                
                 list.childNodes = [];
                 list.childNodes.push({ append: () => { } });
 
-                list.addItem(testContent);
+                expect(list.addItem(testContent)).to.equal(list);
                 expect(list.items[3].template).to.equal(testContent);
             });
 
@@ -240,7 +279,7 @@ describe('HandstandList', () => {
                     }
                 });
                 list.onRender();
-                list.addItem(testItem);
+                expect(list.addItem(testItem)).to.equal(list);
                 expect(list.items[3]).to.equal(testItem);
                 expect(itemAdded).to.equal(true);
                 expect(listChanged).to.equal(true);
@@ -258,7 +297,7 @@ describe('HandstandList', () => {
                 }, {
                     items: items
                 });
-                list.removeItem(testContent);
+                expect(list.removeItem(testContent)).to.equal(list);
                 list.onRender();
                 expect(list.items.length).to.equal(3);
             });
@@ -289,7 +328,7 @@ describe('HandstandList', () => {
                     }
                 };
                 expect(list.items.length).to.equal(3);
-                list.removeItem(testContent);
+                expect(list.removeItem(testContent)).to.equal(list);
                 expect(list.items.length).to.equal(2);
             });
 
@@ -333,7 +372,7 @@ describe('HandstandList', () => {
                 };
                 expect(list.items[3]).to.equal(testItem);
                 expect(list.items.length).to.equal(4);
-                list.removeItem(testItem);
+                expect(list.removeItem(testItem)).to.equal(list);
                 expect(list.items[3]).not.to.equal(testItem);
                 expect(list.items.length).to.equal(3);
                 expect(itemRemoved).to.equal(true);
@@ -365,7 +404,7 @@ describe('HandstandList', () => {
                         } 
                     }
                 };
-                list.clearItems();
+                expect(list.clearItems()).to.equal(list);
                 list.onRender();
                 expect(list.items.length).to.equal(3);
             });
@@ -399,7 +438,7 @@ describe('HandstandList', () => {
                     }
                 };
                 expect(list.items.length).to.equal(3);
-                list.clearItems();
+                expect(list.clearItems()).to.equal(list);
                 expect(list.items.length).to.equal(0);
                 expect(listChanged).to.equal(true);
             });

@@ -4,6 +4,11 @@ export class HandstandContainer extends HandstandConfigurableElement {
     }
     set state(state) {
         this.setAttribute('state', state);
+        if (state === 'opened') {
+            this.open();
+        } else {
+            this.close();
+        }
     }
     constructor(attributes, options) {
         super(attributes);
@@ -16,6 +21,7 @@ export class HandstandContainer extends HandstandConfigurableElement {
             }
         }
         this.state = 'opened'
+        delete this.model;
     }
     contents() {
         return Array.from(this.children).filter((child) => {
@@ -24,12 +30,12 @@ export class HandstandContainer extends HandstandConfigurableElement {
         });
     }
     open() {
-        this.state = 'opened';
+        if (this.state !== 'opened') this.setAttribute('state', 'opened');
         if (typeof this.onOpen === 'function') this.onOpen();
     }
     close() {
-        this.state = 'closed';
-        if (typeof this.onClose === 'function') this.onClose();
+        if (this.state !== 'closed') this.setAttribute('state', 'closed');
+        if (typeof this.onClose === 'function') this.onClose();        
     }
 }
 HandstandConfigurableElement.tag('handstand-container', HandstandContainer);

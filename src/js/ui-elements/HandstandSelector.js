@@ -72,6 +72,7 @@ export class HandstandSelector extends HandstandConfigurableElement {
             this.choices.push(choice);
             if (this.onChoiceAdded) this.onChoiceAdded.call(this);
         }
+        return this;
     }
     removeChoice(term) {
         if (typeof term === 'string' && this.choices) {
@@ -90,6 +91,7 @@ export class HandstandSelector extends HandstandConfigurableElement {
             this.choices.splice(this.choices.indexOf(term), 1);
         }
         if (this.onChoiceRemoved) this.onChoiceRemoved.call(this);
+        return this;
     }
     selectChoice(term) {
         if (term === null) {
@@ -112,6 +114,7 @@ export class HandstandSelector extends HandstandConfigurableElement {
                 }
             }
         }
+        return this;
     }
 }
 HandstandConfigurableElement.tag('handstand-selector', HandstandSelector);

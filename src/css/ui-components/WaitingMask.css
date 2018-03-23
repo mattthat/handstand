@@ -1,0 +1,99 @@
+waiting-mask > div {
+  position: absolute;
+  z-index: 9999;
+  opacity: 0.4;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+waiting-mask > div:before {
+  position: absolute;
+  background-color: silver;
+  content: '';
+  opacity: .9;
+  margin: -25px 0 0 -25px;
+  border: .3em solid rgba(0, 0, 0, 0.9);
+  border-right: .3em solid rgba(0, 0, 0, 0);
+  border-left: .3em solid rgba(0, 0, 0, 0);
+  border-radius: 2.5em;
+  height: 2.5em;
+  width: 2.5em;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 1.3em #666;
+  -moz-animation: waitingmask-waitin 1s infinite ease-in-out;
+  -webkit-animation: waitingmask-waitin 1s infinite linear;
+}
+
+waiting-mask > div:after {
+  position: absolute;
+  background-color: silver;
+  content: '';
+  opacity: .9;
+  margin: -15px 0 0 -15px;
+  border: .3em solid rgba(150, 150, 150, 0.8);
+  border-right: .3em solid rgba(0, 0, 0, 0);
+  border-left: .3em solid rgba(0, 0, 0, 0);
+  border-radius: 2.5em;
+  height: 1.25em;
+  width: 1.25em;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 0 15px black;
+  -moz-animation: waitingmask-waitout 1s infinite linear;
+  -webkit-animation: waitingmask-waitout 1s infinite linear;
+}
+
+@-moz-keyframes waitingmask-waitout {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes waitingmask-waitout {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes waitingmask-waitin {
+    0% {
+        -moz-transform: rotate(130deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #666;
+    }
+    50% {
+        -moz-transform: rotate(140deg);
+        opacity: 1;
+    }
+    100% {
+        -moz-transform: rotate(-330deg);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes waitingmask-waitin {
+    0% {
+        -webkit-transform: rotate(130deg);
+        opacity: 0;
+        box-shadow: 0 0 1px #666;
+    }
+    50% {
+       -webkit-transform: rotate(140deg);
+       opacity: 1;
+    }
+    100% {
+        -webkit-transform: rotate(-330deg);
+        opacity: 0;
+    }
+}

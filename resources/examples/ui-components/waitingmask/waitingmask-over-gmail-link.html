@@ -1,0 +1,31 @@
+<html>
+ <head>
+  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
+  <script src='/snapshot/snapshot-all.min.js'></script>
+  <style>
+  </style>
+  </head>
+  <body>
+
+  <a href="https://gmail.com">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Gmail_5_Compose_Message.png">
+  </a>
+
+   <script>
+
+       // a waiting mask example
+       Handstand.loaded(() => {
+
+           let waiter = new WaitingMask({}, {}).show();
+
+           setTimeout( () => {
+               
+               waiter.hide();
+
+           }, 10000)
+           
+       });
+
+   </script>
+ </body>
+</html>

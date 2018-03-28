@@ -82,21 +82,19 @@
                    css: 'various-list-item-example plus-more',
                    detail: button,
                    template: `<div id='button'></div>`
-               }]
+               }],
+               events: {
+                   onAfterRender: () => {
+                      document.querySelector('#label').append(label);
+                      document.querySelector('#check').append(check);
+                      document.querySelector('#switch').append(switchEl);
+                      document.querySelector('#button').append(button);                       
+                   }
+               }
           });
-          //
           
           document.querySelector('body').append(list);
           
-          // wait for reflow to ensure the list elements are rendered
-          setTimeout( () => {
-              document.querySelector('#label').append(label);
-              document.querySelector('#check').append(check);
-              document.querySelector('#switch').append(switchEl);
-              document.querySelector('#button').append(button);
-          });
-          //
-       
        });
    </script>
  </body>

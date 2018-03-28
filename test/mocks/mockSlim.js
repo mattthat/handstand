@@ -11,11 +11,8 @@ let mockSlim = function() {
     this.render = function() { this.onRender(); };
     this.addEventListener = function(name, method) { this._events[name] = method; };
     this.removeEventListener = function(name, method) { delete this._events[name]; };
-    this.trigger = function(name) {
-        if (typeof this._events[name] === 'function') 
-            this._events[name]();
-    };
-    this.dispatchEvent = function() { };
+    this.trigger = function(name) { this.dispatchEvent(name); };
+    this.dispatchEvent = function(name) { if (typeof this._events[name] === 'function') this._events[name](); };
     this.append = function() { };
 };
 mockSlim.prototype._events = [];

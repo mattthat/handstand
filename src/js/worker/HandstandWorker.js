@@ -47,11 +47,13 @@ export class HandstandWorker {
             this.roadmap = roadmap;
             this.onmessage = this.map.bind(this);
         }
+        return this;
     }
     map(e) {
         if (this._validDestination(e)) {
             this.roadmap[e.data.work](e);
         }
+        return this;
     }
     work(work, payload) {
         if (this._validWorker(this.worker) && work) {
@@ -60,6 +62,7 @@ export class HandstandWorker {
                 payload: payload
             });
         }
+        return this;
     }
 }
 module.exports = HandstandWorker;

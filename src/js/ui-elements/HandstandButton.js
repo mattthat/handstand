@@ -6,6 +6,7 @@ export class HandstandButton extends HandstandConfigurableElement {
             this.onPress = options.events.onPress;
             this.on('click', this.onPress.bind(this));
         }
+        delete this.model;
     }
 }
 HandstandConfigurableElement.tag('handstand-button', HandstandButton);

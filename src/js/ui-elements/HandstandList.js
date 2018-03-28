@@ -12,6 +12,8 @@ export class HandstandList extends HandstandConfigurableElement {
                     this.onItemRemoved = options.events.onItemRemoved;
                 if (typeof options.events.onListChanged === 'function')
                     this.onListChanged = options.events.onListChanged;
+                if (typeof options.events.onAfterRender === 'function')
+                    this.onAfterRender = options.events.onAfterRender;
             }
             if (options.items) {
                 this._items = options.items;
@@ -30,6 +32,7 @@ export class HandstandList extends HandstandConfigurableElement {
             this.addItem(this._items[item]);
         }
         delete this._items;
+        if (this.onAfterRender) this.onAfterRender.call(this);
     }
     addItem(term) {
         let item;
@@ -50,6 +53,7 @@ export class HandstandList extends HandstandConfigurableElement {
             if (this.onItemAdded) this.onItemAdded.call(this);
             if (this.onListChanged) this.onListChanged.call(this);
         }
+        return this;
     }
     removeItem(term) {
         if (typeof term === 'string' && this.items) {
@@ -69,6 +73,7 @@ export class HandstandList extends HandstandConfigurableElement {
         }
         if (this.onItemRemoved) this.onItemRemoved.call(this);
         if (this.onListChanged) this.onListChanged.call(this);
+        return this;
     }
     clearItems() {
         this.items = [];
@@ -76,6 +81,7 @@ export class HandstandList extends HandstandConfigurableElement {
             el.remove();
         });
         if (this.onListChanged) this.onListChanged.call(this);
+        return this;
     }
 }
 HandstandConfigurableElement.tag('handstand-list', HandstandList);

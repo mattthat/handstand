@@ -1,5 +1,8 @@
-
-  .- v2.1.1 (2018-02-26):
+  .- v2.2.0 (2018-03-24):
+ |   
+ |    * [HANDSTAND-67]: Waiting Mask Component
+ |
+ +- v2.1.1 (2018-02-26):
  |   
  |     * CONCERN: [HANDSTAND-62]: Disable unit test bed auditing
  |     * [HANDSTAND-63]: Cleanup package.json dependencies

@@ -44,3 +44,12 @@ handstand-switch > div:first-child > input:checked + label:after {
     box-shadow: inset 0 0 0 0.10em silver 0.40em 0.50em rgba(0, 0, 0, .1);
     left: 0.8em;
 }
+handstand-switch > div:first-child > label:before {
+   background: lightgreen;
+}
+handstand-switch > div:first-child > input:checked + label:before {
+   background: lightgreen;
+}
+handstand-switch > div:first-child > label:after {
+   background: white;
+}

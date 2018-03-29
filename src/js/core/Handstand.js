@@ -1,4 +1,4 @@
-export class Handstand {
+export default class Handstand {
     static ajax(options) {
         let request = new XMLHttpRequest();
         if (options.timeout) request.timeout = options.timeout;
@@ -23,4 +23,3 @@ export class Handstand {
         document.addEventListener("DOMContentLoaded", method);
     }
 }
-module.exports = Handstand;

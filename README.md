@@ -1,8 +1,10 @@
 # handstand
 
+Web Development Kit
+
 [![Join the chat at https://gitter.im/handstandjs/Lobby](https://badges.gitter.im/handstandjs/Lobby.svg)](https://gitter.im/handstandjs/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-web development kit
+A self-reliant set of ES6, native javascript classes for building modern web applications
 
 ### Links
 
@@ -18,7 +20,7 @@ web development kit
 
 require('handstand');
 
-let label = new HandstandLabel({ value: 'foo' });
+let label = new HandstandLabel({ properties: { innerText: 'foo' } });
 
 document.querySelector('body').append(label);
 
@@ -31,15 +33,3 @@ class myAppLabel extends HandstandLabel {
        // do something new
     }
 }
-
-#### Interact with Current Build
-
-- clone
-- yarn (or npm) install
-- grunt run
-- browse to http://localhost:7000/
-
-### Unit Tests Bed
- 
- - use 'grunt test' to execute
- - use 'grunt coverage' to produce coverage report

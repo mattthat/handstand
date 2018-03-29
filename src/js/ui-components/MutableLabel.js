@@ -1,4 +1,9 @@
-export class MutableLabel extends HandstandConfigurableElement {
+import css from '../../css/ui-components/MutableLabel.css';
+import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import HandstandLabel from '../ui-elements/HandstandLabel.js';
+import HandstandTextarea from '../ui-elements/HandstandTextarea.js';
+
+export default class MutableLabel extends HandstandCustomElement {
     get state() {
         return this.getAttribute('state');
     }
@@ -11,30 +16,21 @@ export class MutableLabel extends HandstandConfigurableElement {
         }
     }
     get value() {
-        return this.model.Get('value');
+        return this.conditions.properties.value
     }
-    set value(label) {
-        this.model.Set('value', label);
+    set value(v) {
+        this.conditions.properties.value = v;
     }
-    constructor(attributes, options) {
-        super(attributes);
-        this.setAttribute('state', 'modeled');
-        if (options) {
-            this.value = options.value;
-            if (options.events) {
-                if (typeof options.events.onModeled === 'function') {
-                    this.onModeled = options.events.onModeled;
-                }
-                if (typeof options.events.onMutable === 'function') {
-                    this.onMutable = options.events.onMutable;
-                }
-            }
-        }
-        this.label = {};
-        this.mutable = {};
-    }
-    onCreated() {
+    constructor(conditions) {
+        super(conditions);
         let component = this;
+        this.setAttribute('state', 'modeled');
+        this.mutable = new HandstandTextarea({ properties: {
+            value: this.conditions.properties.value 
+        }});
+        this.label = new HandstandLabel({ properties: { 
+            innerText: this.conditions.properties.value
+        }});
         this.on('click', () => {
             if (component.state === 'modeled')
                 component.state = 'mutable';
@@ -43,31 +39,19 @@ export class MutableLabel extends HandstandConfigurableElement {
             if (component.state === 'mutable')
                 component.state = 'modeled';
         });
-    }
-    onAdded() {
-        this.label = new HandstandLabel({}, {
-            value: this.value
-        });
-        this.mutable = new HandstandTextarea({}, {
-            value: this.value
-        });
-        this.append(this.label);
+        this.append(this.label)
     }
     beModeled() {
         this.value = this.mutable.value;
-        this.childNodes[0].remove();
-        this.label.value = this.value;
+        this.mutable.remove();
+        this.label.innerText = this.value;
         this.append(this.label);
-        if (typeof this.onModeled === 'function')
-            this.onModeled.call(this);
     }
     beMutable() {
-        this.childNodes[0].remove();
+        this.value = this.label.innerText;
+        this.label.remove();
         this.mutable.value = this.value;
         this.append(this.mutable);
-        if (typeof this.onMutable === 'function')
-            this.onMutable.call(this);
     }
 }
-HandstandConfigurableElement.tag('mutable-label', MutableLabel);
-module.exports = MutableLabel;
+customElements.define('mutable-label', MutableLabel);

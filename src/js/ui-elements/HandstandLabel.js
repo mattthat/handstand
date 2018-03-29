@@ -1,25 +1,13 @@
-export class HandstandLabel extends HandstandConfigurableElement {
-    get template() {
-        return `<div></div>`;
-    }
-    get value() {
-        return this.model.Get('value') || '';
-    }
-    set value(label) {
-        this.div.innerText = label;
-        this.model.Set('value', label);
-    }
-    constructor(attributes, options) {
-        super(attributes);
-        if (options) {
-            this.model.Set('value', options.value);
-        }
-        this.div = {};
+import css from '../../css/ui-elements/HandstandLabel.css';
+import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+
+export default class HandstandLabel extends HandstandCustomElement {
+    constructor(conditions) {
+        super(conditions);
     }
     onRender() {
-        this.div = this.childNodes[0];
-        this.div.innerText = this.model.Get('value');
+        if (this.conditions.properties.innerText)
+            this.innerText = this.conditions.properties.innerText;
     }
 }
-HandstandConfigurableElement.tag('handstand-label', HandstandLabel);
-module.exports = HandstandLabel;
+customElements.define('handstand-label', HandstandLabel);

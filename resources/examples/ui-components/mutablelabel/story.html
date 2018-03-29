@@ -1,7 +1,6 @@
 <html>
  <head>
-  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
-  <script src='/snapshot/snapshot-all.min.js'></script>
+  <script src='/handstand-snapshot.min.js'></script>
   <style>
    handstand-container { padding: 2em; }
    handstand-textinput { display: block;  }
@@ -14,16 +13,16 @@
        Handstand.loaded(() => {
            let names  = new HandstandContainer(),
            stories = new HandstandContainer(),
-           firstNameLabel = new HandstandLabel({}, { value: 'First Name' }),
-           firstName = new HandstandTextInput({}, { value: 'Matt' }),
-           lastNameLabel = new HandstandLabel({}, { value: 'Last Name' }),
-           lastName = new HandstandTextInput({}, { value: 'That' }),
-           story1 = new MutableLabel({}, {
+           firstNameLabel = new HandstandLabel({ properties: { innerText: 'firstName' }}),
+           firstName = new HandstandTextInput({ properties: { value: 'Matt' }}),
+           lastNameLabel = new HandstandLabel({ properties: { innerText: 'Last Name' }}),
+           lastName = new HandstandTextInput({ properties: { value: 'That' }}),
+           story1 = new MutableLabel({ properties: {
                value: 'Male. Born long ago. Brown hair. Brown eyes.'
-           }),
-           story2 = new MutableLabel({}, {
+           }}),
+           story2 = new MutableLabel({ properties: {
                value: 'Heard he wrote some Javascript code'
-           });
+           }});
            names.append(firstNameLabel, firstName, lastNameLabel, lastName);
            stories.append(story1, story2);
            document.querySelector('body').append(names, stories);

@@ -16,12 +16,16 @@ export default class HandstandCustomElement extends HTMLElement {
            if (typeof conditions.events === 'object')
                this.conditions.events = conditions.events;
            if (conditions.observant) this.conditions.observant = true;
+           if (conditions.id && conditions.id.length)
+               this.conditions.id = conditions.id;
+           if (conditions.css && conditions.css.length)
+               this.conditions.css = conditions.css;
         }
         if (this.conditions.observant) this._observe();
         if (this.conditions.id.length > 0)
-            this.setAttribute('id', this.conditions.properties.id);
+            this.setAttribute('id', this.conditions.id);
         if (this.conditions.css.length > 0)
-            this.setAttribute('class', this.conditions.properties.css);
+            this.setAttribute('class', this.conditions.css);
     }
     _observe() {
         this.observer = new MutationObserver( (mutationsList) => {

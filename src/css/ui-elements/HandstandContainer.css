@@ -11,7 +11,7 @@ handstand-container {
    transition: 1s ease;
 }
 handstand-container[open='true'] {
-   background-color: none;
+   background-color: white;
 }
 handstand-container[open='true'] > * {
    opacity: 1;

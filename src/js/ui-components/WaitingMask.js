@@ -1,13 +1,14 @@
-export class WaitingMask extends HandstandConfigurableElement {
-    get template() {
-        return '<div />';
-    }
-    constructor(attributes, options) {
-        super(attributes);
-    }
-    onCreated() {
+import css from '../../css/ui-components/WaitingMask.css';
+import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import HandstandMask from '../ui-elements/HandstandMask.js';
+
+export default class WaitingMask extends HandstandCustomElement {
+    constructor(conditions) {
+        super(conditions);
+        this.div = document.createElement('div');
         this.mask = new HandstandMask();
         this.mask.append(this);
+        this.append(this.div);
     }
     onRemoved() {
         this.mask.remove();
@@ -21,5 +22,4 @@ export class WaitingMask extends HandstandConfigurableElement {
         return this;
     }
 }
-HandstandConfigurableElement.tag('waiting-mask', WaitingMask);
-module.exports = WaitingMask;
+customElements.define('waiting-mask', WaitingMask);

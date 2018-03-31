@@ -1,24 +1,35 @@
-export class HandstandTextInput extends HandstandInput {
-    constructor(attributes, options) {
-        super(attributes, options);
+import css from '../../css/ui-elements/HandstandTextInput.css';
+import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+
+export default class HandstandTextInput extends HandstandCustomElement {
+    get value() {
+        return this.conditions.properties.value;
+    }
+    set value(v) {
+        this.conditions.properties.value = v;
+        this.input.value = v;
+    }
+    constructor(conditions) {
+        super(conditions);
+        this.input = document.createElement('input');
+        this.input.value = this.conditions.properties.value || '';
+        this.on('input', this.onInput.bind(this));
+        this.append(this.input);
+    }
+    onInput() {
+        if (this.input) this.value = this.input.value;
     }
     onRender() {
-        super.onRender.call(this);
-        this.input.type = 'text';
-    }
-    configureMonitoring() {
-        var monitoring = this.getAttribute('monitor');
-        if (monitoring === 'true' && this.id && !this.monitoring) {
-            this.monitoring = true;
-            this.on('input', this.onChange.bind(this));
-        } else {
-            this.monitoring = false;
-        }
-    }
-    stopMonitoring() {
-        this.off('input', this.onChange.bind(this));
-        this.monitoring = false;
+        if (this.conditions.properties.placeHolder)
+            this.input.placeholder = this.conditions.properties.placeHolder;
+        if (typeof this.conditions.events.onKeyUp === 'function')
+            this.input.onkeyup = this.conditions.events.onKeyUp.bind(this);
+        if (typeof this.conditions.events.onKeyDown === 'function')
+            this.input.onkeydown = this.conditions.events.onKeyDown.bind(this);
+        if (typeof this.conditions.events.onKeyPress === 'function')
+            this.input.onkeypress = this.conditions.events.onKeyPress.bind(this);
+        if (typeof this.conditions.events.onChange === 'function')
+            this.input.onchange = this.conditions.events.onChange.bind(this);
     }
 }
-HandstandConfigurableElement.tag('handstand-textinput', HandstandTextInput);
-module.exports = HandstandTextInput;
+customElements.define('handstand-textinput', HandstandTextInput);

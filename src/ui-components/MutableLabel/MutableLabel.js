@@ -1,7 +1,7 @@
-import css from '../../css/ui-components/MutableLabel.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
-import HandstandLabel from '../ui-elements/HandstandLabel.js';
-import HandstandTextarea from '../ui-elements/HandstandTextarea.js';
+import css from './MutableLabel.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
+import HandstandLabel from '../../ui-elements/HandstandLabel/HandstandLabel.js';
+import HandstandTextarea from '../../ui-elements/HandstandTextarea/HandstandTextarea.js';
 
 export default class MutableLabel extends HandstandCustomElement {
     get state() {

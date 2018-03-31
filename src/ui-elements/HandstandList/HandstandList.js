@@ -1,5 +1,5 @@
-import css from '../../css/ui-elements/HandstandList.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import css from './HandstandList.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandList extends HandstandCustomElement {
     constructor(conditions) {

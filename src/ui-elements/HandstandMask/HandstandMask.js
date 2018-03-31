@@ -1,5 +1,5 @@
-import css from '../../css/ui-elements/HandstandMask.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import css from './HandstandMask.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandMask extends HandstandCustomElement {
     get state() {

@@ -1,24 +1,24 @@
 // core
-import Handstand from './src/js/core/Handstand.js';
-import HandstandModel from './src/js/core/HandstandModel.js';
+import Handstand from './src/core/Handstand.js';
+import HandstandModel from './src/core/HandstandModel.js';
 
 //elements
-import HandstandButton from './src/js/ui-elements/HandstandButton.js';
-import HandstandCheckbox from './src/js/ui-elements/HandstandCheckbox.js';
-import HandstandContainer from './src/js/ui-elements/HandstandContainer.js';
-import HandstandLabel from './src/js/ui-elements/HandstandLabel.js';
-import HandstandList from './src/js/ui-elements/HandstandList.js';
-import HandstandTextInput from './src/js/ui-elements/HandstandTextInput.js';
-import HandstandTextarea from './src/js/ui-elements/HandstandTextarea.js';
-import HandstandMask from './src/js/ui-elements/HandstandMask.js';
-import HandstandSwitch from './src/js/ui-elements/HandstandSwitch.js';
+import HandstandButton from './src/ui-elements/HandstandButton/HandstandButton.js';
+import HandstandCheckbox from './src/ui-elements/HandstandCheckbox/HandstandCheckbox.js';
+import HandstandContainer from './src/ui-elements/HandstandContainer/HandstandContainer.js';
+import HandstandLabel from './src/ui-elements/HandstandLabel/HandstandLabel.js';
+import HandstandList from './src/ui-elements/HandstandList/HandstandList.js';
+import HandstandTextinput from './src/ui-elements/HandstandTextinput/HandstandTextinput.js';
+import HandstandTextarea from './src/ui-elements/HandstandTextarea/HandstandTextarea.js';
+import HandstandMask from './src/ui-elements/HandstandMask/HandstandMask.js';
+import HandstandSwitch from './src/ui-elements/HandstandSwitch/HandstandSwitch.js';
 
 // components
-import MutableLabel from './src/js/ui-components/MutableLabel.js';
-import WaitingMask from './src/js/ui-components/WaitingMask.js';
+import MutableLabel from './src/ui-components/MutableLabel/MutableLabel.js';
+import WaitingMask from './src/ui-components/WaitingMask/WaitingMask.js';
 
 // worker
-import HandstandWorker from './src/js/worker/HandstandWorker.js';
+import HandstandWorker from './src/worker/HandstandWorker.js';
 
 // make us famous
 global.Handstand = Handstand;
@@ -27,7 +27,7 @@ global.HandstandCheckbox = HandstandCheckbox;
 global.HandstandContainer = HandstandContainer;
 global.HandstandLabel = HandstandLabel;
 global.HandstandList = HandstandList;
-global.HandstandTextInput = HandstandTextInput;
+global.HandstandTextinput = HandstandTextinput;
 global.HandstandTextarea = HandstandTextarea
 global.HandstandMask = HandstandMask;
 global.HandstandSwitch = HandstandSwitch;

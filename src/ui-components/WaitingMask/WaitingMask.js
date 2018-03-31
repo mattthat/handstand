@@ -1,6 +1,6 @@
-import css from '../../css/ui-components/WaitingMask.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
-import HandstandMask from '../ui-elements/HandstandMask.js';
+import css from './WaitingMask.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
+import HandstandMask from '../../ui-elements/HandstandMask/HandstandMask.js';
 
 export default class WaitingMask extends HandstandCustomElement {
     constructor(conditions) {

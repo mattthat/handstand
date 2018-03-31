@@ -1,5 +1,5 @@
-import css from '../../css/ui-elements/HandstandSwitch.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import css from './HandstandSwitch.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandSwitch extends HandstandCustomElement {
     get value() {

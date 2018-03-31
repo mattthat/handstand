@@ -35,4 +35,5 @@ mutable-label > handstand-textarea > textarea {
     border-style: solid;
     border-width: 0.01em;
     line-height: 0.8em;
+    padding: 1em;
 }

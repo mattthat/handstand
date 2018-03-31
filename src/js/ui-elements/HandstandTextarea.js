@@ -11,6 +11,7 @@ export default class HandstandTextarea extends HandstandCustomElement {
     }
     constructor(conditions) {
         super(conditions);
+        this.conditions.autofocus = conditions.autofocus;
         this.textarea = document.createElement('textarea');
         this.textarea.value = this.conditions.properties.value || '';
         this.on('change', this.onChange.bind(this));
@@ -20,6 +21,8 @@ export default class HandstandTextarea extends HandstandCustomElement {
         if (this.textarea) this.value = this.textarea.value;
     }
     onRender() {
+        if (this.conditions.autofocus)
+            this.textarea.setAttribute('autofocus', '');
         if (this.conditions.properties.placeHolder)
             this.textarea.placeholder = this.conditions.properties.placeHolder;
         if (typeof this.conditions.events.onKeyUp === 'function')

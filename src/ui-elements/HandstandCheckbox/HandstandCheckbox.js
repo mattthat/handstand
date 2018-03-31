@@ -1,5 +1,5 @@
-import css from '../../css/ui-elements/HandstandCheckbox.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import css from './HandstandCheckbox.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandCheckbox extends HandstandCustomElement {
     get value() {

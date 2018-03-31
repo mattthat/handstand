@@ -1,7 +1,7 @@
-import css from '../../css/ui-elements/HandstandTextInput.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import css from './HandstandTextinput.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
-export default class HandstandTextInput extends HandstandCustomElement {
+export default class HandstandTextinput extends HandstandCustomElement {
     get value() {
         return this.conditions.properties.value;
     }
@@ -32,4 +32,4 @@ export default class HandstandTextInput extends HandstandCustomElement {
             this.input.onchange = this.conditions.events.onChange.bind(this);
     }
 }
-customElements.define('handstand-textinput', HandstandTextInput);
+customElements.define('handstand-textinput', HandstandTextinput);

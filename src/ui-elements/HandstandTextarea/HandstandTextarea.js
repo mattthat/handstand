@@ -1,5 +1,5 @@
-import css from '../../css/ui-elements/HandstandTextarea.css';
-import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+import css from './HandstandTextarea.css';
+import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandTextarea extends HandstandCustomElement {
     get value() {

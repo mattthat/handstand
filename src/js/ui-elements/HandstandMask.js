@@ -1,4 +1,7 @@
-export class HandstandMask extends HandstandConfigurableElement {
+import css from '../../css/ui-elements/HandstandMask.css';
+import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+
+export default class HandstandMask extends HandstandCustomElement {
     get state() {
         return this.getAttribute('state');
     }
@@ -10,36 +13,33 @@ export class HandstandMask extends HandstandConfigurableElement {
             this.hide();
         }
     }
-    constructor(attributes, options) {
-        super(attributes);
-        this.selector = (options && options.selector) || 'body';
-        if (options && options.events) {
-            if (typeof options.events.onHide === 'function') {
-                this.onHide = options.events.onHide;
-            }
-            if (typeof options.events.onShow === 'function') {
-                this.onShow = options.events.onShow;
-            }
-        }
+    constructor(conditions) {
+        super(conditions);
+        if (!this.conditions.properties.selector)
+            this.conditions.properties.selector = 'body';
         this.state = 'hidden';
-        this.masked = document.querySelector(this.selector);
+        this.masked = document.querySelector(this.conditions
+            .properties.selector);
         if (this.masked) {
             this.masked.prepend(this);
         }
-        delete this.model;
     }
     hide() {
-        if (this.state !== 'hidden') this.setAttribute('state', 'hidden');
         this.style.display = 'none';
-        if (typeof this.onHide === 'function') this.onHide();
+        if (this.state !== 'hidden')
+            this.setAttribute('state', 'hidden');
+        if (typeof this.conditions.events.onHide === 'function') 
+            this.conditions.event.onHide.call(this);
         return this;
     }
     show() {
-        if (this.state !== 'shown') this.setAttribute('state', 'shown');
         this.style.display = 'block';
-        if (typeof this.onShow === 'function') this.onShow();
+        if (this.state !== 'shown')
+            this.setAttribute('state', 'shown');
+
+        if (typeof this.conditions.events.onShow === 'function') 
+            this.conditions.events.onShow.call(this)
         return this;
     }
 }
-HandstandConfigurableElement.tag('handstand-mask', HandstandMask);
-module.exports = HandstandMask;
+customElements.define('handstand-mask', HandstandMask);

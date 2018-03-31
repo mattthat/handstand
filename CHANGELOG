@@ -1,4 +1,12 @@
-  .- v2.2.0 (2018-03-24):
+  .- v3.0.0 (2018-04-01)
+ |
+ |    * [HANDSTAND-74] 
+ |       - Cease depending on Slim.js
+ |       - Cease depending on Grunt
+ |       - Move to our own CustomElement implementation
+ |       - Move to Webpack bundling
+ |
+ +- v2.2.0 (2018-03-24):
  |   
  |    * [HANDSTAND-67]: Waiting Mask Component
  |

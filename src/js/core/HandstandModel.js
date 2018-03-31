@@ -1,4 +1,4 @@
-export class HandstandModel {
+export default class HandstandModel {
     onSet(method) {
         if (!this.setEventHandler)
             this.setEventHandler = [];
@@ -59,4 +59,3 @@ export class HandstandModel {
         return json;
     }
 }
-module.exports = HandstandModel;

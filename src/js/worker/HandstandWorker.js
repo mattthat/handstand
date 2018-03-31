@@ -1,4 +1,4 @@
-export class HandstandWorker {
+export default class HandstandWorker {
     get onmessage() {
         return this.worker.onmessage;
     }
@@ -65,4 +65,3 @@ export class HandstandWorker {
         return this;
     }
 }
-module.exports = HandstandWorker;

@@ -1,13 +1,12 @@
-export class HandstandButton extends HandstandConfigurableElement {
-    constructor(attributes, options) {
-        super(attributes);
-        if (options && options.events && 
-            typeof options.events.onPress === 'function') {
-            this.onPress = options.events.onPress;
-            this.on('click', this.onPress.bind(this));
+import css from '../../css/ui-elements/HandstandButton.css';
+import HandstandCustomElement from '../ui-core/HandstandCustomElement.js';
+
+export default class HandstandButton extends HandstandCustomElement {
+    constructor(conditions) {
+        super(conditions);
+        if (typeof this.conditions.events.onClick === 'function') {
+            this.on('click', this.conditions.events.onClick.bind(this));
         }
-        delete this.model;
     }
 }
-HandstandConfigurableElement.tag('handstand-button', HandstandButton);
-module.exports = HandstandButton;
+customElements.define('handstand-button', HandstandButton);

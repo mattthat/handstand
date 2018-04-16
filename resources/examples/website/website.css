@@ -4,7 +4,7 @@ font-family: 'Berkshire Swash', cursive;
     background: rgb(254, 255, 252);
 }
 handstand-container {
-    border: none;
+    border: none !important;
 }
 .vert-text {
     transform: rotate(-90deg);

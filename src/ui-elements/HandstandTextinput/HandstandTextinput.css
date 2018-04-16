@@ -1,0 +1,17 @@
+handstand-textinput {
+}
+handstand-textinput > input:first-child {
+   font-size: inherit;
+}
+handstand-textinput > input:focus {
+   outline: inherit;
+}
+handstand-textinput > input {
+   border-color: silver;
+   border-style: solid;
+   border-width: 0.01em;
+   border-radius: 0;
+}
+handstand-textinput:focus {
+   outline: none;
+}

@@ -1,7 +1,6 @@
 <html>
  <head>
-  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
-  <script src='/snapshot/snapshot-all.min.js'></script>
+  <script src='/handstand-snapshot.min.js'></script>
   <style>
    handstand-textarea > textarea { font-size: 1em; width: 2em; height: 1em ;}
    handstand-label { font-size: 1em; width: 2em; }
@@ -9,23 +8,31 @@
   </head>
   <body>
    <script>
-       // a button example, using a label and providing a message when pressed
+       // three mutable labels
        Handstand.loaded(() => {
 
-           let label1 = new MutableLabel({id: 'mutablelabel-example1' }, {
-               value: 'some'
+           let one = new MutableLabel({
+               id: 'example1',
+               properties: {
+                   value: 'some'
+               }
+           }),
+
+           two = new MutableLabel({
+               id: 'example2',
+               properties: {
+                   value: 'mutable'
+               }
+           }),
+
+           three = new MutableLabel({
+               id: 'example3',
+               properties: {
+                   value: 'text'
+               }
            });
 
-           let label2 = new MutableLabel({id: 'mutablelabel-example2' }, {
-               value: 'mutable'
-           });
-
-           let label3 = new MutableLabel({id: 'mutablelabel-example3' }, {
-               value: 'text'
-           });
-           document.querySelector('body').append(label1);
-           document.querySelector('body').append(label2);
-           document.querySelector('body').append(label3);
+           document.querySelector('body').append(one, two, three);
        });
    </script>
  </body>

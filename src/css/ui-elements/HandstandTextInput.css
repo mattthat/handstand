@@ -1,8 +1,0 @@
-handstand-textinput {
-}
-handstand-textinput > input:first-child {
-   font-size: inherit;
-}
-handstand-textinput > input:focus {
-   outline: inherit;
-}

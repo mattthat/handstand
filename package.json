@@ -1,7 +1,7 @@
 {
     "name": "handstand",
-    "version": "2.2.0",
-    "main": "packaging/depender.js",
+    "version": "3.0.0",
+    "main": "build/handstand-snapshot.min.js",
     "author": {
         "email": "matt.that@gmail.com",
         "name": "Matt That",
@@ -25,30 +25,23 @@
         "type": "Apache-2.0",
         "url": "https://spdx.org/licenses/Apache-2.0"
     },
-    "dependencies": {
-        "babel-preset-es2015": "^6.24.1",
-        "babel-register": "^6.26.0",
-        "babelify": "^8.0.0",
-        "browserify": "^16.1.0",
-        "chai": "^4.1.2",
+    "devDependencies": {
+        "css-loader": "^0.28.11",
+        "cssmin": "^0.4.3",
         "esdoc": "^1.0.4",
         "esdoc-standard-plugin": "^1.0.0",
-        "grunt": "^1.0.2",
-        "grunt-browserify": "^5.2.0",
-        "grunt-contrib-clean": "^1.1.0",
-        "grunt-contrib-connect": "^1.0.2",
-        "grunt-contrib-copy": "^1.0.0",
-        "grunt-contrib-cssmin": "^2.2.1",
-        "grunt-contrib-uglify-es": "^3.3.0",
-        "grunt-contrib-watch": "^1.0.0",
-        "grunt-exec": "^3.0.0",
-        "grunt-mocha-istanbul": "^5.0.2",
-        "grunt-mocha-test": "^0.13.3",
-        "istanbul": "^1.0.0-alpha.2",
-        "jsdom": "^11.6.2",
-        "jsdom-global": "^3.0.2",
-        "mocha": "^5.0.1",
-        "sinon": "^4.4.2",
-        "slim-js": "^3.2.1"
-    }
+        "style-loader": "^0.20.3",
+        "webpack": "^4.3.0",
+        "webpack-cli": "^2.0.13"
+    },
+    "scripts": {
+        "clean": "rm -fr ./build/* ./esd0x/* ./release/*; rmdir build esd0x release ; mkdir build",
+        "d0x": "esdoc -c esdoc.json",
+        "copy-resource-snapshot": "cp resources/snapshot/* build/",
+        "copy-resource-examples": "mkdir build/examples ; cp -r resources/examples/* build/examples",
+        "snapshot": "npm run clean && node_modules/webpack/bin/webpack.js && npm run copy-resource-snapshot && npm run copy-resource-examples",
+        "serve": "cd build && python -m SimpleHTTPServer 8000",
+        "release": "npm run snapshot ; npm run d0x"
+    },
+    "dependencies": {}
 }

@@ -1,6 +1,6 @@
 build/**
 node_modules/**
-coverage/**
 release/**
 esd0x/**
 handstand-*.tgz
+package-lock.json

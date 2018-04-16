@@ -1,9 +1,0 @@
-handstand-label {
-}
-handstand-label > div:first-child {
-    display: inline-block;
-    background-color: inherit;
-    width: inherit;
-    height: inherit;
-    vertical-align: inherit;
-}

@@ -1,0 +1,98 @@
+<html>
+ <head>
+  <script src='/handstand-snapshot.min.js'></script>
+  <style>
+   body { font-family: sans-serif; }
+   handstand-container { padding: 2em; margin: 1em ;}
+   handstand-textinput { display: block; }
+   handstand-textarea > textarea { font-size: 1em; }
+   handstand-label { font-size: 1em; }
+   .name {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   }
+   handstand-button { margin: 1em; }
+   mutable-label { display: block }
+  </style>
+  </head>
+  <body>
+   <script>
+       // a straightforward form example
+       Handstand.loaded(() => {
+
+           // create a container for names
+           let names  = new HandstandContainer(),
+           // names: a first name and last name pair of labels and inputs
+           firstLabel = new HandstandLabel({
+               properties: {
+                   innerText: 'First Name'
+               }
+           }),
+           first = new HandstandTextinput({
+               id: 'firstName',
+               css: 'name',
+               properties: {
+                   value: 'Anybody'
+               }
+           }),
+           lastLabel = new HandstandLabel({
+               properties: {
+                   innerText: 'Last Name'
+               }
+           }),
+           last = new HandstandTextinput({
+               id: 'lastName',
+               css: 'name',
+               properties: {
+                   value: 'Anywhere'
+               }
+           }),
+           // create a container for addresses
+           addresses = new HandstandContainer(),
+           // addresses: street address and email address mutable labels
+           street = new MutableLabel({
+               id: 'street',
+               properties: {
+                   value: "123 Main St.\nSomewhere, HA, USA 01111"
+               }
+           }),
+           email = new MutableLabel({
+               id: 'email',
+               properties: {
+                   value: 'anybody@email.address'
+               }
+           }),
+           // a button to submit the form data
+           button = new HandstandButton({
+               id: 'submit',
+               events: {
+                   onClick: () => {
+                     let model = new HandstandModel();
+
+                     names.contents().map( (el) => {
+                         if (el instanceof HandstandTextinput)
+                         model.Set(el.id, el.value)
+                     });
+                     addresses.contents().map( (el) => {
+                         if (el instanceof MutableLabel)
+                         model.Set(el.id, el.value)
+                     });
+
+                     alert( model.toJSON() )
+                   }
+               }
+           });
+
+           button.append('Submit')
+
+           names.append(firstLabel, first, lastLabel, last);
+
+           addresses.append(street, email);
+
+           document.querySelector('body').append(names, addresses, button);
+
+       });
+   </script>
+ </body>
+</html>

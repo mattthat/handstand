@@ -1,10 +1,7 @@
 <html>
  <head>
-  <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet'>
-  <link href='/snapshot/snapshot-all.min.css' rel='stylesheet'>
-  <script src='/snapshot/snapshot-all.min.js'></script>
+  <script src='/handstand-snapshot.min.js'></script>
   <style>
-   body { font-family: 'Permanent Marker' }
    #label1, #label2 { display: block; padding: 1em; }
    #switch2 div:first-child > label:before { background: dodgerblue; }
   </style>
@@ -17,42 +14,32 @@
           // generateExample(): a method to easily make many examples
           let generateExample = (switchId, labelId, value) => {
 
-              if (value === undefined || value === null || value === false) {
-                  value = false;
-              } else {
-                  value = true;
-              }
-
               let switchEl = new HandstandSwitch({
                   id: switchId,
-                  monitor: 'true',
-                  twoway: 'true'
-              }, {
-                  value: value
-              });
-              
-              let label = new HandstandLabel({ id: labelId }, {
-                value: switchEl.model.toJSON()
-              });
-              
-              switchEl.on('change', () => {
-                  label.value = switchEl.model.toJSON();
+                  properties: {
+                      on: value
+                  }
+              }),
+
+              label = new HandstandLabel({
+                  id: labelId,
+                  properties: {
+                      innerText: switchEl.value.toString()
+                  }
               });
 
-              document.querySelector('body').append(switchEl);
-          
-              document.querySelector('body').append(label);
-          
+              switchEl.on('change', () => {
+                  label.innerText = switchEl.value.toString();
+              });
+
+              document.querySelector('body').append(switchEl, label);
           };
-          //
 
           // 1: a switch example using the default theme
           generateExample('switch1', 'label1', true);
-          //
 
           // 2: a switch example with custom switch background color
-          generateExample('switch2', 'label2');
-          //
+          generateExample('switch2', 'label2', false);
 
       });
    </script>

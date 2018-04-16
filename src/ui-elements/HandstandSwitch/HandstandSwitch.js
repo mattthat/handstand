@@ -11,12 +11,14 @@ export default class HandstandSwitch extends HandstandCustomElement {
     }
     constructor(conditions) {
         super(conditions);
+        if (this.conditions.properties.on === undefined)
+           this.conditions.properties.on = true;
         HandstandSwitch.unique++;
         let key = 'handstandswitch-' + HandstandSwitch.unique;
         this.input = document.createElement('input');
         this.input.setAttribute('name', key);
         this.input.type = 'checkbox';
-        this.input.checked = true;
+        this.input.checked = this.conditions.properties.on;
         this.label = document.createElement('label');
         this.label.setAttribute('for', key);
         this.div = document.createElement('div');

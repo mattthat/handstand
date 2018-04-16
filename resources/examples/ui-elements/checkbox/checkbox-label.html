@@ -7,9 +7,9 @@
   </head>
   <body>
    <script>
-       // a checkbox example, including a label which shows model JSON
+       // a checkbox example, including a label exposing the value
        Handstand.loaded(() => {
-        
+
            let checkbox = new HandstandCheckbox({
                properties: {
                    checked: true
@@ -21,15 +21,12 @@
                    innerText: checkbox.value
                }
            });
-           
+
            checkbox.on('change', () => {
                label.innerText = checkbox.value
            });
-           
-           document.querySelector('body').append(checkbox);
-           
-           document.querySelector('body').append(label);
 
+           document.querySelector('body').append(checkbox, label);
       });
    </script>
  </body>

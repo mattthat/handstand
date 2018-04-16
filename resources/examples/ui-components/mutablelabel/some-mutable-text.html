@@ -8,25 +8,31 @@
   </head>
   <body>
    <script>
-       // a button example, using a label and providing a message when pressed
+       // three mutable labels
        Handstand.loaded(() => {
 
-           let label1 = new MutableLabel({id: 'mutablelabel-example1', properties: {
-               value: 'some'
-           }});
+           let one = new MutableLabel({
+               id: 'example1',
+               properties: {
+                   value: 'some'
+               }
+           }),
 
-           let label2 = new MutableLabel({id: 'mutablelabel-example2', properties: {
-               value: 'mutable'
-           }});
+           two = new MutableLabel({
+               id: 'example2',
+               properties: {
+                   value: 'mutable'
+               }
+           }),
 
-           let label3 = new MutableLabel({id: 'mutablelabel-example3', properties: {
-               value: 'text'
-           }});
+           three = new MutableLabel({
+               id: 'example3',
+               properties: {
+                   value: 'text'
+               }
+           });
 
-           document.querySelector('body').append(label1);
-           document.querySelector('body').append(label2);
-           document.querySelector('body').append(label3);
-       
+           document.querySelector('body').append(one, two, three);
        });
    </script>
  </body>

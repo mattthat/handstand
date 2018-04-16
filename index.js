@@ -1,8 +1,7 @@
 // core
 import Handstand from './src/core/Handstand.js';
 import HandstandModel from './src/core/HandstandModel.js';
-
-//elements
+// ui-elements
 import HandstandButton from './src/ui-elements/HandstandButton/HandstandButton.js';
 import HandstandCheckbox from './src/ui-elements/HandstandCheckbox/HandstandCheckbox.js';
 import HandstandContainer from './src/ui-elements/HandstandContainer/HandstandContainer.js';
@@ -12,16 +11,14 @@ import HandstandTextinput from './src/ui-elements/HandstandTextinput/HandstandTe
 import HandstandTextarea from './src/ui-elements/HandstandTextarea/HandstandTextarea.js';
 import HandstandMask from './src/ui-elements/HandstandMask/HandstandMask.js';
 import HandstandSwitch from './src/ui-elements/HandstandSwitch/HandstandSwitch.js';
-
-// components
+// ui-components
 import MutableLabel from './src/ui-components/MutableLabel/MutableLabel.js';
 import WaitingMask from './src/ui-components/WaitingMask/WaitingMask.js';
-
-// worker
+//worker
 import HandstandWorker from './src/worker/HandstandWorker.js';
 
-// make us famous
 global.Handstand = Handstand;
+global.HandstandModel = HandstandModel;
 global.HandstandButton = HandstandButton;
 global.HandstandCheckbox = HandstandCheckbox;
 global.HandstandContainer = HandstandContainer;

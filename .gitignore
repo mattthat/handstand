@@ -3,3 +3,4 @@ node_modules/**
 release/**
 esd0x/**
 handstand-*.tgz
+package-lock.json

@@ -1,4 +1,13 @@
-  .- v3.0.0 (2018-04-16)
+ .
+
+ .
+ .
+ |
+ +- v3.0.1 (2018-04-21)
+ |
+ |    * Adding ESLint
+ |
+ +- v3.0.0 (2018-04-16)
  |
  |    * BREAKING: Cease depending on Slim.js
  |    * BREAKING: Cease depending on Grunt

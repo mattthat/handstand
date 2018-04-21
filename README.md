@@ -2,10 +2,4 @@
 
 Web Development Kit
 
-[![Join the chat at https://gitter.im/handstandjs/Lobby](https://badges.gitter.im/handstandjs/Lobby.svg)](https://gitter.im/handstandjs/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-- Home: http://handstand.matt-that.com
-- Blog: http://handstand.matt-that.com/blog
-- Docs: http://handstand.matt-that.com/docs
-- GitHub: http://github.com/mattthat/handstand
-- NPM: https://www.npmjs.com/package/handstand
+[![Join the chat at https://gitter.im/handstandjs/Lobby](https://badges.gitter.im/handstandjs/Lobby.svg)](https://gitter.im/handstandjs/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![NPM version](http://img.shields.io/npm/v/handstand.svg)](https://www.npmjs.com/package/handstand) [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=website&style=flat-square)](http://handstand.matt-that.com) [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=docs&style=flat-square)](http://handstand.matt-that.com/docs)

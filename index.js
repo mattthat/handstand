@@ -1,5 +1,7 @@
 // core
+import packaged from './package.json';
 import Handstand from './src/core/Handstand.js';
+Handstand.version = packaged.version;
 import HandstandModel from './src/core/HandstandModel.js';
 // ui-elements
 import HandstandButton from './src/ui-elements/HandstandButton/HandstandButton.js';
@@ -25,7 +27,7 @@ global.HandstandContainer = HandstandContainer;
 global.HandstandLabel = HandstandLabel;
 global.HandstandList = HandstandList;
 global.HandstandTextinput = HandstandTextinput;
-global.HandstandTextarea = HandstandTextarea
+global.HandstandTextarea = HandstandTextarea;
 global.HandstandMask = HandstandMask;
 global.HandstandSwitch = HandstandSwitch;
 global.HandstandWorker = HandstandWorker;

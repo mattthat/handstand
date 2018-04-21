@@ -30,6 +30,10 @@
         "cssmin": "^0.4.3",
         "esdoc": "^1.0.4",
         "esdoc-standard-plugin": "^1.0.0",
+        "eslint": "^4.19.1",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-loader": "^2.0.0",
+        "eslint-plugin-prettier": "^2.6.0",
         "style-loader": "^0.20.3",
         "webpack": "^4.3.0",
         "webpack-cli": "^2.0.13"
@@ -39,7 +43,8 @@
         "d0x": "esdoc -c esdoc.json",
         "copy-resource-snapshot": "cp resources/snapshot/* build/",
         "copy-resource-examples": "mkdir build/examples ; cp -r resources/examples/* build/examples",
-        "snapshot": "npm run clean && node_modules/webpack/bin/webpack.js && npm run copy-resource-snapshot && npm run copy-resource-examples",
+        "lint": "node_modules/eslint/bin/eslint.js .",
+        "snapshot": "npm run clean && npm run lint && node_modules/webpack/bin/webpack.js && npm run copy-resource-snapshot && npm run copy-resource-examples",
         "serve": "cd build && python -m SimpleHTTPServer 8000",
         "release": "npm run snapshot ; npm run d0x"
     },

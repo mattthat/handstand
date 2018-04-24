@@ -2,8 +2,7 @@ import './HandstandContainer.css';
 import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandContainer extends HandstandCustomElement {
-  constructor(conditions) {
-    super(conditions);
+  onCreate() {
     this.conditions.properties.opened = true;
     this.setAttribute('open', 'true');
   }

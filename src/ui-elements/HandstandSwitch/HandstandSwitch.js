@@ -9,8 +9,7 @@ export default class HandstandSwitch extends HandstandCustomElement {
     this.conditions.properties.on = v;
     this.input.checked = v;
   }
-  constructor(conditions) {
-    super(conditions);
+  onCreate() {
     if (this.conditions.properties.on === undefined)
       this.conditions.properties.on = true;
     HandstandSwitch.unique++;
@@ -25,7 +24,6 @@ export default class HandstandSwitch extends HandstandCustomElement {
     this.div.append(this.input);
     this.div.append(this.label);
     this.append(this.div);
-    this.on('click', this.onClick);
   }
   onClick() {
     if (this.value === true) {
@@ -34,6 +32,12 @@ export default class HandstandSwitch extends HandstandCustomElement {
       this.value = true;
     }
     this.dispatchEvent(new Event('change'));
+  }
+  onAttach() {
+    this.on('click', this.onClick.bind(this));
+  }
+  onDetach() {
+    this.off('click', this.onClick.bind(this));
   }
 }
 HandstandSwitch.unique = 0;

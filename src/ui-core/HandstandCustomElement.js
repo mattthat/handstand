@@ -8,6 +8,7 @@ export default class HandstandCustomElement extends HTMLElement {
       events: {},
       observant: false
     };
+    this.construct(conditions);
     if (typeof conditions === 'object') {
       if (typeof conditions.properties === 'object')
         this.conditions.properties = conditions.properties;
@@ -24,6 +25,7 @@ export default class HandstandCustomElement extends HTMLElement {
       this.setAttribute('id', this.conditions.id);
     if (this.conditions.css.length > 0)
       this.setAttribute('class', this.conditions.css);
+    this.create(conditions);
   }
   _observe() {
     this.observer = new MutationObserver(mutationsList => {
@@ -42,35 +44,58 @@ export default class HandstandCustomElement extends HTMLElement {
     });
     this.observer.observe(this, { attributes: true, childList: true });
   }
+  construct(conditions) {
+    if (typeof this.onConstruct === 'function')
+      this.onConstruct.call(this, conditions);
+  }
+  create(conditions) {
+    if (typeof this.onCreate === 'function')
+      this.onCreate.call(this, conditions);
+  }
   render() {
     if (typeof this.onRender === 'function') this.onRender.call(this);
     this.dispatchEvent(new Event('render'));
   }
+  dismantle() {
+    if (typeof this.onDismantle === 'function') this.onDismantle.call(this);
+    this.dispatchEvent(new Event('dismantle'));
+  }
   on(event, method) {
-    this.addEventListener(event, method.bind(this));
+    if (event && method) this.addEventListener(event, method.bind(this));
   }
   off(event, method) {
-    this.removeEventListener(event, method.bind(this));
+    if (event && method) this.removeEventListener(event, method.bind(this));
   }
   connectedCallback() {
-    let that = this;
-    if (!that.rendered) {
-      that.render.call(that);
-      that.rendered = true;
+    if (!this.rendered) {
+      this.render.call(this);
+      this.rendered = true;
+      let that = this;
       setTimeout(() => {
-        that.onAttached.call(that);
-        that.dispatchEvent(new Event('attached'));
+        that.onAttach.call(that);
+        that.dispatchEvent(new Event('attach'));
       }, 0);
     } else {
-      this.onAttached.call(this);
+      this.onAttach.call(this);
+      this.dispatchEvent(new Event('attach'));
     }
   }
   disconnectedCallback() {
-    this.onDetached.call(this);
-    this.dispatchEvent(new Event('detached'));
+    if (!this.dismantled) {
+      this.dismantle.call(this);
+      this.dismantled = true;
+      let that = this;
+      setTimeout(() => {
+        that.onDetach.call(that);
+        that.dispatchEvent(new Event('detach'));
+      }, 0);
+    } else {
+      this.onDetach.call(this);
+      this.dispatchEvent(new Event('detach'));
+    }
   }
   onChildListMutation() {}
   onAttributeMutation() {}
-  onAttached() {}
-  onDetached() {}
+  onAttach() {}
+  onDetach() {}
 }

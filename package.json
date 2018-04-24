@@ -1,6 +1,6 @@
 {
     "name": "handstand",
-    "version": "3.0.1",
+    "version": "3.1.0",
     "main": "build/handstand-snapshot.min.js",
     "author": {
         "email": "matt.that@gmail.com",
@@ -44,6 +44,7 @@
         "copy-resource-snapshot": "cp resources/snapshot/* build/",
         "copy-resource-examples": "mkdir build/examples ; cp -r resources/examples/* build/examples",
         "lint": "node_modules/eslint/bin/eslint.js .",
+        "lint-fix": "node_modules/eslint/bin/eslint.js . --fix",
         "snapshot": "npm run clean && npm run lint && node_modules/webpack/bin/webpack.js && npm run copy-resource-snapshot && npm run copy-resource-examples",
         "serve": "cd build && python -m SimpleHTTPServer 8000",
         "release": "npm run snapshot ; npm run d0x"

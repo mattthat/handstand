@@ -1,12 +1,15 @@
 // core
-import packaged from './package.json';
 import Handstand from './src/core/Handstand.js';
-Handstand.version = packaged.version;
-import HandstandModel from './src/core/HandstandModel.js';
+import { version } from './package.json';
+Handstand.$MAJOR = version.split('.')[0];
+Handstand.$MINOR = version.split('.')[1];
+Handstand.$PATCH = version.split('.')[2];
+Handstand.$BUILD = new Date().getTime();
 // ui-elements
 import HandstandButton from './src/ui-elements/HandstandButton/HandstandButton.js';
 import HandstandCheckbox from './src/ui-elements/HandstandCheckbox/HandstandCheckbox.js';
 import HandstandContainer from './src/ui-elements/HandstandContainer/HandstandContainer.js';
+import HandstandModel from './src/ui-elements/HandstandModel/HandstandModel.js';
 import HandstandLabel from './src/ui-elements/HandstandLabel/HandstandLabel.js';
 import HandstandList from './src/ui-elements/HandstandList/HandstandList.js';
 import HandstandTextinput from './src/ui-elements/HandstandTextinput/HandstandTextinput.js';
@@ -16,8 +19,6 @@ import HandstandSwitch from './src/ui-elements/HandstandSwitch/HandstandSwitch.j
 // ui-components
 import MutableLabel from './src/ui-components/MutableLabel/MutableLabel.js';
 import WaitingMask from './src/ui-components/WaitingMask/WaitingMask.js';
-//worker
-import HandstandWorker from './src/worker/HandstandWorker.js';
 
 global.Handstand = Handstand;
 global.HandstandModel = HandstandModel;
@@ -30,6 +31,5 @@ global.HandstandTextinput = HandstandTextinput;
 global.HandstandTextarea = HandstandTextarea;
 global.HandstandMask = HandstandMask;
 global.HandstandSwitch = HandstandSwitch;
-global.HandstandWorker = HandstandWorker;
 global.WaitingMask = WaitingMask;
 global.MutableLabel = MutableLabel;

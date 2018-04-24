@@ -13,8 +13,7 @@ export default class HandstandMask extends HandstandCustomElement {
       this.hide();
     }
   }
-  constructor(conditions) {
-    super(conditions);
+  onCreate() {
     if (!this.conditions.properties.selector)
       this.conditions.properties.selector = 'body';
     this.state = 'hidden';

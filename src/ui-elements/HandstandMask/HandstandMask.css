@@ -2,6 +2,7 @@ handstand-mask {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: silver;
-    opacity: 0.75;
+}
+handstand-mask[state='shown'] + * {
+  filter: blur(0.1em);
 }

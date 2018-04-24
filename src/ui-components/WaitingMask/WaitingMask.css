@@ -9,7 +9,6 @@ waiting-mask > div {
   right: 0;
   top: 0;
 }
-
 waiting-mask > div:before {
   position: absolute;
   background-color: silver;
@@ -28,7 +27,6 @@ waiting-mask > div:before {
   -moz-animation: waitingmask-waitin 1s infinite ease-in-out;
   -webkit-animation: waitingmask-waitin 1s infinite linear;
 }
-
 waiting-mask > div:after {
   position: absolute;
   background-color: silver;
@@ -47,7 +45,6 @@ waiting-mask > div:after {
   -moz-animation: waitingmask-waitout 1s infinite linear;
   -webkit-animation: waitingmask-waitout 1s infinite linear;
 }
-
 @-moz-keyframes waitingmask-waitout {
     0% {
         -moz-transform: rotate(0deg);
@@ -56,7 +53,6 @@ waiting-mask > div:after {
         -moz-transform: rotate(360deg);
     }
 }
-
 @-webkit-keyframes waitingmask-waitout {
     0% {
         -webkit-transform: rotate(0deg);
@@ -65,7 +61,6 @@ waiting-mask > div:after {
         -webkit-transform: rotate(360deg);
     }
 }
-
 @-moz-keyframes waitingmask-waitin {
     0% {
         -moz-transform: rotate(130deg);
@@ -81,7 +76,6 @@ waiting-mask > div:after {
         opacity: 0;
     }
 }
-
 @-webkit-keyframes waitingmask-waitin {
     0% {
         -webkit-transform: rotate(130deg);

@@ -2,8 +2,7 @@ import './HandstandList.css';
 import HandstandCustomElement from '../../ui-core/HandstandCustomElement.js';
 
 export default class HandstandList extends HandstandCustomElement {
-  constructor(conditions) {
-    super(conditions);
+  onCreate() {
     this.ul = document.createElement('ul');
     this.append(this.ul);
   }

@@ -10,9 +10,9 @@ export default class MutableLabel extends HandstandCustomElement {
   set state(state) {
     this.setAttribute('state', state);
     if (state === 'mutable') {
-      this.beMutable();
+      this.change();
     } else {
-      this.beModeled();
+      this.model();
     }
   }
   get value() {
@@ -23,8 +23,7 @@ export default class MutableLabel extends HandstandCustomElement {
     this.label.innerText = v;
     this.mutable.value = v;
   }
-  constructor(conditions) {
-    super(conditions);
+  onCreate() {
     this.setAttribute('state', 'modeled');
     this.mutable = new HandstandTextarea({
       properties: {
@@ -36,22 +35,29 @@ export default class MutableLabel extends HandstandCustomElement {
         innerText: this.conditions.properties.value
       }
     });
-    let component = this;
-    this.on('click', () => {
-      if (component.state === 'modeled') component.state = 'mutable';
-    });
-    this.on('focusout', () => {
-      if (component.state === 'mutable') component.state = 'modeled';
-    });
     this.append(this.label);
   }
-  beModeled() {
+  onClick() {
+    if (this.state === 'modeled') this.state = 'mutable';
+  }
+  onFocusOut() {
+    if (this.state === 'mutable') this.state = 'modeled';
+  }
+  onAttach() {
+    this.on('click', this.onClick.bind(this));
+    this.on('focusout', this.onFocusOut.bind(this));
+  }
+  onDetach() {
+    this.off('click', this.onClick.bind(this));
+    this.off('focusout', this.onFocusOut.bind(this));
+  }
+  model() {
     this.value = this.mutable.value;
     this.mutable.remove();
     this.label.innerText = this.value;
     this.append(this.label);
   }
-  beMutable() {
+  change() {
     this.value = this.label.innerText;
     this.label.remove();
     this.mutable.value = this.value;

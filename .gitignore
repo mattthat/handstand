@@ -1,6 +1,5 @@
-build/**
+dist/**
 node_modules/**
-release/**
-esd0x/**
+d0x/**
 handstand-*.tgz
 package-lock.json

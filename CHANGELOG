@@ -3,6 +3,14 @@
  .
  .
  |
+ +- v3.1.0 (2018-06-04)
+ |
+ |    * Abstracts, elements, and observers
+ |    * New model element
+ |    * New custom element lifecycle events onConstruct and onCreate
+ |    * WaitingMask using blur
+ |    ... some name changes and bug fixes
+ |
  +- v3.0.1 (2018-04-21)
  |
  |    * Adding ESLint

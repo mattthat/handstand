@@ -1,3 +1,4 @@
+var pkg = require('./package.json');
 module.exports = {
   module: {
     rules: [
@@ -9,11 +10,11 @@ module.exports = {
   },
   entry: ['./index.js'],
   output: {
-    path: __dirname + '/build',
+    path: __dirname + '/dist',
     publicPath: '/',
-    filename: 'handstand-snapshot.min.js',
+    filename: 'handstand-v' + pkg.version + '.min.js',
   },
   devServer: {
-    contentBase: './build',
+    contentBase: './dist',
   },
 };

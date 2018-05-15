@@ -1,7 +1,7 @@
 {
     "name": "handstand",
     "version": "3.1.0",
-    "main": "build/handstand-snapshot.min.js",
+    "main": "main.js",
     "author": {
         "email": "matt.that@gmail.com",
         "name": "Matt That",
@@ -36,18 +36,21 @@
         "eslint-plugin-prettier": "^2.6.0",
         "style-loader": "^0.20.3",
         "webpack": "^4.3.0",
-        "webpack-cli": "^2.0.13"
+        "webpack-cli": "^2.0.13",
+        "webpack-dev-server": "^3.1.3"
     },
     "scripts": {
-        "clean": "rm -fr ./build/* ./esd0x/* ./release/*; rmdir build esd0x release ; mkdir build",
-        "d0x": "esdoc -c esdoc.json",
-        "copy-resource-snapshot": "cp resources/snapshot/* build/",
-        "copy-resource-examples": "mkdir build/examples ; cp -r resources/examples/* build/examples",
-        "lint": "node_modules/eslint/bin/eslint.js .",
-        "lint-fix": "node_modules/eslint/bin/eslint.js . --fix",
-        "snapshot": "npm run clean && npm run lint && node_modules/webpack/bin/webpack.js && npm run copy-resource-snapshot && npm run copy-resource-examples",
-        "serve": "cd build && python -m SimpleHTTPServer 8000",
-        "release": "npm run snapshot ; npm run d0x"
+        "clean": "rm -fr ./d0x/* ./dist/* ; mkdir -p dist d0x",
+        "copy": "cp ./resources/html/index.html ./dist",
+        "docs": "esdoc -c esdoc.json",
+        "lint": "./node_modules/eslint/bin/eslint.js .",
+        "lint-fix": "./node_modules/eslint/bin/eslint.js . --fix",
+        "presnap": "npm run clean && npm run lint",
+        "webpack": "./node_modules/webpack/bin/webpack.js",
+        "snapshot": "npm run presnap && npm run webpack && npm run copy",
+        "release": "npm run snapshot && npm run docs",
+        "prepare": "npm run release",
+        "start": "node_modules/.bin/webpack-dev-server"
     },
     "dependencies": {}
 }

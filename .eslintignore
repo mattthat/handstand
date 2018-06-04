@@ -1,3 +1,5 @@
-build/*
+dist/*
+d0x/*
+main.js
 index.js
 webpack.config.js

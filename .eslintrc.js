@@ -12,6 +12,7 @@ module.exports = {
     HTMLElement: true,
     MutationObserver: true,
     Event: true,
+    CustomEvent: true,
     Worker: true,
     setTimeout: true,
     HandstandContainer: true,

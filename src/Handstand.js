@@ -5,7 +5,7 @@ export default class Handstand {
   /**
    * @return {AbstractOrchestrator} AbstractOrchestrator
    */
-  static get Orch() {
+  static get Orchestrator() {
     return this._orchestrator;
   }
   /**

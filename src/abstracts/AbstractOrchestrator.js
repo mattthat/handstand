@@ -1,5 +1,6 @@
 export default class AbstractOrchestrator {
-  constructor() {
+  constructor() {}
+  initialize() {
     document.addEventListener(
       'DOMContentLoaded',
       this.onContentLoaded.bind(this)

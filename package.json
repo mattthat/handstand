@@ -1,56 +1,55 @@
 {
     "name": "handstand",
-    "version": "3.1.1",
+    "version": "3.1.2",
     "main": "main.js",
     "author": {
         "email": "matt.that@gmail.com",
         "name": "Matt That",
         "url": "http://matt-that.com"
     },
-    "contributors": [
-        {
+    "contributors": [{
             "email": "matt.that@gmail.com",
             "name": "Matt That",
             "url": "http://matt-that.com"
-        }
-    ],
-    "url": "http://handstand.matt-that.com",
-    "homepage": "http://handstand.matt-that.com",
+    }],
+    "url": "http://tadalabs.io/handstand",
+    "homepage": "http://tadalabs.io/handstand",
     "keywords": "handstand css html js javascript webcomponents",
     "repository": {
         "type": "git",
-        "url": "https://github.com/mattthat/handstand.git"
+        "url": "https://github.com/tadalabs/handstand.git"
     },
     "license": {
         "type": "Apache-2.0",
         "url": "https://spdx.org/licenses/Apache-2.0"
     },
     "devDependencies": {
-        "css-loader": "^0.28.11",
+        "css-loader": "^1.0.0",
         "cssmin": "^0.4.3",
-        "esdoc": "^1.0.4",
+        "esdoc": "^1.1.0",
         "esdoc-standard-plugin": "^1.0.0",
-        "eslint": "^4.19.1",
-        "eslint-config-prettier": "^2.9.0",
-        "eslint-loader": "^2.0.0",
-        "eslint-plugin-prettier": "^2.6.0",
-        "style-loader": "^0.20.3",
-        "webpack": "^4.3.0",
-        "webpack-cli": "^2.0.13",
-        "webpack-dev-server": "^3.1.3"
+        "eslint": "^5.7.0",
+        "eslint-config-prettier": "^3.1.0",
+        "eslint-loader": "^2.1.1",
+        "eslint-plugin-prettier": "^3.0.0",
+        "npm-check-updates": "^2.14.2",
+        "prettier": "^1.14.3",
+        "rimraf": "^2.6.2",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9"
     },
     "scripts": {
-        "clean": "rm -fr ./d0x/* ./dist/* ; mkdir -p dist d0x",
+        "prepublishOnlu": "npm run release",
+        "ahead": "rimraf node_modules ; rimraf package-lock.json ; ncu -u ; npm install",
+        "clean": "rimraf d0x ; rimraf dist ; mkdir -p dist d0x",
         "copy": "cp ./resources/html/index.html ./dist",
         "docs": "esdoc -c esdoc.json",
-        "lint": "./node_modules/eslint/bin/eslint.js .",
-        "lint-fix": "./node_modules/eslint/bin/eslint.js . --fix",
-        "presnap": "npm run clean && npm run lint",
-        "webpack": "./node_modules/webpack/bin/webpack.js",
-        "snapshot": "npm run presnap && npm run webpack && npm run copy",
+        "lint": "eslint . --fix",
+        "snapshot": "npm run clean && npm run lint && webpack && npm run copy",
         "release": "npm run snapshot && npm run docs",
-        "prepare": "npm run release",
-        "start": "node_modules/.bin/webpack-dev-server"
+        "start": "webpack-dev-server"
     },
     "dependencies": {}
 }

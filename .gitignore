@@ -2,4 +2,3 @@ dist/**
 node_modules/**
 d0x/**
 handstand-*.tgz
-package-lock.json

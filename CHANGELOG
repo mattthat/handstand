@@ -3,6 +3,10 @@
  .
  .
  |
+ +- v3.1.2 (2018-10-16)
+ |
+ |    * Modules upgrade; move to Tada! Labs GitHub Organization
+ |
  +- v3.1.1 (2018-06-08)
  |
  |    * Bug fixes

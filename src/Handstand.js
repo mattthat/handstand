@@ -15,6 +15,12 @@ export default class Handstand {
     return this._customelement;
   }
   /**
+   * @return {WrappedElement} WrappedElement
+   */
+  static get WrappedElement() {
+    return this._wrappedelement;
+  }
+  /**
    * @property {Container} Container Container element
    * @property {List} List List element
    * @property {Mask} Mask Mask element

@@ -11,12 +11,10 @@ export default class Toggle extends AbstractCustomElement {
   }
   onCreate() {
     Toggle.unique++;
-    let on = this.conditions.properties.on;
-    if (on === undefined) on = true;
-
+    if (!this.conditions.properties.on) this.conditions.properties.on = true;
     this.input = new WrappedElement('input');
     this.input.innerElement.type = 'checkbox';
-    this.input.innerElement.checked = on;
+    this.input.innerElement.checked = this.conditions.properties.on;
     this.input.setAttribute('name', 'toggle-' + Toggle.unique);
 
     this.label = new WrappedElement('label');
